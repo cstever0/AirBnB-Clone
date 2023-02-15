@@ -29,7 +29,7 @@ app.use(
 
 // Set the _csrf token and create req.csrfToken method
 app.use(
-    csurfI({
+    csurf({
         cookie: {
             secure: isProduction,
             sameSite: isProduction && "Lax",
