@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
 
     toSafeObject() {
-      const { id, username, email } = this; // context will be the User instance
-      return { id, username, email };
+      const { id, firstName, lastName, username, email } = this; // context will be the User instance
+      return { id, firstName, lastName, username, email };
     };
 
     validatePassword(password) {
@@ -108,7 +108,7 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "User",
       defaultScope: {
         attributes: {
-          exclude: ["hashedPassword", "email", "firstName", "lastName", "createdAt", "updatedAt"]
+          exclude: ["hashedPassword", "email", "createdAt", "updatedAt"]
         }
       },
       scopes: {
