@@ -326,4 +326,48 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     });
 });
 
+
+// reviews routes to be moved eventually
+router.get('/:spotId/reviews', async (req, res) => {
+    const {spotId} = req.params;
+
+    let Reviews = await Review.findAll({
+        where: {
+            spotId: spotId
+        }
+    });
+
+    let payload = [];
+    for (let review of Reviews) {
+        let reviewJson = review.toJSON();
+        let reviewUser = await User.findOne({
+            where: {
+                id: review.userId
+            },
+            attributes: ['id', 'firstName', 'lastName']
+        });
+
+        reviewJson.User = reviewUser;
+
+        let reviewImages = await ReviewImage.findAll({
+            where: {
+                reviewId: review.id
+            },
+            attributes: ['id', 'url']
+        });
+
+        if (!reviewImages.length) {
+            reviewJson.ReviewImages = "No review images yet";
+        } else {
+            reviewJson.ReviewImages = reviewImages;
+        };
+
+        payload.push(reviewJson);
+    };
+
+    res.status(200).json({Reviews: payload});
+});
+
+
+
 module.exports = router;
