@@ -20,7 +20,7 @@ module.exports = {
         lng: 151.214,
         name: 'name#1',
         description: 'description#1',
-        price: 1.00
+        price: 50011.12
       },
       {
         ownerId: 2,

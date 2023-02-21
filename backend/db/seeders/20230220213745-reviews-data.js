@@ -40,6 +40,12 @@ module.exports = {
         review: 'review#5',
         stars: 5
       },
+      {
+        spotId: 1,
+        userId: 3,
+        review: 'review#6',
+        stars: 1
+      },
     ], {});
   },
 
