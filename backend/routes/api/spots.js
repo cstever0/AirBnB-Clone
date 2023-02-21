@@ -174,8 +174,10 @@ const validateSpot = [
         .withMessage('Longitude is not valid'),
     check('name')
         .exists({ checkFalsy: true })
+        .withMessage('Must have a Name'),
+    check('name')
         .isLength({ max: 50 })
-        .withMessage('Must have a Name and Name must be less than 50 characters'),
+        .withMessage('Name must be less than 50 characters'),
     check('description')
         .exists({ checkFalsy: true })
         .withMessage('Description is required'),
@@ -209,6 +211,47 @@ router.post('/', requireAuth, validateSpot, async (req, res) => {
     });
 
     res.status(201).json(newSpot)
+});
+
+router.post('/:spotId/images', requireAuth, async (req, res) => {
+    const {spotId} = req.params;
+    const {id} = req.user;
+    const {url, preview} = req.body;
+
+    let spot = await Spot.findOne({
+        where: {
+            id: spotId
+        }
+    });
+
+    if (!spot) {
+        return res.status(404).toJSON({
+            message: "Spot couln't be found",
+            statusCode: 404
+        });
+    };
+
+    if (spot.ownerId !== id) {
+        return res.status(403).json({
+            message: 'Forbidden',
+            statusCode: 403
+        });
+    };
+
+    await SpotImage.create({
+        spotId: spotId,
+        url: url,
+        preview: preview
+    });
+
+    const newImage = await SpotImage.findOne({
+        where: {
+            url: url
+        },
+        attributes: ['id', 'url', 'preview']
+    });
+
+    res.status(201).json(newImage);
 });
 
 module.exports = router;
