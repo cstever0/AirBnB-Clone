@@ -7,7 +7,7 @@ const { User, Spot, SpotImage, Review, ReviewImage, sequelize } = require('../..
 const router = express.Router();
 
 
-router.get('/', async (req, res) =>{
+router.get('/', async (req, res) => {
     const Spots = await Spot.findAll();
 
     let payload = [];
@@ -45,11 +45,11 @@ router.get('/', async (req, res) =>{
         payload.push(spotJson);
     };
 
-    res.json({Spots: payload});
+    res.json({ Spots: payload });
 });
 
 router.get('/current', requireAuth, async (req, res) => {
-    const {id} = req.user;
+    const { id } = req.user;
 
     const Spots = await Spot.findAll({
         where: {
@@ -92,11 +92,11 @@ router.get('/current', requireAuth, async (req, res) => {
         payload.push(spotJson);
     };
 
-    res.json({Spots: payload});
+    res.json({ Spots: payload });
 });
 
 router.get('/:spotId', async (req, res) => {
-    let {spotId} = req.params;
+    let { spotId } = req.params;
 
     let spot = await Spot.findOne({
         where: {
@@ -188,7 +188,7 @@ const validateSpot = [
 ];
 
 router.post('/', requireAuth, validateSpot, async (req, res) => {
-    const {id} = req.user;
+    const { id } = req.user;
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
     await Spot.create({
@@ -214,9 +214,9 @@ router.post('/', requireAuth, validateSpot, async (req, res) => {
 });
 
 router.post('/:spotId/images', requireAuth, async (req, res) => {
-    const {spotId} = req.params;
-    const {id} = req.user;
-    const {url, preview} = req.body;
+    const { spotId } = req.params;
+    const { id } = req.user;
+    const { url, preview } = req.body;
 
     let spot = await Spot.findOne({
         where: {
@@ -252,6 +252,78 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     });
 
     res.status(201).json(newImage);
+});
+
+router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
+    const { spotId } = req.params;
+    const { id } = req.user;
+    let { address, city, state, country, lat, lng, name, description, price } = req.body;
+
+    let spot = await Spot.findOne({
+        where: {
+            id: spotId
+        }
+    });
+
+    if (!spot) {
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        });
+    };
+
+    if (spot.ownerId !== id) {
+        return res.status(403).json({
+            message: 'Forbidden',
+            statusCode: 403
+        });
+    };
+
+    spot = spot.toJSON();
+
+    spot.address = address || spot.address;
+    spot.city = city || spot.city;
+    spot.state = state || spot.state;
+    spot.country = country || spot.country;
+    spot.lat = lat || spot.lat;
+    spot.lng = lng || spot.lng;
+    spot.name = name || spot.name;
+    spot.description = description || spot.description;
+    spot.price = price || spot.price;
+
+    res.json(spot);
+});
+
+router.delete('/:spotId', requireAuth, async (req, res) => {
+    const {spotId} = req.params;
+    const {id} = req.user;
+
+    let spot = await Spot.findOne({
+        where: {
+            id: spotId
+        }
+    });
+
+    if (!spot) {
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        });
+    };
+
+    if (spot.ownerId !== id) {
+        return res.status(403).json({
+            message: "Forbidden",
+            statusCode: 403
+        });
+    };
+
+    await spot.destroy();
+
+    res.status(200).json({
+        message: "Successfully deleted",
+        statusCode: 200
+    });
 });
 
 module.exports = router;
