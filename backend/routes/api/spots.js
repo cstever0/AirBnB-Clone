@@ -3,7 +3,8 @@ const express = require('express');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { User, Spot, SpotImage, Review, ReviewImage, sequelize } = require('../../db/models');
+const { User, Spot, SpotImage, Review, ReviewImage, Booking, sequelize } = require('../../db/models');
+const booking = require('../../db/models/booking');
 const router = express.Router();
 
 
@@ -327,7 +328,7 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
 });
 
 
-// reviews routes to be moved eventually
+// start of reviews routes to be moved eventually
 router.get('/:spotId/reviews', async (req, res) => {
     const {spotId} = req.params;
 
@@ -438,6 +439,60 @@ router.post('/:spotId/reviews', requireAuth, validateReview, async (req, res) =>
     });
 
     res.status(201).json(newReview);
+});
+// end of reviews routes to be moved eventually
+
+//start of bookings routes to be moved eventually
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
+    const {spotId} = req.params;
+    const {id} = req.user;
+
+    let spot = await Spot.findOne({
+        where: {
+            id: spotId
+        }
+    });
+
+    if (!spot) {
+        res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        });
+    };
+
+    if (spot.ownerId !== id) {
+        let Bookings = await Booking.findAll({
+            where: {
+                spotId: spotId
+            },
+            attributes: ['spotId', 'startDate', 'endDate']
+        });
+
+        res.status(200).json({Bookings})
+
+    } else {
+        let Bookings = await Booking.findAll({
+            where: {
+                spotId: spotId
+            }
+        });
+
+        let payload = [];
+        for (let booking of Bookings) {
+            let bookingJson = booking.toJSON();
+            let bookingUser = await User.findOne({
+                where: {
+                    id: booking.userId
+                },
+                attributes: ['id', 'firstName', 'lastName']
+            });
+
+            bookingJson.User = bookingUser;
+            payload.push(bookingJson);
+        };
+
+        res.status(200).json({Bookings: payload})
+    };
 });
 
 
