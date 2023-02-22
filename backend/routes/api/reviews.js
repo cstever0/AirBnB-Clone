@@ -117,4 +117,68 @@ router.post('/:reviewId/images', requireAuth, validateReviewImage, async (req, r
     res.status(200).json(newImage);
 });
 
+
+const validateReview = [
+    check('review')
+        .exists({ checkFalsy: true })
+        .withMessage("Review text is required"),
+    check('stars')
+        .isInt({min: 1, max: 5})
+        .withMessage("Stars must be an integer from 1 to 5"),
+    handleValidationErrors
+];
+
+router.put('/:reviewId', requireAuth, validateReview, async (req, res) => {
+    const {reviewId} = req.params;
+    const {id} = req.user;
+    const { review, stars } = req.body;
+
+    let reviewToEdit = await Review.findOne({
+        where: {
+            id: reviewId,
+            userId: id
+        }
+    });
+
+    if (!reviewToEdit) {
+        return res.status(404).json({
+            message: "Review couldn't be found",
+            statusCode: 404
+        });
+    };
+
+    reviewToEdit = reviewToEdit.toJSON();
+
+    reviewToEdit.review = review;
+    reviewToEdit.stars = stars;
+
+    res.status(200).json(reviewToEdit);
+});
+
+router.delete('/:reviewId', requireAuth, async (req, res) => {
+    const {reviewId} = req.params;
+    const {id} = req.user;
+
+    let reviewToDelete = await Review.findOne({
+        where: {
+            id: reviewId,
+            userId: id
+        }
+    });
+
+    if (!reviewToDelete) {
+        return res.status(404).json({
+            message: "Review couldn't be found",
+            statusCode: 404
+        });
+    };
+
+    await reviewToDelete.destroy();
+
+    res.status(200).json({
+        message: "Successfully deleted",
+        statusCode: 200
+    });
+});
+
 module.exports = router;
