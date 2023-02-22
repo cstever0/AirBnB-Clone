@@ -300,8 +300,7 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
 
     let spot = await Spot.findOne({
         where: {
-            id: spotId,
-            ownerId: id
+            id: spotId
         }
     });
 
@@ -312,12 +311,12 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
         });
     };
 
-    // if (spot.ownerId !== id) {
-    //     return res.status(403).json({
-    //         message: "Forbidden",
-    //         statusCode: 403
-    //     });
-    // };
+    if (spot.ownerId !== id) {
+        return res.status(403).json({
+            message: "Forbidden",
+            statusCode: 403
+        });
+    };
 
     await spot.destroy();
 

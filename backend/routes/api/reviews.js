@@ -89,6 +89,13 @@ router.post('/:reviewId/images', requireAuth, validateReviewImage, async (req, r
         });
     };
 
+    if (review.userId !== id) {
+        return res.status(403).json({
+            message: "Forbidden",
+            statusCode: 403
+        });
+    };
+
     const reviewImagesTotal = await ReviewImage.findAll({
         where: {
             reviewId: reviewId
@@ -135,8 +142,7 @@ router.put('/:reviewId', requireAuth, validateReview, async (req, res) => {
 
     let reviewToEdit = await Review.findOne({
         where: {
-            id: reviewId,
-            userId: id
+            id: reviewId
         }
     });
 
@@ -144,6 +150,13 @@ router.put('/:reviewId', requireAuth, validateReview, async (req, res) => {
         return res.status(404).json({
             message: "Review couldn't be found",
             statusCode: 404
+        });
+    };
+
+    if (reviewToEdit.userId !== id) {
+        return res.status(403).json({
+            message: 'Forbidden',
+            statusCode: 403
         });
     };
 
@@ -161,8 +174,7 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
 
     let reviewToDelete = await Review.findOne({
         where: {
-            id: reviewId,
-            userId: id
+            id: reviewId
         }
     });
 
@@ -170,6 +182,13 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
         return res.status(404).json({
             message: "Review couldn't be found",
             statusCode: 404
+        });
+    };
+
+    if (reviewToDelete.userId !== id) {
+        return res.status(404).json({
+            message: "Forbidden",
+            statusCode: 403
         });
     };
 
