@@ -77,8 +77,7 @@ router.post('/:reviewId/images', requireAuth, validateReviewImage, async (req, r
 
     const review = await Review.findOne({
         where: {
-            id: reviewId,
-            userId: id
+            id: reviewId
         }
     });
 
