@@ -1,0 +1,4 @@
+handling updates to just one field without needing to update every field
+
+Figure out how to chain routers together so that all reviews routes can go
+go be in the reviews router and not in spots router
