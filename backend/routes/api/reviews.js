@@ -159,10 +159,10 @@ router.put('/:reviewId', requireAuth, validateReview, async (req, res) => {
         });
     };
 
-    reviewToEdit = reviewToEdit.toJSON();
-
-    reviewToEdit.review = review;
-    reviewToEdit.stars = stars;
+    await reviewToEdit.update({
+        review: review,
+        stars: stars
+    });
 
     res.status(200).json(reviewToEdit);
 });
