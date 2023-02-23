@@ -138,6 +138,12 @@ router.get('/:spotId', async (req, res) => {
         ]
     });
 
+    if (!images.length) {
+        spot.SpotImages = "No Spot Images Available";
+    } else {
+        spot.SpotImages = images;
+    };
+
     let spotOwner = await User.findOne({
         where: {
             id: spot.ownerId
@@ -146,9 +152,16 @@ router.get('/:spotId', async (req, res) => {
     });
 
     spot = spot.toJSON();
+
     spot.numReviews = numReviews
     spot.avgStarRating = avgStars;
-    spot.SpotImages = images;
+
+    if (!images.length) {
+        spot.SpotImages = "No Spot Images Available";
+    } else {
+        spot.SpotImages = images;
+    };
+
     spot.Owner = spotOwner;
 
     res.json(spot);
