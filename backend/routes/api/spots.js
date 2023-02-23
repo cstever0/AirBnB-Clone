@@ -74,7 +74,7 @@ router.get('/current', requireAuth, async (req, res) => {
         if (!rating) {
             spotJson.avgRating = 'No reviews yet'
         } else {
-            spotJson.avgRating = rating
+            spotJson.avgRating = Number(rating)
         };
 
         let preImage = await SpotImage.findOne({
@@ -198,11 +198,11 @@ router.post('/', requireAuth, validateSpot, async (req, res) => {
         city: city,
         state: state,
         country: country,
-        lat: lat,
-        lng: lng,
+        lat: Number(lat),
+        lng: Number(lng),
         name: name,
         description: description,
-        price: price
+        price: Number(price)
     });
 
     const newSpot = await Spot.findOne({
