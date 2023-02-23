@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
         if (!rating) {
             spotJson.avgRating = 'No reviews yet'
         } else {
-            spotJson.avgRating = rating
+            spotJson.avgRating = Number(rating)
         };
 
         let preImage = await SpotImage.findOne({
