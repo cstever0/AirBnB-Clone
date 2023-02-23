@@ -39,11 +39,11 @@ module.exports = {
         allowNull: false
       },
       lat: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(10, 7),
         allowNull: false
       },
       lng: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(10, 7),
         allowNull: false
       },
       name: {
@@ -56,7 +56,7 @@ module.exports = {
         unique: true
       },
       price: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(10, 2),
         allowNull: false
       },
       createdAt: {
