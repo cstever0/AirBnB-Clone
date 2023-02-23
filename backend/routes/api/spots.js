@@ -192,17 +192,21 @@ router.post('/', requireAuth, validateSpot, async (req, res) => {
     const { id } = req.user;
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
+    lat = Number(lat);
+    lng = Number(lng);
+    price = Number(price);
+
     await Spot.create({
         ownerId: id,
         address: address,
         city: city,
         state: state,
         country: country,
-        lat: Number(lat),
-        lng: Number(lng),
+        lat: lat,
+        lng: lng,
         name: name,
         description: description,
-        price: Number(price)
+        price: price
     });
 
     const newSpot = await Spot.findOne({
