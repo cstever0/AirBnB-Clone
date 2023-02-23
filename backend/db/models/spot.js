@@ -56,11 +56,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     lat: {
-      type: DataTypes.DECIMAL(10, 7),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     lng: {
-      type: DataTypes.DECIMAL(10, 7),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     name: {
@@ -73,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     price: {
-      type: DataTypes.DECIMAL(10,2),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
   }, {
