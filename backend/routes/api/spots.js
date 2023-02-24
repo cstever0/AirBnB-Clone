@@ -205,7 +205,7 @@ router.get('/:spotId', async (req, res) => {
     spot = spot.toJSON();
 
     spot.numReviews = numReviews
-    spot.avgStarRating = avgStars;
+    spot.avgStarRating = Number(avgStars);
 
     if (!images.length) {
         spot.SpotImages = "No Spot Images Available";
