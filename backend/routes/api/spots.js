@@ -299,7 +299,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     });
 
     if (!spot) {
-        return res.status(404).toJSON({
+        return res.status(404).json({
             message: "Spot couldn't be found",
             statusCode: 404
         });
