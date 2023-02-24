@@ -29,6 +29,9 @@ router.get('/current', requireAuth, async (req, res) => {
         let reviewSpot = await Spot.findOne({
             where: {
                 id: review.spotId
+            },
+            attributes: {
+                exclude: ['description', 'createdAt', 'updatedAt']
             }
         });
 
@@ -57,7 +60,12 @@ router.get('/current', requireAuth, async (req, res) => {
 
         reviewJson.User = reviewUser;
         reviewJson.Spot = reviewSpot;
-        reviewJson.ReviewImages = reviewImages;
+
+        if (!reviewImages.length) {
+            reviewJson.ReviewImages = "No Review Images Available";
+        } else {
+            reviewJson.ReviewImages = reviewImages;
+        }
         payload.push(reviewJson);
     };
 
