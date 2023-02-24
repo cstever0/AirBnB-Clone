@@ -359,6 +359,7 @@ router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
         state: state,
         country: country,
         lat: lat,
+        lng: lng,
         name: name,
         description: description,
         price: price
