@@ -48,15 +48,6 @@ router.post('/', validateSignup, async (req, res) => {
 
     await setTokenCookie(res, user);
 
-    let newUser = await User.findOne({
-        where: {
-            username: username
-        },
-        attributes: {
-            exclude: ['createdAt', 'updatedAt']
-        }
-    });
-
     return res.json({
         user: user
     });
