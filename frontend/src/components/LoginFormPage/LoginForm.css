@@ -1,8 +1,17 @@
 /* TODO add css to login */
+body {
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
+    overflow: hidden;
+}
+
 .login-form {
+    position: absolute;
+    top: 30%;
+    left: 35%;
     display: flex;
     flex-direction: column;
-    width: 30%;
+    align-items: center;
+    width: 20%;
     margin: 0 auto;
     background-color: #f1f1f1;
     padding: 20px;
@@ -21,8 +30,9 @@
     padding: 10px;
     margin-bottom: 10px;
     border: none;
+    border-bottom: 2px solid #adadad;
     border-radius: 5px;
-    background-color: black;
+    background-color: grey;
     color: white;
 }
 
@@ -40,4 +50,8 @@
 
 .login-submit:hover {
     background-color: #3e8e41;
+}
+
+input:focus {
+    outline-color: blue;
 }
