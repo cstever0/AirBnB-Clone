@@ -19,6 +19,6 @@ function OpenModalButton({
     return (
         <button onClick={onClick}>{buttonText}</button>
     );
-}
+};
 
 export default OpenModalButton;
