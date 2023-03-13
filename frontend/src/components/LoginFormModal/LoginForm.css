@@ -5,13 +5,8 @@
 } */
 
 .login-form {
-    top: 30%;
-    left: 35%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 40%;
-    margin: 0 auto;
     background-color: #f1f1f1;
     padding: 20px;
     border-radius: 10px;
@@ -50,7 +45,16 @@
 .login-submit:hover {
     background-color: #3e8e41;
 }
-
+/*
 input:focus {
     outline-color: blue;
+} */
+
+#modal-content {
+    border-radius: 5px;
+}
+
+.demo-login{
+    text-align: center;
+    margin-top: 10px;
 }

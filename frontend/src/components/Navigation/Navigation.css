@@ -2,3 +2,26 @@
 .hidden {
     display: none;
 }
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-nav{
+    display: flex;
+    flex-direction: row;
+}
+
+.create-spot-link {
+    padding-right: 10px;
+}
+
+.modal-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-div {
+    position: relative;
+}
