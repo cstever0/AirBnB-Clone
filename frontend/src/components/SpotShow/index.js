@@ -24,7 +24,7 @@ const SpotShow = () => {
                         {spot.city}, {spot.state}
                     </div>
                     <div className="spot-rating">
-                        {spot.avgRating !== 'No reviews yet' ? <i className="fa-solid fa-star">{spot.avgRating}</i> : 'No reviews yet'}
+                        {spot.avgRating !== 'No reviews yet' ? <i className="fa fa-star">{spot.avgRating}</i> : 'No reviews yet'}
                     </div>
                     <div className="spot-price">${spot.price} night</div>
                 </NavLink>)}
