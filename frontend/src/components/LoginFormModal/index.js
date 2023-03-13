@@ -28,7 +28,7 @@ function LoginFormModal() {
     return (
         <form className='login-form' onSubmit={handleSubmit}>
             <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
             <label className="login-label">
                 Username or Email
