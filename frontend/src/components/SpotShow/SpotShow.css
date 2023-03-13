@@ -1,0 +1,25 @@
+/* TODO add css to SpotShow */
+.all-spots {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.spot-image {
+    padding: 15px;
+    width: 25%;
+    height: 20%;
+}
+
+.city-state {
+    padding: 5px;
+    font-weight: bold;
+}
+
+.spot-rating {
+    padding: 5px;
+}
+
+.spot-price {
+    padding: 5px;
+}

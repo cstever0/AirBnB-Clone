@@ -1,0 +1,8 @@
+/* TODO add css to spot display */
+.review-rating {
+    display: flex;
+}
+
+.reviews-num-reviews {
+    margin-left: 20px;
+}

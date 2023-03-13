@@ -1,7 +1,9 @@
 // frontend/src/store/index.js
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import reviewsReducer from './reviews';
 import sessionReducer from './session';
+import spotsReducer from './spots';
 
 let enhancer;
 
@@ -15,7 +17,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const rootReducer = combineReducers({
-    session: sessionReducer
+    session: sessionReducer,
+    spots: spotsReducer,
+    reviews: reviewsReducer
 });
 
 const configureStore = (preloadedState) => {
