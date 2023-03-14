@@ -8,7 +8,6 @@ const ReviewDetails = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
     const reviews = Object.values(useSelector((state) => state.reviews.spot));
-    console.log("reviews output:", reviews);
 
     useEffect(() => {
         dispatch(getSpotReviews(spotId));

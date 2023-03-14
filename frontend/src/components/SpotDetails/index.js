@@ -23,15 +23,19 @@ const SpotDetails = () => {
     return (
         <>
             <div className="spot-container">
-                <h1>{spot.name}</h1>
-                <h2>{spot.city}, {spot.state}</h2>
-                <div className="preview-image">
-                    <img src={`${previewImage.url}`} alt="" />
+                <div className="spot-location">
+                    <h1>{spot.name}</h1>
+                    <h2>{spot.city}, {spot.state}, {spot.country}</h2>
                 </div>
-                <div className="spot-images">
-                    {spotImages.map((image) =>
-                        <img src={`${image.url}`} alt="" />
-                    )}
+                <div className="all-images">
+                    <div id="preview-image">
+                        <img src={`${previewImage.url}`} alt="" />
+                    </div>
+                    <div className="spot-images">
+                        {spotImages.map((image) =>
+                            <img src={`${image.url}`} alt="" />
+                        )}
+                    </div>
                 </div>
                 <div className="spot-details">
                     <h1>Hosted by {spotOwner.firstName}, {spotOwner.lastName}</h1>
