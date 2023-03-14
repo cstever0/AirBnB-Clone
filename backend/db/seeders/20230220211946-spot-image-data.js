@@ -17,12 +17,12 @@ module.exports = {
       },
       {
         spotId: 1,
-        url: "image.url",
+        url: "/static/midgar_city.jpg",
         preview: false,
       },
       {
         spotId: 1,
-        url: 'https://www.deviantart.com/oo-fil-oo/art/FF7-REM-CLOUD-AND-TIFA-APPARTMENTS-842241658',
+        url: '/static/clouds_apartment_door.jpg',
         preview: false,
       },
       {
@@ -32,57 +32,57 @@ module.exports = {
       },
       {
         spotId: 2, // image url worked
-        url: "image.url",
+        url: "/static/midgar_city.jpg",
         preview: false,
       },
       {
         spotId: 2,
-        url: "image.url",
+        url: "/static/tifas_apartment.jpg",
         preview: false,
       },
       {
         spotId: 3,
-        url: "https://finalfantasy.fandom.com/wiki/Seventh_Heaven_(Final_Fantasy_VII)?file=Seventh_Heaven_from_FFVII_Remake.jpg",
+        url: "/static/seventh_heaven.jpg",
         preview: true,
       },
       {
         spotId: 3,
-        url: "image.url",
+        url: "/static/seventh_heaven.jpg",
         preview: false,
       },
       {
         spotId: 3,
-        url: "image.url",
+        url: "/static/midgar_city.jpg",
         preview: false,
       },
       {
         spotId: 4,
-        url: "image.url",
+        url: "/static/nebelheim_town.webp",
         preview: true,
       },
       {
         spotId: 4,
-        url: "image.url",
+        url: "/static/tifas_house_entrance.webp",
         preview: false,
       },
       {
         spotId: 4,
-        url: "image.url",
+        url: "/static/tifas_house_upstairs.webp",
         preview: false,
       },
       {
         spotId: 5,
-        url: "image.url",
+        url: "/static/nebelheim_town.webp",
         preview: true,
       },
       {
         spotId: 5,
-        url: "image.url",
+        url: "/static/clouds_house.webp",
         preview: false,
       },
       {
         spotId: 5,
-        url: "image.url",
+        url: "/static/clouds_house.webp",
         preview: false,
       },
     ], {});

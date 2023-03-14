@@ -10,6 +10,7 @@ const { environment } = require('./config');
 const { json } = require('sequelize');
 const isProduction = environment === 'production';
 const { ValidationError } = require('sequelize');
+const path = require('path');
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use(
 // Connect all the routes
 const routes = require('./routes');
 app.use(routes);
+app.use('/static', express.static(path.join(__dirname, 'assets')))
 
 // ...
 
