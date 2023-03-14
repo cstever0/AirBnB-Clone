@@ -1,8 +1,8 @@
 // src/components/SpotShow/index.js
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { getAllSpots } from "../../store/spots";
+import SpotCard from "../SpotCard";
 import './SpotShow.css';
 
 const SpotShow = () => {
@@ -15,23 +15,7 @@ const SpotShow = () => {
 
     return (
         <div className="all-spots">
-            {spots.map((spot) =>
-                <div className="each-spot">
-                    <NavLink key={spot.id} to={`/spots/${spot.id}`}>
-                        <div className="all-spot-image">
-                            <img src={spot.previewImage} alt="spotImage" />
-                        </div>
-                        <div className="all-spot-details">
-                            <div className="all-city-state">
-                                {spot.city}, {spot.state}
-                            </div>
-                            <div className="all-spot-rating">
-                                {spot.avgRating !== 'No reviews yet' ? <i className="fa fa-star">{spot.avgRating}</i> : 'No reviews yet'}
-                            </div>
-                        </div>
-                        <div className="all-spot-price">${spot.price} Night</div>
-                    </NavLink>
-                </div>)}
+            {spots.map((spot) => <SpotCard spot={spot} />)}
         </div>
     );
 
