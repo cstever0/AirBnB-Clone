@@ -1,8 +1,4 @@
 /* TODO add navigation css */
-.hidden {
-    display: none;
-}
-
 .nav-bar {
     display: flex;
     justify-content: space-between;
@@ -22,6 +18,13 @@
     flex-direction: column;
 }
 
-.dropdown-div {
-    position: relative;
+/* vvvv order matters vvvv */
+.profile-dropdown {
+    display: flex;
+    flex-direction: column;
 }
+
+.hidden {
+    display: none;
+}
+/* ^^^^ order matters ^^^^ */
