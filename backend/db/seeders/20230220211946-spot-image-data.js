@@ -11,78 +11,78 @@ module.exports = {
     options.tableName = 'SpotImages';
     return queryInterface.bulkInsert(options, [
       {
-        spotId: 1,
-        url: 'https://www.deviantart.com/oo-fil-oo/art/FF7-REM-CLOUD-AND-TIFA-APPARTMENTS-842241658',
-        preview: true,
-      },
-      {
-        spotId: 1,
-        url: 'https://www.deviantart.com/oo-fil-oo/art/FF7-REM-CLOUD-AND-TIFA-APPARTMENTS-842241658',
-        preview: false,
-      },
-      {
-        spotId: 1,
-        url: 'https://ams0.files.sfmlab.com/content/content/image/preview2_dAz5vX1.png?AWSAccessKeyId=YALKTSWDUPLBGUZZ&Signature=ZWb6u2t0Na0aIx2F3rO84vp%2FqRE%3D&Expires=1678797510',
-        preview: false,
-      },
-      {
-        spotId: 2,
+        spotId: 1, //image url worked
         url: 'https://ams0.files.sfmlab.com/content/content/image/preview2_dAz5vX1.png?AWSAccessKeyId=YALKTSWDUPLBGUZZ&Signature=ZWb6u2t0Na0aIx2F3rO84vp%2FqRE%3D&Expires=1678797510',
         preview: true,
       },
       {
-        spotId: 2,
-        url: 'https://ams0.files.sfmlab.com/content/content/image/preview2_dAz5vX1.png?AWSAccessKeyId=YALKTSWDUPLBGUZZ&Signature=ZWb6u2t0Na0aIx2F3rO84vp%2FqRE%3D&Expires=1678797510',
+        spotId: 1,
+        url: "image.url",
         preview: false,
       },
       {
-        spotId: 2,
+        spotId: 1,
         url: 'https://www.deviantart.com/oo-fil-oo/art/FF7-REM-CLOUD-AND-TIFA-APPARTMENTS-842241658',
         preview: false,
       },
       {
+        spotId: 2, //image url worked
+        url: 'https://ams0.files.sfmlab.com/content/content/image/preview2_dAz5vX1.png?AWSAccessKeyId=YALKTSWDUPLBGUZZ&Signature=ZWb6u2t0Na0aIx2F3rO84vp%2FqRE%3D&Expires=1678797510',
+        preview: true,
+      },
+      {
+        spotId: 2, // image url worked
+        url: "image.url",
+        preview: false,
+      },
+      {
+        spotId: 2,
+        url: "image.url",
+        preview: false,
+      },
+      {
         spotId: 3,
-        url: 'https://www.deviantart.com/oo-fil-oo/art/FF7-REM-7th-HEAVEN-841993842',
+        url: "https://finalfantasy.fandom.com/wiki/Seventh_Heaven_(Final_Fantasy_VII)?file=Seventh_Heaven_from_FFVII_Remake.jpg",
         preview: true,
       },
       {
         spotId: 3,
-        url: 'https://finalfantasy.fandom.com/wiki/Seventh_Heaven_(Final_Fantasy_VII)?file=Seventh_Heaven_from_FFVII_Remake.jpg',
+        url: "image.url",
         preview: false,
       },
       {
         spotId: 3,
-        url: 'https://www.deviantart.com/oo-fil-oo/art/FF7-REM-7th-HEAVEN-841993842',
+        url: "image.url",
         preview: false,
       },
       {
         spotId: 4,
-        url: 'https://finalfantasy.fandom.com/wiki/Nibelheim_(Final_Fantasy_VII_field)?file=Nibelheim.PNG',
+        url: "image.url",
         preview: true,
       },
       {
         spotId: 4,
-        url: 'https://finalfantasy.fandom.com/wiki/Nibelheim_(Final_Fantasy_VII_field)?file=Nibelheim_tifas_house.png',
+        url: "image.url",
         preview: false,
       },
       {
         spotId: 4,
-        url: 'https://finalfantasy.fandom.com/wiki/Nibelheim_(Final_Fantasy_VII_field)?file=Nibelheim_tifas_house2.png',
+        url: "image.url",
         preview: false,
       },
       {
         spotId: 5,
-        url: 'https://finalfantasy.fandom.com/wiki/Nibelheim_(Final_Fantasy_VII_field)?file=Nibelheim_clouds_house.png',
+        url: "image.url",
         preview: true,
       },
       {
         spotId: 5,
-        url: 'https://finalfantasy.fandom.com/wiki/Nibelheim_(Final_Fantasy_VII_field)?file=Nibelheim_clouds_house.png',
+        url: "image.url",
         preview: false,
       },
       {
         spotId: 5,
-        url: 'https://finalfantasy.fandom.com/wiki/Nibelheim_(Final_Fantasy_VII_field)?file=Nibelheim_clouds_house.png',
+        url: "image.url",
         preview: false,
       },
     ], {});
