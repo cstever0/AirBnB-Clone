@@ -1,26 +1,43 @@
 /* TODO add css to SpotShow */
 .all-spots {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 10px;
+    padding: 10px; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 21%));
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
 }
 
-.spot-image img{
-    padding: 15px;
-    width: 15rem;
-    height: 10rem;
+.each-spot {
+    /* flex: 1 0 21%; */
+    /* padding-bottom: 5px; */
+    /* border: solid red; */
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
-.city-state {
+.all-spot-image img {
+    padding: 5px;
+    width: 98%;
+    height: 15rem;
+}
+
+.all-spot-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.all-city-state {
     padding: 5px;
     font-weight: bold;
 }
 
-.spot-rating {
+.all-spot-rating {
     padding: 5px;
 }
 
-.spot-price {
+.all-spot-price {
     padding: 5px;
 }

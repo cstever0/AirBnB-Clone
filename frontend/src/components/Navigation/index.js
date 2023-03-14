@@ -10,7 +10,7 @@ function Navigation({ isLoaded }) {
 
     return (
         <ul className="nav-bar">
-            <div>
+            <div id="return-home">
                 <NavLink exact to="/">FantasyBnB</NavLink>
             </div>
             <div className="profile-nav">
