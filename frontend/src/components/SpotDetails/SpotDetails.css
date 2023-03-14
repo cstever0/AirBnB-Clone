@@ -7,3 +7,19 @@
 .reviews-num-reviews {
     margin-left: 20px;
 }
+
+.all-images {
+    display: flex;
+}
+
+#preview-image img{
+    width: 20rem;
+    height: 20rem;
+    padding: 5px;
+}
+
+.spot-images img{
+    width: 10rem;
+    height: 10rem;
+    padding: 5px;
+}

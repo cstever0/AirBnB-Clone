@@ -1,14 +1,15 @@
 /* TODO add css to SpotShow */
 .all-spots {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     padding: 10px;
 }
 
-.spot-image {
+.spot-image img{
     padding: 15px;
-    width: 25%;
-    height: 20%;
+    width: 15rem;
+    height: 10rem;
 }
 
 .city-state {
