@@ -13,37 +13,37 @@ module.exports = {
       {
         spotId: 1,
         userId: 1,
-        review: 'review#1',
+        review: 'Lovely place, great location',
         stars: 5
       },
       {
         spotId: 2,
         userId: 2,
-        review: 'review#2',
+        review: 'Lovely place, great location',
         stars: 5
       },
       {
         spotId: 3,
         userId: 3,
-        review: 'review#3',
+        review: 'Great place to throw a party, would recommend',
         stars: 5
       },
       {
         spotId: 4,
         userId: 2,
-        review: 'review#4',
+        review: 'Lovely place, great location',
         stars: 5
       },
       {
         spotId: 5,
         userId: 1,
-        review: 'review#5',
+        review: 'Lovely place, great location',
         stars: 5
       },
       {
         spotId: 1,
         userId: 3,
-        review: 'review#6',
+        review: 'I was accosted by a man in black robes mumbling something about a reunion',
         stars: 1
       },
     ], {});
@@ -53,7 +53,7 @@ module.exports = {
     options.tableName = 'Reviews';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      review: { [Op.in]: ['review#1', 'review#2', 'review#3', 'review#4', 'review#5'] }
+      review: { [Op.in]: ['Lovely place, great location', 'Lovely place, great location', 'Great place to throw a party, would recommend', 'Lovely place, great location', 'Lovely place, great location', 'I was accosted by a man in black robes mumbling something about a reunion'] }
     }, {});
   }
 };
