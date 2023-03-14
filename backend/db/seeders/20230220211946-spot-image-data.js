@@ -57,7 +57,7 @@ module.exports = {
       },
       {
         spotId: 4,
-        url: "/static/nebelheim_town.webp",
+        url: "/static/nibelheim_town.webp",
         preview: true,
       },
       {
@@ -72,7 +72,7 @@ module.exports = {
       },
       {
         spotId: 5,
-        url: "/static/nebelheim_town.webp",
+        url: "/static/nibelheim_town.webp",
         preview: true,
       },
       {
