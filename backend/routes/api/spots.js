@@ -231,18 +231,18 @@ const validateSpot = [
     check('country')
         .exists({ checkFalsy: true })
         .withMessage('Country is required'),
-    check('lat')
-        .exists({ checkFalsy: true })
-        .withMessage('Valid Latitude is required'),
-    check('lat')
-        .isFloat({min: -90, max: 90})
-        .withMessage("Latitude is not valid"),
-    check('lng')
-        .exists({ checkFalsy: true })
-        .withMessage('Valid Longitude is required'),
-    check('lng')
-        .isFloat({min: -180, max: 180})
-        .withMessage("Longitude is not valid"),
+    // check('lat')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Valid Latitude is required'),
+    // check('lat')
+    //     .isFloat({min: -90, max: 90})
+    //     .withMessage("Latitude is not valid"),
+    // check('lng')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Valid Longitude is required'),
+    // check('lng')
+    //     .isFloat({min: -180, max: 180})
+    //     .withMessage("Longitude is not valid"),
     check('name')
         .exists({ checkFalsy: true })
         .withMessage('Must have a Name'),
