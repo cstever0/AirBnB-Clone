@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { createOneReview } from "../../store/reviews";
 import StarsRatingInput from "./StarsRatingInput";
 
 export default function ReviewFormModal() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { spotId } = useParams();
     const [review, setReview] = useState("");
     const [stars, setStars] = useState(0);
@@ -15,23 +16,28 @@ export default function ReviewFormModal() {
     const { closeModal } = useModal();
     console.log("user output:", user);
     const id = Number(user.id);
+    console.log("id output", id);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const newReview = {
-            userId: 1,
+        const rev = {
+            spotId,
+            userId: user.id,
             review,
             stars
         };
 
-        return dispatch(createOneReview(newReview, spotId))
+        const newRev =  dispatch(createOneReview(rev, spotId))
             .then(closeModal)
+            .then(history.push(`/spots/${spotId}`))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
-            })
-    }
+            });
+
+        if (newRev) history.push(`/spots/${spotId}`);
+    };
 
     return (
         <div className="review-form-container">

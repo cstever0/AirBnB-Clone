@@ -11,10 +11,12 @@ function Navigation({ isLoaded }) {
     return (
         <ul className="nav-bar">
             <div id="return-home">
-                <div id="fave-icon">
-                    <img src='https://res.cloudinary.com/dxcayvj3l/image/upload/v1678876686/ff7_comet_ojhedw.jpg' alt='comet' />
-                    <NavLink to="/">FantasyBnB</NavLink>
-                </div>
+                {isLoaded && (
+                    <div id="fave-icon">
+                        <img src='https://res.cloudinary.com/dxcayvj3l/image/upload/v1678876686/ff7_comet_ojhedw.jpg' alt='comet' />
+                        <NavLink to="/">FantasyBnB</NavLink>
+                    </div>
+                )}
             </div>
             <div className="profile-nav">
                 {isLoaded && sessionUser && (

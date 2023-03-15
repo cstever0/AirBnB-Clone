@@ -30,7 +30,6 @@ export default function CreateSpotForm() {
         // setErrors({});
 
         const spot = {
-            ownerId: user.id,
             country,
             address,
             city,
@@ -57,9 +56,8 @@ export default function CreateSpotForm() {
                 if (data && data.errors) setErrors(data.errors);
             });
 
-        if (newSpot) {
-            history.push(`/spots/${newSpot.id}`);
-        };
+        if (newSpot) history.push(`/spots/${newSpot.id}`);
+
     };
 
     return (

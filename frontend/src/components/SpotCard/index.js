@@ -5,7 +5,7 @@ export default function SpotCard({ spot }) {
 
     return (
         <div className="each-spot">
-            <NavLink key={spot.id} to={`/spots/${spot.id}`}>
+            <NavLink to={`/spots/${spot.id}`}>
                 <div className="all-spot-image">
                     <img src={spot.previewImage} alt="spotImage" />
                 </div>
