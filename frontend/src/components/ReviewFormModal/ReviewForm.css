@@ -1,12 +1,16 @@
 /* TODO add css to review modal */
 .rating-input {
     display: flex;
+    border: 1px solid black;
+    padding: 5px;
 }
 
 .rating-input .filled {
     color: black;
+    border: 1px solid black;
 }
 
 .rating-input .empty {
     color: white;
+    border: 1px solid black;
 }

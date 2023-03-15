@@ -5,8 +5,14 @@
 }
 
 #return-home {
+    display: flex;
+    flex-direction: row;
     font-size: larger;
     font-weight: bold;
+}
+
+#return-home img {
+    width: 15%;
 }
 
 .profile-nav{

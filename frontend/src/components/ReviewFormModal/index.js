@@ -19,15 +19,23 @@ export default function ReviewFormModal() {
         <div className="review-form-container">
             <form className="review-form" onSubmit={handleSubmit}>
                 <h1>How was your stay?</h1>
-                <input
-                    type="text"
+                {/* <input
+                    type="textarea"
                     value={review}
                     onChange={(e) => setReview(e.target.value)}
                     placeholder="Leave your review here..."
-                />
+                /> */}
+                <textarea
+                    value={review}
+                    onChange={(e) => setReview(e.target.value)}
+                    placeholder="Leave your review here..."
+                    cols="30"
+                    rows="10"                >
+                </textarea>
                 <StarsRatingInput
                     stars={stars}
                     onChange={setStars}
+                    value={stars}
                 />
                 <button onClick={closeModal}>Submit Your Review</button>
             </form>
