@@ -169,6 +169,8 @@ router.get('/:spotId', async (req, res) => {
         }
     });
 
+    if (numReviews === 0) numReviews = "No Reviews Yet";
+
     let avgRating = await Review.findOne({
         where: {
             spotId: spotId
@@ -204,8 +206,8 @@ router.get('/:spotId', async (req, res) => {
 
     spot = spot.toJSON();
 
-    spot.numReviews = numReviews
-    spot.avgStarRating = Number(avgStars);
+    spot.numReviews = numReviews;
+    Number(avgStars) === 0 ? spot.avgStarRating = "No Reviews Yet" : spot.avgStarRating = Number(avgStars);
 
     if (!images.length) {
         spot.SpotImages = "No Spot Images Available";
