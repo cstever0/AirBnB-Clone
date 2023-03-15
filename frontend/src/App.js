@@ -22,17 +22,17 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/" >
-            <SpotShow />
-          </Route>
           <Route exact path="/spots/current">
             <ManageSpotPage />
+          </Route>
+          <Route exact path="/spots/:spotId">
+            <SpotDetails />
           </Route>
           <Route exact path="/spots/new">
             <CreateSpotForm />
           </Route>
-          <Route exact path="/spots/:spotId">
-            <SpotDetails />
+          <Route exact path="/" >
+            <SpotShow />
           </Route>
         </Switch>
       )}
