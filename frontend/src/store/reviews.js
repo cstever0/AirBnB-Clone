@@ -40,7 +40,6 @@ export const createOneReview = (review, spotId, user) => async (dispatch) => {
     if (response.ok) {
         const review = await response.json();
         review.User = user;
-        console.log("review json output:", review);
         dispatch(createSpotReview(review));
         return review;
     }

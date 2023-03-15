@@ -13,8 +13,6 @@ export default function ReviewFormModal({ spot }) {
     const [errors, setErrors] = useState({});
     const user = useSelector((state) => state.session.user);
     const { closeModal } = useModal();
-    console.log("spot.id output:", spot.id);
-    console.log("user selector output:", user);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,7 +22,6 @@ export default function ReviewFormModal({ spot }) {
             stars
         };
 
-        console.log("rev output:", rev);
         const newReview = await dispatch(createOneReview(rev, spot.id, user))
             .then(closeModal)
             .catch(async (res) => {

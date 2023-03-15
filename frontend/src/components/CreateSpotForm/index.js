@@ -23,7 +23,6 @@ export default function CreateSpotForm() {
     const [spotImage4, setSpotImage4] = useState("");
     const [errors, setErrors] = useState({});
     const user = useSelector((state) => state.session.user);
-    console.log("createForm user output:", user);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

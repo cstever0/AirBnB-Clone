@@ -3,8 +3,11 @@ import { arrayToObj } from "../utilities/arrToObj";
 import { csrfFetch } from "./csrf";
 
 const ALL_SPOTS = "api/spots";
-const ONE_SPOT = "api/spots/oneSpot"
-const CREATE_SPOT = "api/spots/newSpot"
+const USER_SPOTS = "api/spots/user"
+const ONE_SPOT = "api/spots/oneSpot";
+const CREATE_SPOT = "api/spots/newSpot";
+const DELETE_SPOT = "api/spots/delete"
+
 
 const loadAllSpots = (spots) => {
     return {
@@ -24,6 +27,20 @@ const createNewSpot = (spot) => {
     return {
         type: CREATE_SPOT,
         spot
+    };
+};
+
+const loadUserSpots = (spots) => {
+    return {
+        type: USER_SPOTS,
+        spots
+    };
+};
+
+const deleteSpot = (id) => {
+    return {
+        type: DELETE_SPOT,
+        id
     }
 }
 
@@ -35,8 +52,19 @@ export const getAllSpots = () => async (dispatch) => {
         const spotsObj = arrayToObj(spots.Spots);
         dispatch(loadAllSpots(spotsObj));
         return response;
-    }
+    };
 };
+
+export const getUserSpots = () => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/current`)
+
+    if (response.ok) {
+        const spots = await response.json();
+        const spotsObj = arrayToObj(spots.Spots);
+        dispatch(loadUserSpots(spotsObj));
+        return spots;
+    }
+}
 
 export const getOneSpot = (id) => async (dispatch) => {
     const response = await fetch(`/api/spots/${id}`)
@@ -74,6 +102,15 @@ export const createOneSpot = (spot, spotImages) => async (dispatch) => {
     };
 };
 
+export const deleteOneSpot = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${id}`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        return dispatch(deleteSpot(id))
+    };
+};
 
 const initialState = {
     allSpots: {},
@@ -93,8 +130,18 @@ const spotsReducer = (state = initialState, action) => {
             return newState;
         }
         case CREATE_SPOT: {
-            const newState = {...state, allSpots: {...state.allSpots}};
+            const newState = { ...state, allSpots: { ...state.allSpots } };
             newState.allSpots[action.spot.id] = action.spot;
+            return newState;
+        }
+        case USER_SPOTS: {
+            const newState = { ...state, allSpots: { ...state.allSpots } };
+            newState.allSpots = { ...action.spots }
+            return newState;
+        }
+        case DELETE_SPOT: {
+            const newState = { ...state, allSpots: { ...state.allSpots } }
+            delete newState.allSpots[action.id]
             return newState;
         }
         default:

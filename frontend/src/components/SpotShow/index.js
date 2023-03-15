@@ -9,7 +9,6 @@ const SpotShow = () => {
     const dispatch = useDispatch();
     const spot = useSelector((state) => state.spots.allSpots);
     const allSpots = Object.values(spot);
-    console.log("allSpot output: ", allSpots)
 
     useEffect(() => {
         dispatch(getAllSpots());

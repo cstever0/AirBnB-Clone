@@ -1,0 +1,18 @@
+/* TODO add css to manage spots? */
+.all-user-spots {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.all-user-spots img {
+    width: 15rem;
+    height: 15rem;
+}
+
+/* .each-spot {
+    display: flex;
+} */
+
+.update-delete {
+    display: flex;
+}

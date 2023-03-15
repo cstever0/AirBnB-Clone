@@ -13,13 +13,9 @@ const SpotDetails = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
     const spot = useSelector((state) => state.spots.oneSpot);
-    // console.log("spot details spot output:", spot);
     const user = useSelector((state) => state.session.user);
-    // console.log("user useSelector output:", user);
     const spotReviews = useSelector((state) => state.reviews.spot);
     const reviews = Object.values(spotReviews);
-    // console.log("spotReviews output:", spotReviews);
-    console.log("reviews output", reviews);
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));

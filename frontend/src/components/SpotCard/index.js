@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
 import "./SpotCard.css";
 
-export default function SpotCard({ spot }) {
+export default function SpotCard({ spot}) {
 
     return (
         <div className="each-spot">
