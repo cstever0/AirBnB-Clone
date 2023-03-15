@@ -51,14 +51,8 @@ export default function CreateSpotForm() {
         const newSpot = await dispatch(createOneSpot(spot, spotImages))
             .catch(async (res) => {
                 const data = await res.json();
-                console.log("data.errors output:", data.errors)
-                console.log("data output:", data)
                 if (data && data.errors) setErrors(data.errors);
             });
-
-        console.log("spot variable:", spot);
-        console.log("errors state output:", errors);
-        console.log("newSpot output:", newSpot)
 
         if (newSpot) {
             history.push(`/spots/${newSpot.id}`);
