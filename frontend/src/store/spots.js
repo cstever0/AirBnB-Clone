@@ -1,8 +1,10 @@
 // frontend/src/store/spots.js
 import { arrayToObj } from "../utilities/arrToObj";
+import { csrfFetch } from "./csrf";
 
 const ALL_SPOTS = "api/spots";
 const ONE_SPOT = "api/spots/oneSpot"
+const CREATE_SPOT = "api/spots/newSpot"
 
 const loadAllSpots = (spots) => {
     return {
@@ -18,6 +20,13 @@ const loadOneSpot = (spot) => {
     };
 };
 
+const createNewSpot = (spot) => {
+    return {
+        type: CREATE_SPOT,
+        spot
+    }
+}
+
 export const getAllSpots = () => async (dispatch) => {
     const response = await fetch(`/api/spots`);
 
@@ -30,14 +39,39 @@ export const getAllSpots = () => async (dispatch) => {
 };
 
 export const getOneSpot = (id) => async (dispatch) => {
-    const response = await fetch (`/api/spots/${id}`)
+    const response = await fetch(`/api/spots/${id}`)
 
     if (response.ok) {
         const spot = await response.json();
         dispatch(loadOneSpot(spot));
         return response;
-    }
-}
+    };
+};
+
+export const createOneSpot = (spot, spotImages) => async (dispatch) => {
+    const response = await csrfFetch("/api/spots", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(spot)
+    });
+
+    if (response.ok) {
+        const spot = await response.json();
+        spot.SpotImages = [];
+        spotImages.forEach(async (image) => {
+            const imageResponse = await csrfFetch(`/api/spots/${spot.id}/images`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(image)
+            });
+            const spotImage = await imageResponse.json();
+            spot.SpotImages.push(spotImage);
+        });
+
+        dispatch(createNewSpot(spot));
+        return spot;
+    };
+};
 
 
 const initialState = {
@@ -55,6 +89,12 @@ const spotsReducer = (state = initialState, action) => {
         case ONE_SPOT: {
             const newState = { ...state };
             newState.oneSpot = action.spot;
+            return newState;
+        }
+        case CREATE_SPOT: {
+            const newState = { ...state };
+            console.log("action.spot output", action.spot)
+            newState.allSpots = { ...state.allSpots, ...action.spot };
             return newState;
         }
         default:

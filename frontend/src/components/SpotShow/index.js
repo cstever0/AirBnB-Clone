@@ -15,7 +15,7 @@ const SpotShow = () => {
 
     return (
         <div className="all-spots">
-            {spots.map((spot) => <SpotCard spot={spot} />)}
+            {spots.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
         </div>
     );
 

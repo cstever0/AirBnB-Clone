@@ -10,6 +10,7 @@ const SpotDetails = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
     const spot = useSelector((state) => state.spots.oneSpot);
+    console.log("spotDetails spot output:", spot)
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
