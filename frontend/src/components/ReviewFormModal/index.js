@@ -7,7 +7,7 @@ import StarsRatingInput from "./StarsRatingInput";
 
 export default function ReviewFormModal() {
     const dispatch = useDispatch();
-    const {spotId} = useParams();
+    const { spotId } = useParams();
     const [review, setReview] = useState("");
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState({});
@@ -42,7 +42,8 @@ export default function ReviewFormModal() {
                     onChange={(e) => setReview(e.target.value)}
                     placeholder="Leave your review here..."
                     cols="30"
-                    rows="10"                >
+                    rows="10"
+                >
                 </textarea>
                 <StarsRatingInput
                     stars={stars}
