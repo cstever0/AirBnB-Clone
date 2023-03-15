@@ -1,17 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ReviewForm.css";
 
 const StarsRatingInput = ({ stars, onChange }) => {
   const [activeStars, setActiveStars] = useState(stars);
 
+  useEffect(() => {
+    setActiveStars(stars);
+  }, [stars])
 
   return (
     <>
-      <input
-        type="number"
-        value={stars}
-        onChange={onChange}
-      />
       <div className="rating-input">
         <div className="stars" onMouseEnter={() => setActiveStars(1) } onMouseLeave={() => setActiveStars(stars)} onClick={() => onChange(1)}>
           <i className={activeStars >= 1 ? "fas fa-star" : "far fa-star"}></i>

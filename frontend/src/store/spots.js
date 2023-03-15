@@ -93,8 +93,8 @@ const spotsReducer = (state = initialState, action) => {
             return newState;
         }
         case CREATE_SPOT: {
-            const newState = { ...state };
-            newState.allSpots = { ...state.allSpots, ...action.spot };
+            const newState = {...state, allSpots: {...state.allSpots}};
+            newState.allSpots[action.spot.id] = action.spot;
             return newState;
         }
         default:

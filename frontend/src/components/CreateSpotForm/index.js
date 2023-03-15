@@ -42,13 +42,13 @@ export default function CreateSpotForm() {
         };
 
         const spotImages = [
-            {url: previewImage, preview: true},
+            { url: previewImage, preview: true },
         ];
 
-        if (spotImage1 !== "") spotImages.push({url: spotImage1, preview: false});
-        if (spotImage2 !== "") spotImages.push({url: spotImage2, preview: false});
-        if (spotImage3 !== "") spotImages.push({url: spotImage3, preview: false});
-        if (spotImage4 !== "") spotImages.push({url: spotImage4, preview: false});
+        if (spotImage1 !== "") spotImages.push({ url: spotImage1, preview: false });
+        if (spotImage2 !== "") spotImages.push({ url: spotImage2, preview: false });
+        if (spotImage3 !== "") spotImages.push({ url: spotImage3, preview: false });
+        if (spotImage4 !== "") spotImages.push({ url: spotImage4, preview: false });
 
         const newSpot = await dispatch(createOneSpot(spot, spotImages))
             .catch(async (res) => {

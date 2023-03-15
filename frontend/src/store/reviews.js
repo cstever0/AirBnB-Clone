@@ -30,7 +30,7 @@ export const getSpotReviews = (id) => async (dispatch) => {
     }
 };
 
-export const createOneReview = (review, spotId) => async (dispatch) => {
+export const createOneReview = (review, spotId, user) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -39,6 +39,8 @@ export const createOneReview = (review, spotId) => async (dispatch) => {
 
     if (response.ok) {
         const review = await response.json();
+        review.User = user;
+        console.log("review json output:", review);
         dispatch(createSpotReview(review));
         return review;
     }
@@ -57,8 +59,8 @@ const reviewsReducer = (state = initialState, action) => {
             return newState;
         }
         case CREATE_REVIEW: {
-            const newState = { ...state };
-            newState.spot = { ...state.spot, ...action.review };
+            const newState = { ...state, spot: {...state.spot} };
+            newState.spot[action.review.id] = action.review;
             return newState;
         }
         default:
