@@ -1,5 +1,6 @@
 // frontend/src/store/reviews.js
 import { arrayToObj } from "../utilities/arrToObj";
+import { csrfFetch } from "./csrf";
 
 const SPOT_REVIEWS = "api/spots/reviews";
 const CREATE_REVIEW = "api/reviews/new";
@@ -30,7 +31,7 @@ export const getSpotReviews = (id) => async (dispatch) => {
 };
 
 export const createOneReview = (review, spotId) => async (dispatch) => {
-    const response = await fetch(`/api/spots/${spotId}/reviews`, {
+    const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(review)
@@ -53,6 +54,11 @@ const reviewsReducer = (state = initialState, action) => {
         case SPOT_REVIEWS: {
             const newState = { ...state };
             newState.spot = { ...action.reviews };
+            return newState;
+        }
+        case CREATE_REVIEW: {
+            const newState = { ...state };
+            newState.spot = { ...state.spot, ...action.review };
             return newState;
         }
         default:

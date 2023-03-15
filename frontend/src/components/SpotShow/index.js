@@ -7,15 +7,18 @@ import './SpotShow.css';
 
 const SpotShow = () => {
     const dispatch = useDispatch();
-    const spots = Object.values(useSelector((state) => state.spots.allSpots));
+    const spot = useSelector((state) => state.spots.allSpots);
+    const allSpots = Object.values(spot);
 
     useEffect(() => {
         dispatch(getAllSpots());
     }, [dispatch])
 
+    if (!allSpots.length) return null;
+
     return (
         <div className="all-spots">
-            {spots.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
+            {allSpots.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
         </div>
     );
 

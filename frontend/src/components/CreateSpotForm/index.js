@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createOneSpot } from "../../store/spots";
 import "./CreateSpotForm.css";
@@ -22,13 +22,15 @@ export default function CreateSpotForm() {
     const [spotImage3, setSpotImage3] = useState("");
     const [spotImage4, setSpotImage4] = useState("");
     const [errors, setErrors] = useState({});
+    const user = useSelector((state) => state.session.user);
+    console.log("createForm user output:", user);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         // setErrors({});
 
         const spot = {
-            ownerId: 1,
+            ownerId: user.id,
             country,
             address,
             city,
