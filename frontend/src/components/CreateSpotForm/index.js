@@ -4,23 +4,24 @@ import { useHistory } from "react-router-dom";
 import { createOneSpot } from "../../store/spots";
 import "./CreateSpotForm.css";
 
-export default function CreateSpotForm() {
+export default function CreateSpotForm({ spot }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [country, setCountry] = useState("");
-    const [address, setAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [state, setState] = useState("");
-    const [latitude, setLatitude] = useState(51.4780);
-    const [longitude, setLongitude] = useState(0.0015);
-    const [description, setDescription] = useState("");
-    const [name, setName] = useState("");
-    const [price, setPrice] = useState(1);
-    const [previewImage, setPreviewImage] = useState("");
-    const [spotImage1, setSpotImage1] = useState("");
-    const [spotImage2, setSpotImage2] = useState("");
-    const [spotImage3, setSpotImage3] = useState("");
-    const [spotImage4, setSpotImage4] = useState("");
+    console.log("spot prop output:", spot)
+    const [country, setCountry] = useState(spot.country ? spot.country : "");
+    const [address, setAddress] = useState(spot.address ? spot.address : "");
+    const [city, setCity] = useState(spot.city ? spot.city : "");
+    const [state, setState] = useState(spot.state ? spot.state : "");
+    const [latitude, setLatitude] = useState(spot.latitude ? spot.latitude : "");
+    const [longitude, setLongitude] = useState(spot.longitude ? spot.longitude : "");
+    const [description, setDescription] = useState(spot.description ? spot.description : "");
+    const [name, setName] = useState(spot.name ? spot.name : "");
+    const [price, setPrice] = useState(spot.price ? spot.price : "");
+    const [previewImage, setPreviewImage] = useState(spot.previewImage ? spot.previewImage : "");
+    const [spotImage1, setSpotImage1] = useState(spot.spotImage1 ? spot.spotImage1 : "");
+    const [spotImage2, setSpotImage2] = useState(spot.spotImage2 ? spot.spotImage2 : "");
+    const [spotImage3, setSpotImage3] = useState(spot.spotImage3 ? spot.spotImage3 : "");
+    const [spotImage4, setSpotImage4] = useState(spot.spotImage4 ? spot.spotImage4 : "");
     const [errors, setErrors] = useState({});
     const user = useSelector((state) => state.session.user);
 

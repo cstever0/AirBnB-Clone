@@ -1,23 +1,21 @@
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { deleteOneSpot } from "../../store/spots";
 import { useModal } from "../../context/Modal";
 
 export default function DeleteFormModal({ spot }) {
     const dispatch = useDispatch();
-    const history = useHistory();
     const { closeModal } = useModal();
 
     const deleteClick = (e) => {
         // e.preventDefault();
         closeModal();
         dispatch(deleteOneSpot(spot.id));
-    }
+    };
 
     const keepClick = () => {
         // e.preventDefault();
         closeModal();
-    }
+    };
 
 
     return (
@@ -34,5 +32,5 @@ export default function DeleteFormModal({ spot }) {
                 No (Keep Spot)
             </button>
         </>
-    )
-}
+    );
+};

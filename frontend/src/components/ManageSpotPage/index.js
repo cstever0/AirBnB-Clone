@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getUserSpots } from "../../store/spots";
 import DeleteFormModal from "./DeleteFormModal";
+import UpdateFormModal from "./UpdateFormModal";
 import OpenModalButton from "../OpenModalButton";
 import SpotCard from "../SpotCard";
 import "./ManageSpotPage.css";
@@ -30,7 +31,10 @@ const ManageSpotPage = () => {
                         <SpotCard key={spot.id} spot={spot} user={user} />
                     </div>
                     <div className="update-delete">
-                        <button onClick={updateClick}>Update</button>
+                        <OpenModalButton
+                            buttonText="Update"
+                            modalComponent={<UpdateFormModal spot={spot} />}
+                            />
                         <OpenModalButton
                             buttonText="Delete"
                             modalComponent={<DeleteFormModal spot={spot} />}
