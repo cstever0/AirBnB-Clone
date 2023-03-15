@@ -2,6 +2,7 @@
 import { arrayToObj } from "../utilities/arrToObj";
 
 const SPOT_REVIEWS = "api/spots/reviews";
+const CREATE_REVIEW = "api/reviews/new";
 
 const loadSpotReviews = (reviews) => {
     return {
@@ -9,6 +10,13 @@ const loadSpotReviews = (reviews) => {
         reviews
     };
 };
+
+const createSpotReview = (review) => {
+    return {
+        type: CREATE_REVIEW,
+        review
+    }
+}
 
 export const getSpotReviews = (id) => async (dispatch) => {
     const response = await fetch(`/api/spots/${id}/reviews`);
@@ -20,6 +28,20 @@ export const getSpotReviews = (id) => async (dispatch) => {
         return response;
     }
 };
+
+export const createOneReview = (review, spotId) => async (dispatch) => {
+    const response = await fetch(`/api/spots/${spotId}/reviews`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(review)
+    });
+
+    if (response.ok) {
+        const review = await response.json();
+        dispatch(createSpotReview(review));
+        return review;
+    }
+}
 
 const initialState = {
     spot: {},

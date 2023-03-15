@@ -1,0 +1,12 @@
+/* TODO add css to review modal */
+.rating-input {
+    display: flex;
+}
+
+.rating-input .filled {
+    color: black;
+}
+
+.rating-input .empty {
+    color: white;
+}

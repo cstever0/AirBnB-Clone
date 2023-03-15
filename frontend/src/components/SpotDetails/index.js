@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOneSpot } from "../../store/spots";
 import { getSpotReviews } from "../../store/reviews";
+import OpenModalButton from "../OpenModalButton";
 import ReviewDetails from "../ReviewsDetails";
 import './SpotDetails.css';
+import ReviewFormModal from "../ReviewFormModal";
 
 const SpotDetails = () => {
     const dispatch = useDispatch();
@@ -80,7 +82,10 @@ const SpotDetails = () => {
                 </div>
                 <div id="post-review-button">
                     {user !== null && user.id !== spot.ownerId && Boolean(reviews.find((r) => r.userId !== user.id)) && (
-                        <button>Post Your Review</button>
+                        <OpenModalButton
+                            buttonText="Post Your Review"
+                            modalComponent={<ReviewFormModal />}
+                        />
                     )}
                 </div>
                 <div className="all-spot-reviews">
