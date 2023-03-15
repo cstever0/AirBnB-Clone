@@ -27,10 +27,10 @@ export default function ReviewFormModal({ spot }) {
         console.log("rev output:", rev);
         const newReview = await dispatch(createOneReview(rev, spot.id, user))
             .then(closeModal)
-        // .catch(async (res) => {
-        //     const data = await res.json();
-        //     if (data && data.errors) setErrors(data.errors);
-        // });
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
 
         if (newReview) history.push(`/spots/${spot.id}`);
     };
