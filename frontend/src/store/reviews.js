@@ -29,7 +29,7 @@ const initialState = {
 const reviewsReducer = (state = initialState, action) => {
     switch(action.type) {
         case SPOT_REVIEWS: {
-            const newState = { ...state.spot };
+            const newState = { ...state };
             newState.spot = { ...action.reviews };
             return newState;
         }
