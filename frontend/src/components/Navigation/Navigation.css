@@ -15,7 +15,8 @@
 }
 
 .create-spot-link {
-    padding-right: 10px;
+    position: relative;
+    padding-right: 20px;
 }
 
 .modal-menu {
@@ -24,9 +25,8 @@
 }
 
 #profile-button {
-    position: absolute;
+    position: relative;
     right: 10px;
-    top: 10px;
 }
 
 
