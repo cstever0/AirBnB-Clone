@@ -77,7 +77,7 @@ const SpotDetails = () => {
                     </div>
                 </div>
                 <div id="post-review-button">
-                    {user !== null && user.id !== spot.ownerId && Boolean(reviews.find((r) => r.userId !== user.id)) && (
+                    {user !== null && user.id !== spot.ownerId && !reviews.find((r) => r.userId === user.id) && (
                         <OpenModalButton
                             buttonText="Post Your Review"
                             modalComponent={<ReviewFormModal spot={spot} />}
