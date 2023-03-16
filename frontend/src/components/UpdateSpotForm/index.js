@@ -2,25 +2,25 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createOneSpot } from "../../store/spots";
-import "./CreateSpotForm.css";
+import "./UpdateSpotForm.css";
 
-export default function CreateSpotForm() {
+export default function UpdateSpotForm({ spot }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [country, setCountry] = useState("");
-    const [address, setAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [state, setState] = useState("");
-    const [latitude, setLatitude] = useState("");
-    const [longitude, setLongitude] = useState("");
-    const [description, setDescription] = useState("");
-    const [name, setName] = useState("");
-    const [price, setPrice] = useState("");
-    const [previewImage, setPreviewImage] = useState("");
-    const [spotImage1, setSpotImage1] = useState("");
-    const [spotImage2, setSpotImage2] = useState("");
-    const [spotImage3, setSpotImage3] = useState("");
-    const [spotImage4, setSpotImage4] = useState("");
+    const [country, setCountry] = useState(spot.country);
+    const [address, setAddress] = useState(spot.address);
+    const [city, setCity] = useState(spot.city);
+    const [state, setState] = useState(spot.state);
+    const [latitude, setLatitude] = useState(spot.latitude);
+    const [longitude, setLongitude] = useState(spot.longitude);
+    const [description, setDescription] = useState(spot.description);
+    const [name, setName] = useState(spot.name);
+    const [price, setPrice] = useState(spot.price);
+    const [previewImage, setPreviewImage] = useState(spot.previewImage);
+    const [spotImage1, setSpotImage1] = useState(spot.spotImage1);
+    const [spotImage2, setSpotImage2] = useState(spot.spotImage2);
+    const [spotImage3, setSpotImage3] = useState(spot.spotImage3);
+    const [spotImage4, setSpotImage4] = useState(spot.spotImage4);
     const [errors, setErrors] = useState({});
     const user = useSelector((state) => state.session.user);
 
@@ -217,8 +217,8 @@ export default function CreateSpotForm() {
                         placeholder="Image URL"
                     />
                 </div>
-                <button id="create-spot-button" type="submit">
-                    Create Spot
+                <button id="update-spot-button" type="submit">
+                    Update Spot
                 </button>
             </form>
         </div>
