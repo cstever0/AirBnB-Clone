@@ -1,9 +1,9 @@
-import UpdateSpotForm from "../UpdateSpotForm";
+import UpdateSpotModal from "../UpdateSpotModal";
 
 export default function UpdateFormModal({ spot }) {
     return (
         <>
-            <UpdateSpotForm spot={spot} />
+            <UpdateSpotModal spot={spot} />
         </>
     );
 };

@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createOneSpot } from "../../store/spots";
-import "./UpdateSpotForm.css";
+import "./UpdateSpotModal.css";
 
-export default function UpdateSpotForm({ spot }) {
+export default function UpdateSpotModal({ spot }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const [country, setCountry] = useState(spot.country);
