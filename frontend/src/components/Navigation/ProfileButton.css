@@ -1,0 +1,31 @@
+/* TODO add css to profile */
+#profile-button {
+    position: relative;
+    right: 10px;
+    border: solid 1px red;
+}
+
+#profile-button button {
+    border: solid 1px red;
+    border-radius: 5px;
+}
+
+.modal-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+/* vvvv order matters vvvv */
+.profile-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    background-color: white;
+}
+
+.hidden {
+    display: none;
+}
+/* ^^^^ order matters ^^^^ */
