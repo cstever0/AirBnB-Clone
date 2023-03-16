@@ -36,9 +36,9 @@ function ProfileButton({ user }) {
 
     const logout = (e) => {
         e.preventDefault();
-        dispatch(sessionActions.logout());
-        // history.push("/");
-        closeMenu();
+        dispatch(sessionActions.logout())
+            .then(history.push("/"))
+            .then(closeMenu());
     };
 
     const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
