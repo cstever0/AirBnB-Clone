@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createOneSpot } from "../../store/spots";
+import { useModal } from "../../context/Modal";
+import { updateOneSpot } from "../../store/spots";
 import "./UpdateSpotModal.css";
 
 export default function UpdateSpotModal({ spot }) {
     const dispatch = useDispatch();
+    const { closeModal } = useModal();
     const history = useHistory();
+    const [id] = useState(spot.id);
     const [country, setCountry] = useState(spot.country);
     const [address, setAddress] = useState(spot.address);
     const [city, setCity] = useState(spot.city);
@@ -22,13 +25,14 @@ export default function UpdateSpotModal({ spot }) {
     const [spotImage3, setSpotImage3] = useState(spot.spotImage3);
     const [spotImage4, setSpotImage4] = useState(spot.spotImage4);
     const [errors, setErrors] = useState({});
-    const user = useSelector((state) => state.session.user);
+    // const user = useSelector((state) => state.session.user);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         // setErrors({});
 
         const spot = {
+            id,
             country,
             address,
             city,
@@ -49,13 +53,16 @@ export default function UpdateSpotModal({ spot }) {
         if (spotImage3 !== "") spotImages.push({ url: spotImage3, preview: false });
         if (spotImage4 !== "") spotImages.push({ url: spotImage4, preview: false });
 
-        const newSpot = await dispatch(createOneSpot(spot, spotImages))
+        const newSpot = await dispatch(updateOneSpot(spot, spotImages))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             });
 
-        if (newSpot) history.push(`/spots/${newSpot.id}`);
+        if (newSpot) {
+            closeModal();
+            history.push(`/spots/${newSpot.id}`);
+        }
 
     };
 

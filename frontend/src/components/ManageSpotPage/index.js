@@ -19,10 +19,6 @@ const ManageSpotPage = () => {
         dispatch(getUserSpots())
     }, [dispatch])
 
-    const updateClick = () => {
-        history.push(`/spots/new`)
-    };
-
     return (
         <div className="all-user-spots">
             {allSpots.map((spot) =>
