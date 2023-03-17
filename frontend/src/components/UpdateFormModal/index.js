@@ -78,12 +78,12 @@ export default function UpdateFormModal({ spot }) {
     };
 
     return (
-        <div className="entire-form-wrapper">
+        <div className="entire-update-form-wrapper">
             <h1>Update your Spot</h1>
             <h2>Where's your place located?</h2>
             <p>Guests will only get your exact address once they booked a
                 reservation</p>
-            <form className="spot-form" onSubmit={handleSubmit}>
+            <form className="update-spot-form" onSubmit={handleSubmit}>
                 <label>
                     Country
                     {errors.country && (
@@ -107,7 +107,7 @@ export default function UpdateFormModal({ spot }) {
                         onChange={(e) => setAddress(e.target.value)}
                     />
                 </label>
-                <div className="city-state">
+                <div className="update-city-state">
                     <label>
                         City
                         {errors.city && (
@@ -132,7 +132,7 @@ export default function UpdateFormModal({ spot }) {
                         />
                     </label>
                 </div>
-                <div className="lng-lat">
+                <div className="update-lng-lat">
                     <label>
                         Latitude
                         <input
@@ -156,7 +156,7 @@ export default function UpdateFormModal({ spot }) {
                     Mention the best features of your space, any special amenities like
                     fast wif or parking, and what you love about the neighborhood.
                 </p>
-                <div id="description-input">
+                <div id="update-description-input">
                     {errors.description && (
                         <span className="errors">{errors.description}</span>
                     )}
@@ -172,7 +172,7 @@ export default function UpdateFormModal({ spot }) {
                     Catch guests' attention with a spot title that highlights what makes
                     your place special.
                 </p>
-                <div id="name-input">
+                <div id="update-name-input">
                     {errors.name && (
                         <span className="errors">{errors.name}</span>
                     )}
@@ -188,7 +188,7 @@ export default function UpdateFormModal({ spot }) {
                     Competitive pricing can help your listing stand out and rank higher
                     in search results.
                 </p>
-                <div id="price-input">
+                <div id="update-price-input">
                     {errors.price && (
                         <span className="errors">{errors.price}</span>
                     )}
@@ -203,7 +203,7 @@ export default function UpdateFormModal({ spot }) {
                 <p>
                     Submit a link to at least one photo to publish your spot.
                 </p>
-                <div className="image-input">
+                <div className="update-image-input">
                     <input
                         type="text"
                         value={previewImage}
