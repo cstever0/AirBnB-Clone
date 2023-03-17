@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 import "./SpotCard.css";
 
 export default function SpotCard({ spot}) {
@@ -7,7 +8,10 @@ export default function SpotCard({ spot}) {
         <div className="each-spot">
             <NavLink key={spot.id} to={`/spots/${spot.id}`}>
                 <div className="all-spot-image">
-                    <img src={spot.previewImage} alt="spotImage" />
+                    <img src={spot.previewImage} alt="spotImage"
+                        data-tooltip-id="spot-name"
+                        data-tooltip-content={spot.name}
+                    />
                 </div>
                 <div className="all-spot-details">
                     <div className="all-city-state">
@@ -19,6 +23,7 @@ export default function SpotCard({ spot}) {
                 </div>
                 <div className="all-spot-price">${spot.price} Night</div>
             </NavLink>
+            <Tooltip id="spot-name" />
         </div >
     )
 }
