@@ -85,7 +85,7 @@ const SpotDetails = () => {
                     )}
                 </div>
                 <div className="all-spot-reviews">
-                    {reviews.length > 0 && reviews.map((review) => <ReviewDetails key={review.id} review={review} />)}
+                    {reviews.length > 0 && reviews.map((review) => <ReviewDetails key={review.id} review={review} user={user} />)}
                 </div>
             </div>
         </>
