@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { getUserSpots } from "../../store/spots";
 import DeleteFormModal from "./DeleteFormModal";
-import UpdateFormModal from "./UpdateFormModal";
 import OpenModalButton from "../OpenModalButton";
 import SpotCard from "../SpotCard";
 import "./ManageSpotPage.css";
+import UpdateFormModal from "../UpdateFormModal";
 
 const ManageSpotPage = () => {
     const dispatch = useDispatch();

@@ -22,11 +22,13 @@ export default function CreateSpotForm() {
     const [spotImage3, setSpotImage3] = useState("");
     const [spotImage4, setSpotImage4] = useState("");
     const [errors, setErrors] = useState({});
-    const user = useSelector((state) => state.session.user);
+    const [imageErrors, setImageErrors] = useState({});
+    // const user = useSelector((state) => state.session.user);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // setErrors({});
+        let customErrors = {};
+        const fileTypes = ['png', "jpg", "peg"]
 
         const spot = {
             country,
@@ -39,6 +41,13 @@ export default function CreateSpotForm() {
             name,
             price,
         };
+
+        if(!previewImage) customErrors.previewImage = "Preview image is required"
+        if(previewImage && !fileTypes.includes(previewImage.slice(-3))) customErrors.previewImage = "Image URL must end in .png, .jpg, or .jpeg";
+        if(spotImage1 && !fileTypes.includes(spotImage1.slice(-3))) customErrors.spotImage1 = "Image URL must end in .png, .jpg, or .jpeg";
+        if(spotImage2 && !fileTypes.includes(spotImage2.slice(-3))) customErrors.spotImage2 = "Image URL must end in .png, .jpg, or .jpeg";
+        if(spotImage3 && !fileTypes.includes(spotImage3.slice(-3))) customErrors.spotImage3 = "Image URL must end in .png, .jpg, or .jpeg";
+        if(spotImage4 && !fileTypes.includes(spotImage4.slice(-3))) customErrors.spotImage4 = "Image URL must end in .png, .jpg, or .jpeg";
 
         const spotImages = [
             { url: previewImage, preview: true },
@@ -53,6 +62,7 @@ export default function CreateSpotForm() {
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
+                if (Object.values(customErrors).length) setImageErrors(customErrors);
             });
 
         if (newSpot) history.push(`/spots/${newSpot.id}`);
@@ -192,30 +202,45 @@ export default function CreateSpotForm() {
                         onChange={(e) => setPreviewImage(e.target.value)}
                         placeholder="Preview Image URL"
                     />
+                    {imageErrors.previewImage && (
+                        <span className="errors">{imageErrors.previewImage}</span>
+                    )}
                     <input
                         type="text"
                         value={spotImage1}
                         onChange={(e) => setSpotImage1(e.target.value)}
                         placeholder="Image URL"
                     />
+                    {imageErrors.spotImage1 && (
+                        <span className="errors">{imageErrors.spotImage1}</span>
+                    )}
                     <input
                         type="text"
                         value={spotImage2}
                         onChange={(e) => setSpotImage2(e.target.value)}
                         placeholder="Image URL"
                     />
+                    {imageErrors.spotImage2 && (
+                        <span className="errors">{imageErrors.spotImage2}</span>
+                    )}
                     <input
                         type="text"
                         value={spotImage3}
                         onChange={(e) => setSpotImage3(e.target.value)}
                         placeholder="Image URL"
                     />
+                    {imageErrors.spotImage3 && (
+                        <span className="errors">{imageErrors.spotImage3}</span>
+                    )}
                     <input
                         type="text"
                         value={spotImage4}
                         onChange={(e) => setSpotImage4(e.target.value)}
                         placeholder="Image URL"
                     />
+                    {imageErrors.spotImage4 && (
+                        <span className="errors">{imageErrors.spotImage4}</span>
+                    )}
                 </div>
                 <button id="create-spot-button" type="submit">
                     Create Spot
