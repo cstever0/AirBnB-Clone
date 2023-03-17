@@ -10,7 +10,7 @@ import "./ManageSpotPage.css";
 
 const ManageSpotPage = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const spots = useSelector((state) => state.spots.allSpots);
     const user = useSelector((state) => state.session.user);
     const allSpots = Object.values(spots);

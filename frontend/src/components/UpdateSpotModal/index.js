@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { updateOneSpot } from "../../store/spots";
+import { getOneSpot, updateOneSpot } from "../../store/spots";
 import "./UpdateSpotModal.css";
 
 export default function UpdateSpotModal({ spot }) {
@@ -25,7 +25,6 @@ export default function UpdateSpotModal({ spot }) {
     const [spotImage3, setSpotImage3] = useState(spot.spotImage3);
     const [spotImage4, setSpotImage4] = useState(spot.spotImage4);
     const [errors, setErrors] = useState({});
-    // const user = useSelector((state) => state.session.user);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -68,7 +67,7 @@ export default function UpdateSpotModal({ spot }) {
 
     return (
         <div className="entire-form-wrapper">
-            <h1>Create a new Spot</h1>
+            <h1>Update your Spot</h1>
             <h2>Where's your place located?</h2>
             <p>Guests will only get your exact address once they booked a
                 reservation</p>

@@ -15,7 +15,7 @@ export default function CreateSpotForm() {
     const [longitude, setLongitude] = useState("");
     const [description, setDescription] = useState("");
     const [name, setName] = useState("");
-    const [price, setPrice] = useState("");
+    const [price, setPrice] = useState(1);
     const [previewImage, setPreviewImage] = useState("");
     const [spotImage1, setSpotImage1] = useState("");
     const [spotImage2, setSpotImage2] = useState("");
