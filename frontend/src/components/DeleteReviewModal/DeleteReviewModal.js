@@ -1,15 +1,15 @@
 import { useDispatch } from "react-redux";
-import { deleteOneSpot } from "../../store/spots";
 import { useModal } from "../../context/Modal";
+import { deleteOneReview } from "../../store/reviews";
 
-export default function DeleteFormModal({ spot }) {
+export default function DeleteReviewModal({ review }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
     const deleteClick = (e) => {
         // e.preventDefault();
         closeModal();
-        dispatch(deleteOneSpot(spot.id));
+        dispatch(deleteOneReview(review.id));
     };
 
     const keepClick = () => {
@@ -22,14 +22,13 @@ export default function DeleteFormModal({ spot }) {
         <>
             <h1>Confirm Delete</h1>
             <p>
-                Are you sure you want to remove this spot
-                from the listings?
+                Are you sure you want to delete this review?
             </p>
             <button onClick={deleteClick}>
-                Yes (Delete Spot)
+                Yes (Delete Review)
             </button>
             <button onClick={keepClick}>
-                No (Keep Spot)
+                No (Keep Review)
             </button>
         </>
     );

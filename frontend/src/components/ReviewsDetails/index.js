@@ -1,6 +1,6 @@
 // src/components/ReviewsDisplay/index.js
 import OpenModalButton from "../OpenModalButton";
-import DeleteReviewModal from "../SpotDetails/DeleteReviewModal";
+import DeleteReviewModal from "../DeleteReviewModal/DeleteReviewModal";
 
 const ReviewDetails = ({ review, user }) => {
     console.log("review output:", review)
