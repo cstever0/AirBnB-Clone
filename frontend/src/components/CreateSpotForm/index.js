@@ -42,12 +42,14 @@ export default function CreateSpotForm() {
             price,
         };
 
-        if(!previewImage) customErrors.previewImage = "Preview image is required"
-        if(previewImage && !fileTypes.includes(previewImage.slice(-3))) customErrors.previewImage = "Image URL must end in .png, .jpg, or .jpeg";
-        if(spotImage1 && !fileTypes.includes(spotImage1.slice(-3))) customErrors.spotImage1 = "Image URL must end in .png, .jpg, or .jpeg";
-        if(spotImage2 && !fileTypes.includes(spotImage2.slice(-3))) customErrors.spotImage2 = "Image URL must end in .png, .jpg, or .jpeg";
-        if(spotImage3 && !fileTypes.includes(spotImage3.slice(-3))) customErrors.spotImage3 = "Image URL must end in .png, .jpg, or .jpeg";
-        if(spotImage4 && !fileTypes.includes(spotImage4.slice(-3))) customErrors.spotImage4 = "Image URL must end in .png, .jpg, or .jpeg";
+        setImageErrors(customErrors);
+
+        if (!previewImage) customErrors.previewImage = "Preview image is required"
+        if (previewImage && !fileTypes.includes(previewImage.slice(-3))) customErrors.previewImage = "Image URL must end in .png, .jpg, or .jpeg";
+        if (spotImage1 && !fileTypes.includes(spotImage1.slice(-3))) customErrors.spotImage1 = "Image URL must end in .png, .jpg, or .jpeg";
+        if (spotImage2 && !fileTypes.includes(spotImage2.slice(-3))) customErrors.spotImage2 = "Image URL must end in .png, .jpg, or .jpeg";
+        if (spotImage3 && !fileTypes.includes(spotImage3.slice(-3))) customErrors.spotImage3 = "Image URL must end in .png, .jpg, or .jpeg";
+        if (spotImage4 && !fileTypes.includes(spotImage4.slice(-3))) customErrors.spotImage4 = "Image URL must end in .png, .jpg, or .jpeg";
 
         const spotImages = [
             { url: previewImage, preview: true },
@@ -62,7 +64,6 @@ export default function CreateSpotForm() {
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
-                if (Object.values(customErrors).length) setImageErrors(customErrors);
             });
 
         if (newSpot) history.push(`/spots/${newSpot.id}`);
@@ -197,7 +198,7 @@ export default function CreateSpotForm() {
                 </p>
                 <div className="image-input">
                     <input
-                        type="text"
+                        type="url"
                         value={previewImage}
                         onChange={(e) => setPreviewImage(e.target.value)}
                         placeholder="Preview Image URL"
@@ -206,7 +207,7 @@ export default function CreateSpotForm() {
                         <span className="errors">{imageErrors.previewImage}</span>
                     )}
                     <input
-                        type="text"
+                        type="url"
                         value={spotImage1}
                         onChange={(e) => setSpotImage1(e.target.value)}
                         placeholder="Image URL"
@@ -215,7 +216,7 @@ export default function CreateSpotForm() {
                         <span className="errors">{imageErrors.spotImage1}</span>
                     )}
                     <input
-                        type="text"
+                        type="url"
                         value={spotImage2}
                         onChange={(e) => setSpotImage2(e.target.value)}
                         placeholder="Image URL"
@@ -224,7 +225,7 @@ export default function CreateSpotForm() {
                         <span className="errors">{imageErrors.spotImage2}</span>
                     )}
                     <input
-                        type="text"
+                        type="url"
                         value={spotImage3}
                         onChange={(e) => setSpotImage3(e.target.value)}
                         placeholder="Image URL"
@@ -233,7 +234,7 @@ export default function CreateSpotForm() {
                         <span className="errors">{imageErrors.spotImage3}</span>
                     )}
                     <input
-                        type="text"
+                        type="url"
                         value={spotImage4}
                         onChange={(e) => setSpotImage4(e.target.value)}
                         placeholder="Image URL"
