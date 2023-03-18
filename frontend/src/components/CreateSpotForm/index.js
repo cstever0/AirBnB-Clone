@@ -28,7 +28,7 @@ export default function CreateSpotForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let customErrors = {};
-        const fileTypes = ['png', "jpg", "peg"]
+        const fileTypes = ['png', "jpg", "peg", "ebp"]
 
         const spot = {
             country,
@@ -66,7 +66,6 @@ export default function CreateSpotForm() {
             });
 
         if (newSpot) history.push(`/spots/${newSpot.id}`);
-
     };
 
     return (
