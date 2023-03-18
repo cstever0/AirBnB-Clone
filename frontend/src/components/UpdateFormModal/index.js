@@ -31,7 +31,7 @@ export default function UpdateFormModal({ spot }) {
         e.preventDefault();
         // setErrors({});
         let customErrors = {};
-        const fileTypes = ['png', "jpg", "peg"]
+        const fileTypes = ['png', "jpg", "peg", "ebp"]
 
         const spot = {
             id,
@@ -73,8 +73,7 @@ export default function UpdateFormModal({ spot }) {
         if (newSpot) {
             closeModal();
             history.push(`/spots/${newSpot.id}`);
-        }
-
+        };
     };
 
     return (

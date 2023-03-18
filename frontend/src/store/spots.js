@@ -95,7 +95,7 @@ export const createOneSpot = (spot, spotImages) => async (dispatch) => {
         const spot = await response.json();
         spot.SpotImages = [];
 
-        spotImages.forEach(async (image) => {
+        for (let image of spotImages) {
             const imageResponse = await csrfFetch(`/api/spots/${spot.id}/images`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -103,9 +103,9 @@ export const createOneSpot = (spot, spotImages) => async (dispatch) => {
             });
             const spotImage = await imageResponse.json();
             spot.SpotImages.push(spotImage);
-        });
+        };
 
-        dispatch(updateSpot(spot));
+        dispatch(createNewSpot(spot));
         return spot;
     };
 };
@@ -131,7 +131,7 @@ export const updateOneSpot = (spot, spotImages) => async (dispatch) => {
             spot.SpotImages.push(spotImage);
         };
 
-        dispatch(createNewSpot(spot));
+        dispatch(updateSpot(spot));
         return spot;
     };
 };
