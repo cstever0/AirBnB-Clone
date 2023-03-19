@@ -43,7 +43,7 @@ const SpotDetails = () => {
                         <img src={`${previewImage.url}`} alt="" />
                     </div>
                     <div className="spot-images">
-                        {spotImages.map((image) =>
+                        {spotImages.slice(1).map((image) =>
                             <img src={`${image.url}`} alt="" />
                         )}
                     </div>
