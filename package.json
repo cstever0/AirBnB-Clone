@@ -23,8 +23,5 @@
   "bugs": {
     "url": "https://github.com/cstever0/AirBnB-Clone/issues"
   },
-  "homepage": "https://github.com/cstever0/AirBnB-Clone#readme",
-  "dependencies": {
-    "react-tooltip": "^5.10.0"
-  }
+  "homepage": "https://github.com/cstever0/AirBnB-Clone#readme"
 }

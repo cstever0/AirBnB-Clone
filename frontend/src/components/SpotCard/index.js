@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Tooltip } from "react-tooltip";
+// import { Tooltip } from "react-tooltip";
 import "./SpotCard.css";
 
 export default function SpotCard({ spot}) {
@@ -23,7 +23,7 @@ export default function SpotCard({ spot}) {
                 </div>
                 <div className="all-spot-price">${spot.price} Night</div>
             </NavLink>
-            <Tooltip id="spot-name" />
+            {/* <Tooltip id="spot-name" /> */}
         </div >
     )
 }

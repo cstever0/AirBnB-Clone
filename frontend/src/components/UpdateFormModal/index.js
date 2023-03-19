@@ -14,24 +14,24 @@ export default function UpdateFormModal({ spot }) {
     const [address, setAddress] = useState(spot.address);
     const [city, setCity] = useState(spot.city);
     const [state, setState] = useState(spot.state);
-    const [latitude, setLatitude] = useState(spot.latitude);
-    const [longitude, setLongitude] = useState(spot.longitude);
+    // const [latitude, setLatitude] = useState(spot.latitude);
+    // const [longitude, setLongitude] = useState(spot.longitude);
     const [description, setDescription] = useState(spot.description);
     const [name, setName] = useState(spot.name);
     const [price, setPrice] = useState(spot.price);
-    const [previewImage, setPreviewImage] = useState(spot.previewImage);
-    const [spotImage1, setSpotImage1] = useState(spot.spotImage1);
-    const [spotImage2, setSpotImage2] = useState(spot.spotImage2);
-    const [spotImage3, setSpotImage3] = useState(spot.spotImage3);
-    const [spotImage4, setSpotImage4] = useState(spot.spotImage4);
+    // const [previewImage, setPreviewImage] = useState(spot.previewImage);
+    // const [spotImage1, setSpotImage1] = useState("");
+    // const [spotImage2, setSpotImage2] = useState("");
+    // const [spotImage3, setSpotImage3] = useState("");
+    // const [spotImage4, setSpotImage4] = useState("");
     const [errors, setErrors] = useState({});
-    const [imageErrors, setImageErrors] = useState({});
+    // const [imageErrors, setImageErrors] = useState({});
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         // setErrors({});
-        let customErrors = {};
-        const fileTypes = ['png', "jpg", "peg", "ebp"]
+        // let customErrors = {};
+        // const fileTypes = ['png', "jpg", "peg", "ebp"]
 
         const spot = {
             id,
@@ -39,32 +39,32 @@ export default function UpdateFormModal({ spot }) {
             address,
             city,
             state,
-            latitude,
-            longitude,
+            // latitude,
+            // longitude,
             description,
             name,
             price,
         };
 
-        if (!previewImage) customErrors.previewImage = "Preview image is required"
-        if (previewImage && !fileTypes.includes(previewImage.slice(-3))) customErrors.previewImage = "Image URL must end in .png, .jpg, or .jpeg";
-        if (spotImage1 && !fileTypes.includes(spotImage1.slice(-3))) customErrors.spotImage1 = "Image URL must end in .png, .jpg, or .jpeg";
-        if (spotImage2 && !fileTypes.includes(spotImage2.slice(-3))) customErrors.spotImage2 = "Image URL must end in .png, .jpg, or .jpeg";
-        if (spotImage3 && !fileTypes.includes(spotImage3.slice(-3))) customErrors.spotImage3 = "Image URL must end in .png, .jpg, or .jpeg";
-        if (spotImage4 && !fileTypes.includes(spotImage4.slice(-3))) customErrors.spotImage4 = "Image URL must end in .png, .jpg, or .jpeg";
+        // if (!previewImage) customErrors.previewImage = "Preview image is required"
+        // if (previewImage && !fileTypes.includes(previewImage.slice(-3))) customErrors.previewImage = "Image URL must end in .png, .jpg, or .jpeg";
+        // if (spotImage1 && !fileTypes.includes(spotImage1.slice(-3))) customErrors.spotImage1 = "Image URL must end in .png, .jpg, or .jpeg";
+        // if (spotImage2 && !fileTypes.includes(spotImage2.slice(-3))) customErrors.spotImage2 = "Image URL must end in .png, .jpg, or .jpeg";
+        // if (spotImage3 && !fileTypes.includes(spotImage3.slice(-3))) customErrors.spotImage3 = "Image URL must end in .png, .jpg, or .jpeg";
+        // if (spotImage4 && !fileTypes.includes(spotImage4.slice(-3))) customErrors.spotImage4 = "Image URL must end in .png, .jpg, or .jpeg";
 
-        setImageErrors(customErrors);
+        // setImageErrors(customErrors);
 
-        const spotImages = [
-            { url: previewImage, preview: true },
-        ];
+        // const spotImages = [
+        //     { url: previewImage, preview: true },
+        // ];
 
-        if (spotImage1 !== "") spotImages.push({ url: spotImage1, preview: false });
-        if (spotImage2 !== "") spotImages.push({ url: spotImage2, preview: false });
-        if (spotImage3 !== "") spotImages.push({ url: spotImage3, preview: false });
-        if (spotImage4 !== "") spotImages.push({ url: spotImage4, preview: false });
+        // if (spotImage1 !== "") spotImages.push({ url: spotImage1, preview: false });
+        // if (spotImage2 !== "") spotImages.push({ url: spotImage2, preview: false });
+        // if (spotImage3 !== "") spotImages.push({ url: spotImage3, preview: false });
+        // if (spotImage4 !== "") spotImages.push({ url: spotImage4, preview: false });
 
-        const newSpot = await dispatch(updateOneSpot(spot, spotImages))
+        const newSpot = await dispatch(updateOneSpot(spot))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
@@ -131,7 +131,7 @@ export default function UpdateFormModal({ spot }) {
                         />
                     </label>
                 </div>
-                <div className="update-lng-lat">
+                {/* <div className="update-lng-lat">
                     <label>
                         Latitude
                         <input
@@ -149,7 +149,7 @@ export default function UpdateFormModal({ spot }) {
                             onChange={(e) => setLongitude(e.target.value)}
                         />
                     </label>
-                </div>
+                </div> */}
                 <h2>Describe your place to guests</h2>
                 <p>
                     Mention the best features of your space, any special amenities like
@@ -202,7 +202,7 @@ export default function UpdateFormModal({ spot }) {
                 <p>
                     Submit a link to at least one photo to publish your spot.
                 </p>
-                <div className="update-image-input">
+                {/* <div className="update-image-input">
                     <input
                         type="text"
                         value={previewImage}
@@ -248,7 +248,7 @@ export default function UpdateFormModal({ spot }) {
                     {imageErrors.spotImage4 && (
                         <span className="errors">{imageErrors.spotImage4}</span>
                     )}
-                </div>
+                </div> */}
                 <button id="update-spot-button" type="submit">
                     Update Spot
                 </button>

@@ -75,7 +75,7 @@ export const getUserSpots = () => async (dispatch) => {
 }
 
 export const getOneSpot = (id) => async (dispatch) => {
-    const response = await fetch(`/api/spots/${id}`)
+    const response = await csrfFetch(`/api/spots/${id}`)
 
     if (response.ok) {
         const spot = await response.json();
@@ -110,7 +110,7 @@ export const createOneSpot = (spot, spotImages) => async (dispatch) => {
     };
 };
 
-export const updateOneSpot = (spot, spotImages) => async (dispatch) => {
+export const updateOneSpot = (spot) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${spot.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -119,17 +119,17 @@ export const updateOneSpot = (spot, spotImages) => async (dispatch) => {
 
     if (response.ok) {
         const spot = await response.json();
-        spot.SpotImages = [];
+        // spot.SpotImages = [];
 
-        for (let image of spotImages) {
-            const imageResponse = await csrfFetch(`/api/spots/${spot.id}/images`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(image)
-            });
-            const spotImage = await imageResponse.json();
-            spot.SpotImages.push(spotImage);
-        };
+        // for (let image of spotImages) {
+        //     const imageResponse = await csrfFetch(`/api/spots/${spot.id}/images`, {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify(image)
+        //     });
+        //     const spotImage = await imageResponse.json();
+        //     spot.SpotImages.push(spotImage);
+        // };
 
         dispatch(updateSpot(spot));
         return spot;
