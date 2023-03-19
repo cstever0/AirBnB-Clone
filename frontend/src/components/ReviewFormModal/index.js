@@ -44,19 +44,25 @@ export default function ReviewFormModal({ spot }) {
                     rows="10"
                 >
                 </textarea>
-                <input
+                {/* <input
                     type="number"
                     value={stars}
                     onChange={(e) => setStars(e.target.value)}
                     max={5}
                     min={1}
-                />
+                /> */}
                 <StarsRatingInput
                     stars={stars}
                     onChange={setStars}
                     value={stars}
                 />
-                <button className="review-submit" type="submit">Submit Your Review</button>
+                <button
+                    className="review-submit"
+                    type="submit"
+                    disabled={stars < 1 || review.length < 10 ? true : false}
+                >
+                    Submit Your Review
+                </button>
             </form>
         </div>
     )
