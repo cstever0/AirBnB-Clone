@@ -85,7 +85,6 @@ export default function CreateSpotForm() {
                         type="text"
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
-                    // required
                     />
                 </label>
                 <label>
@@ -201,6 +200,7 @@ export default function CreateSpotForm() {
                         value={previewImage}
                         onChange={(e) => setPreviewImage(e.target.value)}
                         placeholder="Preview Image URL"
+                        required
                     />
                     {imageErrors.previewImage && (
                         <span className="errors">{imageErrors.previewImage}</span>
