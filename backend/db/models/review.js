@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.TEXT,
     },
     stars: {
-      type:DataTypes.INTEGER,
+      type:DataTypes.DECIMAL(2, 1),
       allowNull: false,
       validate: {
         min: 1,

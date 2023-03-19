@@ -26,13 +26,23 @@ module.exports = {
         preview: false,
       },
       {
-        spotId: 2, //image url worked
+        spotId: 1,
+        url: 'https://res.cloudinary.com/dxcayvj3l/image/upload/v1678860984/clouds_apartment_door_sny6zb.webp',
+        preview: false,
+      },
+      {
+        spotId: 2,
         url: 'https://res.cloudinary.com/dxcayvj3l/image/upload/v1678860963/cloud_tifa_apartments_nziyy1.png',
         preview: true,
       },
       {
-        spotId: 2, // image url worked
+        spotId: 2,
         url: "https://res.cloudinary.com/dxcayvj3l/image/upload/v1678860996/midgar_city_nm1szf.jpg",
+        preview: false,
+      },
+      {
+        spotId: 2,
+        url: "https://res.cloudinary.com/dxcayvj3l/image/upload/v1678861007/tifas_apartment_ypusox.png",
         preview: false,
       },
       {
@@ -56,6 +66,11 @@ module.exports = {
         preview: false,
       },
       {
+        spotId: 3,
+        url: "https://res.cloudinary.com/dxcayvj3l/image/upload/v1678860996/midgar_city_nm1szf.jpg",
+        preview: false,
+      },
+      {
         spotId: 4,
         url: "https://res.cloudinary.com/dxcayvj3l/image/upload/v1678861007/nibelheim_town_gc2epm.webp",
         preview: true,
@@ -63,6 +78,11 @@ module.exports = {
       {
         spotId: 4,
         url: "https://res.cloudinary.com/dxcayvj3l/image/upload/v1678861007/tifas_house_entrance_phxtc1.webp",
+        preview: false,
+      },
+      {
+        spotId: 4,
+        url: "https://res.cloudinary.com/dxcayvj3l/image/upload/v1678861007/tifas_house_upstairs_gkh7sp.webp",
         preview: false,
       },
       {
@@ -85,6 +105,11 @@ module.exports = {
         url: "https://res.cloudinary.com/dxcayvj3l/image/upload/v1678860989/clouds_house_teyrmi.webp",
         preview: false,
       },
+      {
+        spotId: 5,
+        url: "https://res.cloudinary.com/dxcayvj3l/image/upload/v1678860989/clouds_house_teyrmi.webp",
+        preview: false,
+      }
     ], {});
   },
 
