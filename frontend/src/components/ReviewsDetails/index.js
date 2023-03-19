@@ -3,7 +3,6 @@ import OpenModalButton from "../OpenModalButton";
 import DeleteReviewModal from "../DeleteReviewModal/DeleteReviewModal";
 
 const ReviewDetails = ({ review, user }) => {
-    console.log("review output:", review)
     return (
         <div className="review-list">
             <div className="review-details">

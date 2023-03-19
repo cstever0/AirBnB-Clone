@@ -19,7 +19,7 @@ const SpotDetails = () => {
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
-    }, [dispatch, spotId]);
+    }, [dispatch, spotId, spotReviews]);
 
     useEffect(() => {
         dispatch(getSpotReviews(spotId));
