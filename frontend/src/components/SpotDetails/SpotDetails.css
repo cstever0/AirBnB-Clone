@@ -3,8 +3,16 @@
     display: flex;
 }
 
+.spot-rating {
+    display: flex;
+}
+
+.spot-num-reviews {
+    margin-left: 10px;
+}
+
 .reviews-num-reviews {
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .all-images {
