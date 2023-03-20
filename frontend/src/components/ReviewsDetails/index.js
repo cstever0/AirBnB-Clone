@@ -4,8 +4,11 @@ import DeleteReviewModal from "../DeleteReviewModal/DeleteReviewModal";
 
 const ReviewDetails = ({ review, user }) => {
     let date = new Date(review.createdAt);
-    let monthNames = ["January","February","March","April","May","June","July",
-    "August","September","October","November","December"];
+    let monthNames = [
+        "January", "February", "March", "April", "May",
+        "June", "July", "August", "September", "October",
+        "November", "December"
+    ];
     let monthIdx = date.getMonth();
     let month = monthNames[monthIdx];
     let year = date.getFullYear();
@@ -18,7 +21,7 @@ const ReviewDetails = ({ review, user }) => {
                 <p>{review.review}</p>
             </div>
             <div className="delete-review-button">
-                { user !== null && review.User.id === user.id  && (
+                {user !== null && review.User.id === user.id && (
                     <OpenModalButton
                         buttonText="Delete"
                         modalComponent={<DeleteReviewModal review={review} />}
