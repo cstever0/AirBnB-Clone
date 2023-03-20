@@ -3,15 +3,15 @@ import OpenModalButton from "../OpenModalButton";
 import DeleteReviewModal from "../DeleteReviewModal/DeleteReviewModal";
 
 const ReviewDetails = ({ review, user }) => {
-    let date = new Date(review.createdAt);
-    let monthNames = [
+    const date = new Date(review.createdAt);
+    const monthNames = [
         "January", "February", "March", "April", "May",
         "June", "July", "August", "September", "October",
         "November", "December"
     ];
-    let monthIdx = date.getMonth();
-    let month = monthNames[monthIdx];
-    let year = date.getFullYear();
+    const monthIdx = date.getMonth();
+    const month = monthNames[monthIdx];
+    const year = date.getFullYear();
 
     return (
         <div className="review-list">
