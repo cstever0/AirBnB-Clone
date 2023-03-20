@@ -31,11 +31,11 @@ function SignupFormModal() {
     };
 
     return (
-        <>
+        <div className="signup-form-container">
             <h1>Sign Up</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="signup-form" onSubmit={handleSubmit}>
                 <ul>
-                    {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
+                    {Object.values(errors).map((error, idx) => <li className="errors" key={idx}>{error}</li>)}
                 </ul>
                 <label>
                     Email
@@ -98,7 +98,7 @@ function SignupFormModal() {
                     Sign Up
                 </button>
             </form>
-        </>
+        </div>
     );
 };
 

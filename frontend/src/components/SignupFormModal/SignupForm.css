@@ -1,1 +1,23 @@
 /* TODO implement css for signup */
+.signup-form-container {
+    padding: 20px;
+}
+
+.signup-form-container h1{
+    text-align: center;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.signup-form label {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form button {
+    margin-top: 10px;
+}
