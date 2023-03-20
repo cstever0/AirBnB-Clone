@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { deleteOneReview } from "../../store/reviews";
+import "./DeleteReviewModal.css";
 
 export default function DeleteReviewModal({ review }) {
     const dispatch = useDispatch();
@@ -19,17 +20,21 @@ export default function DeleteReviewModal({ review }) {
 
 
     return (
-        <>
-            <h1>Confirm Delete</h1>
-            <p>
-                Are you sure you want to delete this review?
-            </p>
-            <button onClick={deleteClick}>
-                Yes (Delete Review)
-            </button>
-            <button onClick={keepClick}>
-                No (Keep Review)
-            </button>
-        </>
+        <div className="delete-review-wrapper">
+            <div className="confirm-delete-review">
+                <h1>Confirm Delete</h1>
+                <p>
+                    Are you sure you want to delete this review?
+                </p>
+            </div>
+            <div className="delete-review-buttons">
+                <button onClick={deleteClick}>
+                    Yes (Delete Review)
+                </button>
+                <button onClick={keepClick}>
+                    No (Keep Review)
+                </button>
+            </div>
+        </div>
     );
 };

@@ -1,1 +1,20 @@
 /* TODO add css to delete review */
+
+.delete-spot-wrapper {
+    margin: 10px;
+}
+
+.confirm-delete-review {
+    text-align: center;
+}
+
+.delete-review-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-review-buttons button {
+    margin: 5px;
+    padding: 5px 20px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .8);
+}

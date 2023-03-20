@@ -26,28 +26,22 @@
     border: none;
     border-bottom: 2px solid #adadad;
     border-radius: 5px;
-    background-color: grey;
-    color: white;
+    /* background-color: grey;
+    color: white; */
 }
 
 .login-submit {
-    background-color: #4CAF50;
-    color: white;
     padding: 10px 20px;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
+    background-color: white;
 }
 
-.login-submit:hover {
+/* .login-submit:hover {
     background-color: #3e8e41;
-}
-/*
-input:focus {
-    outline-color: blue;
 } */
 
 #modal-content {

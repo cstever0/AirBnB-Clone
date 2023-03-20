@@ -32,7 +32,7 @@ const SpotDetails = () => {
 
 
     return (
-        <>
+        <div className="entire-spot-container">
             <div className="spot-container">
                 <div className="spot-location">
                     <h1>{spot.name}</h1>
@@ -48,15 +48,41 @@ const SpotDetails = () => {
                         )}
                     </div>
                 </div>
-                <div className="spot-details">
-                    <h1>Hosted by {spotOwner.firstName}, {spotOwner.lastName}</h1>
-                    <p>{spot.description}</p>
+                <div className="spot-reservation">
+                    <div className="spot-details">
+                        <h1>Hosted by {spotOwner.firstName}, {spotOwner.lastName}</h1>
+                        <p>{spot.description}</p>
+                    </div>
+                    <div className="reservation-section">
+                        <div className="reservation-details">
+                            <h2>${spot.price} night</h2>
+                            <div className="spot-rating">
+                                {spot.avgStarRating !== 'No Reviews Yet' ? <i className="fa fa-star">{spot.avgStarRating.toFixed(1)}</i> : <i className="fa fa-star">New</i>}
+                                <div className="spot-num-reviews">
+                                    {spot.numReviews !== "No Reviews Yet" &&
+                                        (spot.numReviews === 1 ?
+                                            (
+                                                <span>• {spot.numReviews} review</span>
+                                            )
+                                            :
+                                            (
+                                                <span>• {spot.numReviews} reviews</span>
+                                            )
+                                        )}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="reservation-button">
+                            <button onClick={() => window.alert("Feature Coming Soon...")}>Reserve</button>
+                        </div>
+                    </div>
                 </div>
-                <div className="reservation-details">
-                    <h2>{spot.price} night</h2>
-                    <div className="spot-rating">
+            </div>
+            <div className="review-details">
+                <div className="review-rating">
+                    <div className="star-dot-reviews-list">
                         {spot.avgStarRating !== 'No Reviews Yet' ? <i className="fa fa-star">{spot.avgStarRating.toFixed(1)}</i> : <i className="fa fa-star">New</i>}
-                        <div className="spot-num-reviews">
+                        <div className="reviews-num-reviews">
                             {spot.numReviews !== "No Reviews Yet" &&
                                 (spot.numReviews === 1 ?
                                     (
@@ -68,26 +94,6 @@ const SpotDetails = () => {
                                     )
                                 )}
                         </div>
-                    </div>
-                </div>
-                <div className="reservation-button">
-                    <button onClick={() => window.alert("Feature Coming Soon...")}>Reserve</button>
-                </div>
-            </div>
-            <div className="review-details">
-                <div className="review-rating">
-                    {spot.avgStarRating !== 'No Reviews Yet' ? <i className="fa fa-star">{spot.avgStarRating.toFixed(1)}</i> : <i className="fa fa-star">New</i>}
-                    <div className="reviews-num-reviews">
-                        {spot.numReviews !== "No Reviews Yet" &&
-                            (spot.numReviews === 1 ?
-                                (
-                                    <span>• {spot.numReviews} review</span>
-                                )
-                                :
-                                (
-                                    <span>• {spot.numReviews} reviews</span>
-                                )
-                            )}
                     </div>
                 </div>
                 <div id="post-review-button">
@@ -103,7 +109,7 @@ const SpotDetails = () => {
                     {reviews.length > 0 && reviews.map((review) => <ReviewDetails key={review.id} review={review} user={user} />)}
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

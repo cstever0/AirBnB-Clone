@@ -1,6 +1,7 @@
 /* TODO add css to spot display */
-.review-rating {
-    display: flex;
+.entire-spot-container {
+    margin: auto 2vw;
+    max-width: 1000px;
 }
 
 .spot-rating {
@@ -19,14 +20,65 @@
     display: flex;
 }
 
-#preview-image img{
-    width: 20rem;
-    height: 20rem;
+
+#preview-image img {
+    width: 98%;
+    height: 98%;
     padding: 5px;
 }
 
-.spot-images img{
-    width: 10rem;
-    height: 10rem;
+.spot-images img {
+    width: 30vh;
+    height: 22vh;
     padding: 5px;
+}
+
+.spot-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+.spot-reservation {
+    display: flex;
+    justify-content: space-between;
+    /* border-bottom: solid 1px rgba(0, 0, 0, .2); */
+    margin-bottom: 10px;
+}
+
+
+.reservation-section {
+    padding: 1vw 2vw;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0);
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: auto;
+    /* box-sizing: border-box; */
+}
+
+.reservation-details {
+    display: flex;
+    /* box-sizing: border-box; */
+}
+
+.reservation-details h2 {
+    margin-right: 2vw;
+    /* box-sizing: border-box; */
+}
+
+.spot-rating {
+    margin-top: 3vh;
+}
+
+.review-rating {
+    border-top: solid 1px rgba(0, 0, 0, .2);
+}
+
+.star-dot-reviews-list {
+    display: flex;
+    margin-top: 20px;
+}
+
+#post-review-button {
+    margin-top: 10px;
 }

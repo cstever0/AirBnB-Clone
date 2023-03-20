@@ -2,3 +2,85 @@
 .errors {
     color: red;
 }
+
+.entire-form-wrapper {
+    margin: auto;
+    max-width: 30%;
+}
+
+.spot-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.spot-form label {
+    display: flex;
+    flex-direction: column;
+}
+
+.city-state-container {
+    border-bottom: solid 2px rgba(0, 0, 0, .8);
+}
+
+.city-state {
+    display: flex;
+    /* border: solid 1px red; */
+    margin-bottom: 2%;
+}
+
+#comma-separator {
+    margin: auto 5px;
+    margin-bottom: 0px;
+}
+
+.description-input-container {
+    border-bottom: solid 2px rgba(0, 0, 0, .8);
+}
+
+#description-text-area {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 2%;
+}
+
+.name-input-container {
+    border-bottom: solid 2px rgba(0, 0, 0, .8);
+}
+
+#name-input {
+    margin-bottom: 2%;
+}
+
+.price-input-container {
+    border-bottom: solid 2px rgba(0, 0, 0, .8);
+}
+
+#price-input {
+    margin-bottom: 2%;
+}
+
+.image-input-container {
+    border-bottom: solid 2px rgba(0, 0, 0, .8);
+}
+
+.image-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-input input {
+    margin: 1vh 0px;
+}
+
+#create-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+#create-spot-button {
+    padding: 5px 20px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .8);
+    background-color: red;
+    color: white;
+}

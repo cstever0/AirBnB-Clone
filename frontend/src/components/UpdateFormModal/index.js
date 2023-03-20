@@ -92,7 +92,6 @@ export default function UpdateFormModal({ spot }) {
                         type="text"
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
-                    // required
                     />
                 </label>
                 <label>
@@ -106,30 +105,32 @@ export default function UpdateFormModal({ spot }) {
                         onChange={(e) => setAddress(e.target.value)}
                     />
                 </label>
-                <div className="update-city-state">
-                    <label>
-                        City
-                        {errors.city && (
-                            <span className="errors">{errors.city}</span>
-                        )}
-                        <input
-                            type="text"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                        />
-                        ,
-                    </label>
-                    <label>
-                        State
-                        {errors.state && (
-                            <span className="errors">{errors.state}</span>
-                        )}
-                        <input
-                            type="text"
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                        />
-                    </label>
+                <div className="update-city-state-container">
+                    <div className="update-city-state">
+                        <label>
+                            City
+                            {errors.city && (
+                                <span className="errors">{errors.city}</span>
+                            )}
+                            <input
+                                type="text"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                            />
+                        </label>
+                        <span id="update-comma-separator">,</span>
+                        <label>
+                            State
+                            {errors.state && (
+                                <span className="errors">{errors.state}</span>
+                            )}
+                            <input
+                                type="text"
+                                value={state}
+                                onChange={(e) => setState(e.target.value)}
+                            />
+                        </label>
+                    </div>
                 </div>
                 {/* <div className="update-lng-lat">
                     <label>
@@ -153,56 +154,64 @@ export default function UpdateFormModal({ spot }) {
                 <h2>Describe your place to guests</h2>
                 <p>
                     Mention the best features of your space, any special amenities like
-                    fast wif or parking, and what you love about the neighborhood.
+                    fast wifi or parking, and what you love about the neighborhood.
                 </p>
-                <div id="update-description-input">
-                    {errors.description && (
-                        <span className="errors">{errors.description}</span>
-                    )}
-                    <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Please write at least 30 characters"
-                    />
+                <div className="update-description-input-container">
+                    <div id="update-description-input">
+                        {errors.description && (
+                            <span className="errors">{errors.description}</span>
+                        )}
+                        <textarea
+                            id="update-description-text-area"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder="Please write at least 30 characters"
+                            rows="9"
+                            cols="33"
+                        ></textarea>
+                    </div>
                 </div>
                 <h2>Create a title for your spot</h2>
                 <p>
                     Catch guests' attention with a spot title that highlights what makes
                     your place special.
                 </p>
-                <div id="update-name-input">
-                    {errors.name && (
-                        <span className="errors">{errors.name}</span>
-                    )}
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Name of your spot"
-                    />
+                <div className="update-name-input-container">
+                    <div id="update-name-input">
+                        {errors.name && (
+                            <span className="errors">{errors.name}</span>
+                        )}
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="Name of your spot"
+                        />
+                    </div>
                 </div>
                 <h2>Set a base price for your spot</h2>
                 <p>
                     Competitive pricing can help your listing stand out and rank higher
                     in search results.
                 </p>
-                <div id="update-price-input">
-                    {errors.price && (
-                        <span className="errors">{errors.price}</span>
-                    )}
-                    $ <input
-                        type="number"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                        placeholder="Price per night (USD)"
-                    />
+                <div className="update-price-input-container">
+                    <div id="update-price-input">
+                        {errors.price && (
+                            <span className="errors">{errors.price}</span>
+                        )}
+                        $ <input
+                            type="number"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            placeholder="Price per night (USD)"
+                        />
+                    </div>
                 </div>
-                <h2>Liven up your spot with photos</h2>
+                {/* <h2>Liven up your spot with photos</h2>
                 <p>
                     Submit a link to at least one photo to publish your spot.
                 </p>
-                {/* <div className="update-image-input">
+                <div className="update-image-input">
                     <input
                         type="text"
                         value={previewImage}
@@ -249,9 +258,11 @@ export default function UpdateFormModal({ spot }) {
                         <span className="errors">{imageErrors.spotImage4}</span>
                     )}
                 </div> */}
-                <button id="update-spot-button" type="submit">
-                    Update Spot
-                </button>
+                <div id="update-button-container">
+                    <button id="update-spot-button" type="submit">
+                        Update Spot
+                    </button>
+                </div>
             </form>
         </div>
     );

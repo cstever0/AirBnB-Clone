@@ -2,3 +2,71 @@
 .errors {
     color: red;
 }
+
+.modal-body {
+    overflow-y: auto;
+}
+
+.update-spot-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-spot-form label {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-city-state-container {
+    border-bottom: solid 2px rgba(0, 0, 0, .8);
+}
+
+.update-city-state {
+    display: flex;
+    /* border: solid 1px red; */
+    margin-bottom: 2%;
+}
+
+#update-comma-separator {
+    margin: auto 5px;
+    margin-bottom: 0px;
+}
+
+.update-description-input-container {
+    border-bottom: solid 2px rgba(0, 0, 0, .8);
+}
+
+#update-description-text-area {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 2%;
+}
+
+.update-name-input-container {
+    border-bottom: solid 2px rgba(0, 0, 0, .8);
+}
+
+#update-name-input {
+    margin-bottom: 2%;
+}
+
+.update-price-input-container {
+    border-bottom: solid 2px rgba(0, 0, 0, .8);
+}
+
+#update-price-input {
+    margin-bottom: 2%;
+}
+
+#update-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+#update-spot-button {
+    padding: 5px 20px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .8);
+    background-color: red;
+    color: white;
+}

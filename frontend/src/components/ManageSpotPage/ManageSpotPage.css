@@ -2,6 +2,18 @@
 .all-user-spots {
     display: flex;
     flex-wrap: wrap;
+    margin: 2%;
+}
+
+.manage-spot-cards {
+    display: flex;
+    margin-top: 2%;
+}
+
+.spot-card {
+    margin-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .all-user-spots img {
@@ -16,4 +28,17 @@
 
 .update-delete {
     display: flex;
+}
+
+.update-delete button {
+    margin: 5px;
+    padding: 5px 20px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .8);
+}
+
+.create-spot-button {
+    margin: 5px;
+    padding: 5px 20px;
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, .8);
+    width: 17%;
 }

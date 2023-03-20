@@ -24,7 +24,7 @@ const ManageSpotPage = () => {
             <div className="manage-spots">
                 <h1>Manage Your Spots</h1>
                 <div className="create-spot-button">
-                    <NavLink to="/spots/new">Create a New Spot</NavLink>
+                        <NavLink to="/spots/new">Create a New Spot</NavLink>
                 </div>
                 <div className="manage-spot-cards">
                     {allSpots.length > 0 && allSpots.map((spot) =>
@@ -37,6 +37,9 @@ const ManageSpotPage = () => {
                                     buttonText="Update"
                                     modalComponent={<UpdateFormModal spot={spot} />}
                                 />
+                                {/* <button>
+                                    Update
+                                </button> */}
                                 <OpenModalButton
                                     buttonText="Delete"
                                     modalComponent={<DeleteSpotModal spot={spot} />}

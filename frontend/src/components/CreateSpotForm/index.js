@@ -15,7 +15,7 @@ export default function CreateSpotForm() {
     // const [longitude, setLongitude] = useState("");
     const [description, setDescription] = useState("");
     const [name, setName] = useState("");
-    const [price, setPrice] = useState(1);
+    const [price, setPrice] = useState("");
     const [previewImage, setPreviewImage] = useState("");
     const [spotImage1, setSpotImage1] = useState("");
     const [spotImage2, setSpotImage2] = useState("");
@@ -42,12 +42,12 @@ export default function CreateSpotForm() {
             price,
         };
 
-        if(!previewImage) customErrors.previewImage = "Preview image is required"
-        if(previewImage && !fileTypes.includes(previewImage.slice(-3))) customErrors.previewImage = "Image URL must end in .png, .jpg, or .jpeg";
-        if(spotImage1 && !fileTypes.includes(spotImage1.slice(-3))) customErrors.spotImage1 = "Image URL must end in .png, .jpg, or .jpeg";
-        if(spotImage2 && !fileTypes.includes(spotImage2.slice(-3))) customErrors.spotImage2 = "Image URL must end in .png, .jpg, or .jpeg";
-        if(spotImage3 && !fileTypes.includes(spotImage3.slice(-3))) customErrors.spotImage3 = "Image URL must end in .png, .jpg, or .jpeg";
-        if(spotImage4 && !fileTypes.includes(spotImage4.slice(-3))) customErrors.spotImage4 = "Image URL must end in .png, .jpg, or .jpeg";
+        if (!previewImage) customErrors.previewImage = "Preview image is required"
+        if (previewImage && !fileTypes.includes(previewImage.slice(-3))) customErrors.previewImage = "Image URL must end in .png, .jpg, or .jpeg";
+        if (spotImage1 && !fileTypes.includes(spotImage1.slice(-3))) customErrors.spotImage1 = "Image URL must end in .png, .jpg, or .jpeg";
+        if (spotImage2 && !fileTypes.includes(spotImage2.slice(-3))) customErrors.spotImage2 = "Image URL must end in .png, .jpg, or .jpeg";
+        if (spotImage3 && !fileTypes.includes(spotImage3.slice(-3))) customErrors.spotImage3 = "Image URL must end in .png, .jpg, or .jpeg";
+        if (spotImage4 && !fileTypes.includes(spotImage4.slice(-3))) customErrors.spotImage4 = "Image URL must end in .png, .jpg, or .jpeg";
 
         setImageErrors(customErrors);
 
@@ -98,30 +98,32 @@ export default function CreateSpotForm() {
                         onChange={(e) => setAddress(e.target.value)}
                     />
                 </label>
-                <div className="city-state">
-                    <label>
-                        City
-                        {errors.city && (
-                            <span className="errors">{errors.city}</span>
-                        )}
-                        <input
-                            type="text"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                        />
-                        ,
-                    </label>
-                    <label>
-                        State
-                        {errors.state && (
-                            <span className="errors">{errors.state}</span>
-                        )}
-                        <input
-                            type="text"
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                        />
-                    </label>
+                <div className="city-state-container">
+                    <div className="city-state">
+                        <label>
+                            City
+                            {errors.city && (
+                                <span className="errors">{errors.city}</span>
+                            )}
+                            <input
+                                type="text"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                            />
+                        </label>
+                        <span id="comma-separator">,</span>
+                        <label>
+                            State
+                            {errors.state && (
+                                <span className="errors">{errors.state}</span>
+                            )}
+                            <input
+                                type="text"
+                                value={state}
+                                onChange={(e) => setState(e.target.value)}
+                            />
+                        </label>
+                    </div>
                 </div>
                 {/* <div className="lng-lat">
                     <label>
@@ -145,106 +147,118 @@ export default function CreateSpotForm() {
                 <h2>Describe your place to guests</h2>
                 <p>
                     Mention the best features of your space, any special amenities like
-                    fast wif or parking, and what you love about the neighborhood.
+                    fast wifi or parking, and what you love about the neighborhood.
                 </p>
-                <div id="description-input">
-                    {errors.description && (
-                        <span className="errors">{errors.description}</span>
-                    )}
-                    <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Please write at least 30 characters"
-                    />
+                <div className="description-input-container">
+                    <div id="description-input">
+                        {errors.description && (
+                            <span className="errors">{errors.description}</span>
+                        )}
+                        <textarea
+                            id="description-text-area"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder="Please write at least 30 characters"
+                            rows="9"
+                            cols="33"
+                        ></textarea>
+                    </div>
                 </div>
                 <h2>Create a title for your spot</h2>
                 <p>
                     Catch guests' attention with a spot title that highlights what makes
                     your place special.
                 </p>
-                <div id="name-input">
-                    {errors.name && (
-                        <span className="errors">{errors.name}</span>
-                    )}
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Name of your spot"
-                    />
+                <div className="name-input-container">
+                    <div id="name-input">
+                        {errors.name && (
+                            <span className="errors">{errors.name}</span>
+                        )}
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="Name of your spot"
+                        />
+                    </div>
                 </div>
                 <h2>Set a base price for your spot</h2>
                 <p>
                     Competitive pricing can help your listing stand out and rank higher
                     in search results.
                 </p>
-                <div id="price-input">
-                    {errors.price && (
-                        <span className="errors">{errors.price}</span>
-                    )}
-                    $ <input
-                        type="number"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                        placeholder="Price per night (USD)"
-                    />
+                <div className="price-input-container">
+                    <div id="price-input">
+                        {errors.price && (
+                            <span className="errors">{errors.price}</span>
+                        )}
+                        $ <input
+                            type="number"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            placeholder="Price per night (USD)"
+                        />
+                    </div>
                 </div>
                 <h2>Liven up your spot with photos</h2>
                 <p>
                     Submit a link to at least one photo to publish your spot.
                 </p>
-                <div className="image-input">
-                    <input
-                        type="text"
-                        value={previewImage}
-                        onChange={(e) => setPreviewImage(e.target.value)}
-                        placeholder="Preview Image URL"
-                        required
-                    />
-                    {imageErrors.previewImage && (
-                        <span className="errors">{imageErrors.previewImage}</span>
-                    )}
-                    <input
-                        type="text"
-                        value={spotImage1}
-                        onChange={(e) => setSpotImage1(e.target.value)}
-                        placeholder="Image URL"
-                    />
-                    {imageErrors.spotImage1 && (
-                        <span className="errors">{imageErrors.spotImage1}</span>
-                    )}
-                    <input
-                        type="text"
-                        value={spotImage2}
-                        onChange={(e) => setSpotImage2(e.target.value)}
-                        placeholder="Image URL"
-                    />
-                    {imageErrors.spotImage2 && (
-                        <span className="errors">{imageErrors.spotImage2}</span>
-                    )}
-                    <input
-                        type="text"
-                        value={spotImage3}
-                        onChange={(e) => setSpotImage3(e.target.value)}
-                        placeholder="Image URL"
-                    />
-                    {imageErrors.spotImage3 && (
-                        <span className="errors">{imageErrors.spotImage3}</span>
-                    )}
-                    <input
-                        type="text"
-                        value={spotImage4}
-                        onChange={(e) => setSpotImage4(e.target.value)}
-                        placeholder="Image URL"
-                    />
-                    {imageErrors.spotImage4 && (
-                        <span className="errors">{imageErrors.spotImage4}</span>
-                    )}
+                <div className="image-input-container">
+                    <div className="image-input">
+                        <input
+                            type="url"
+                            value={previewImage}
+                            onChange={(e) => setPreviewImage(e.target.value)}
+                            placeholder="Preview Image URL"
+                            required
+                        />
+                        {imageErrors.previewImage && (
+                            <span className="errors">{imageErrors.previewImage}</span>
+                        )}
+                        <input
+                            type="url"
+                            value={spotImage1}
+                            onChange={(e) => setSpotImage1(e.target.value)}
+                            placeholder="Image URL"
+                        />
+                        {imageErrors.spotImage1 && (
+                            <span className="errors">{imageErrors.spotImage1}</span>
+                        )}
+                        <input
+                            type="url"
+                            value={spotImage2}
+                            onChange={(e) => setSpotImage2(e.target.value)}
+                            placeholder="Image URL"
+                        />
+                        {imageErrors.spotImage2 && (
+                            <span className="errors">{imageErrors.spotImage2}</span>
+                        )}
+                        <input
+                            type="url"
+                            value={spotImage3}
+                            onChange={(e) => setSpotImage3(e.target.value)}
+                            placeholder="Image URL"
+                        />
+                        {imageErrors.spotImage3 && (
+                            <span className="errors">{imageErrors.spotImage3}</span>
+                        )}
+                        <input
+                            type="url"
+                            value={spotImage4}
+                            onChange={(e) => setSpotImage4(e.target.value)}
+                            placeholder="Image URL"
+                        />
+                        {imageErrors.spotImage4 && (
+                            <span className="errors">{imageErrors.spotImage4}</span>
+                        )}
+                    </div>
                 </div>
-                <button id="create-spot-button" type="submit">
-                    Create Spot
-                </button>
+                <div id="create-button-container">
+                    <button id="create-spot-button" type="submit">
+                        Create Spot
+                    </button>
+                </div>
             </form>
         </div>
     );

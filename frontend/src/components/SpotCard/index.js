@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-// import { Tooltip } from "react-tooltip";
+import { Tooltip } from "react-tooltip";
 import "./SpotCard.css";
 
 export default function SpotCard({ spot}) {
@@ -18,12 +18,12 @@ export default function SpotCard({ spot}) {
                         {spot.city}, {spot.state}
                     </div>
                     <div className="all-spot-rating">
-                        {spot.avgRating !== 'No reviews yet' ? <i className="fa fa-star">{spot.avgRating}</i> : 'No reviews yet'}
+                        {spot.avgRating !== 'No reviews yet' ? <i className="fa fa-star">{spot.avgRating.toFixed(1)}</i> : 'No reviews yet'}
                     </div>
                 </div>
                 <div className="all-spot-price">${spot.price} Night</div>
             </NavLink>
-            {/* <Tooltip id="spot-name" /> */}
+            <Tooltip id="spot-name" />
         </div >
     )
 }

@@ -2,17 +2,58 @@
 #profile-button {
     position: relative;
     right: 10px;
-    border: solid 1px red;
 }
 
 #profile-button button {
-    border: solid 1px red;
-    border-radius: 5px;
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, .8);
 }
 
-.modal-menu {
+/* vvvv not logged in vvvv */
+.login-signUp-menu {
     display: flex;
     flex-direction: column;
+}
+
+.login-signUp-menu button {
+    border: none;
+    padding: 5px;
+}
+
+/* ^^^^^ not logged in ^^^^^ */
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+#user-email {
+    margin: 2px;
+    border-bottom: solid 2px rgba(0, 0, 0, .8);
+}
+
+#manage-spots-link {
+    margin: 2px;
+}
+
+#logout-button-container {
+    border-top: solid 2px rgba(0, 0, 0, .8);
+    display: flex;
+    justify-content: center;
+}
+
+#logout-button {
+    margin: 2px;
+}
+
+#logout-button button {
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, .8);
 }
 
 /* vvvv order matters vvvv */
@@ -20,9 +61,10 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 40px;
+    top: 70px;
     right: 10px;
     background-color: white;
+    border: 1px solid black;
 }
 
 .hidden {

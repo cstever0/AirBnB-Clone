@@ -9,7 +9,7 @@ import App from './App';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from "./store/csrf";
 import * as sessionActions from './store/session';
-// import 'react-tooltip/dist/react-tooltip.css'
+import 'react-tooltip/dist/react-tooltip.css'
 
 const store = configureStore();
 
