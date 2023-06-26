@@ -1,5 +1,9 @@
 'use strict';
 
+const fs = require('fs')
+
+const data = fs.readFileSync("../mockData/bookings.json")
+
 let options = {};
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
@@ -9,38 +13,40 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     options.tableName = 'Bookings';
-    return queryInterface.bulkInsert(options, [
-      {
-        spotId: 1,
-        userId: 2,
-        startDate: '2020-01-01',
-        endDate: '2020-01-02'
-      },
-      {
-        spotId: 2,
-        userId: 3,
-        startDate: '2020-01-01',
-        endDate: '2020-01-02'
-      },
-      {
-        spotId: 3,
-        userId: 1,
-        startDate: '2020-01-01',
-        endDate: '2020-01-02'
-      },
-      {
-        spotId: 4,
-        userId: 1,
-        startDate: '2020-01-01',
-        endDate: '2020-01-02'
-      },
-      {
-        spotId: 5,
-        userId: 3,
-        startDate: '2020-01-01',
-        endDate: '2020-01-02'
-      },
-    ], {});
+    return queryInterface.bulkInsert(options, data
+      // [
+      // {
+      //   spotId: 1,
+      //   userId: 2,
+      //   startDate: '2020-01-01',
+      //   endDate: '2020-01-02'
+      // },
+      // {
+      //   spotId: 2,
+      //   userId: 3,
+      //   startDate: '2020-01-01',
+      //   endDate: '2020-01-02'
+      // },
+      // {
+      //   spotId: 3,
+      //   userId: 1,
+      //   startDate: '2020-01-01',
+      //   endDate: '2020-01-02'
+      // },
+      // {
+      //   spotId: 4,
+      //   userId: 1,
+      //   startDate: '2020-01-01',
+      //   endDate: '2020-01-02'
+      // },
+      // {
+      //   spotId: 5,
+      //   userId: 3,
+      //   startDate: '2020-01-01',
+      //   endDate: '2020-01-02'
+      // },
+    // ]
+    , {});
   },
 
   down: async (queryInterface, Sequelize) => {
