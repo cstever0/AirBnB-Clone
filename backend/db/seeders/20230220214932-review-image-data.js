@@ -1,6 +1,11 @@
 'use strict';
 
-'use strict';
+const fs = require('fs')
+
+const data = fs.readFileSync('db/mockData/review-images.json',
+    { encoding: 'utf8', flag: 'r' });
+
+const dataObj = JSON.parse(data);
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -11,28 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     options.tableName = 'ReviewImages';
-    return queryInterface.bulkInsert(options, [
-      {
-        reviewId: 1,
-        url: 'review-image1.url'
-      },
-      {
-        reviewId: 2,
-        url: 'review-image2.url'
-      },
-      {
-        reviewId: 3,
-        url: 'review-image3.url'
-      },
-      {
-        reviewId: 4,
-        url: 'review-image4.url'
-      },
-      {
-        reviewId: 5,
-        url: 'review-image5.url'
-      },
-    ], {});
+    return queryInterface.bulkInsert(options, dataObj, {});
   },
 
   down: async (queryInterface, Sequelize) => {

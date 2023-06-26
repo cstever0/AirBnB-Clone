@@ -23,7 +23,7 @@ module.exports = {
     options.tableName = 'Reviews';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      review: { [Op.in]: ['Lovely place, great location', 'Lovely place, great location', 'Great place to throw a party, would recommend', 'Lovely place, great location', 'Lovely place, great location', 'I was accosted by a man in black robes mumbling something about a reunion'] }
+      id: { [Op.in]: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] }
     }, {});
   }
 };
