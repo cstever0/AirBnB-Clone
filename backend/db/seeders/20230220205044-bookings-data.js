@@ -2,7 +2,10 @@
 
 const fs = require('fs')
 
-const data = fs.readFileSync("../mockData/bookings.json")
+const data = fs.readFileSync('db/mockData/bookings.json',
+    { encoding: 'utf8', flag: 'r' });
+
+const dataObj = JSON.parse(data);
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -13,47 +16,14 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     options.tableName = 'Bookings';
-    return queryInterface.bulkInsert(options, data
-      // [
-      // {
-      //   spotId: 1,
-      //   userId: 2,
-      //   startDate: '2020-01-01',
-      //   endDate: '2020-01-02'
-      // },
-      // {
-      //   spotId: 2,
-      //   userId: 3,
-      //   startDate: '2020-01-01',
-      //   endDate: '2020-01-02'
-      // },
-      // {
-      //   spotId: 3,
-      //   userId: 1,
-      //   startDate: '2020-01-01',
-      //   endDate: '2020-01-02'
-      // },
-      // {
-      //   spotId: 4,
-      //   userId: 1,
-      //   startDate: '2020-01-01',
-      //   endDate: '2020-01-02'
-      // },
-      // {
-      //   spotId: 5,
-      //   userId: 3,
-      //   startDate: '2020-01-01',
-      //   endDate: '2020-01-02'
-      // },
-    // ]
-    , {});
+    return queryInterface.bulkInsert(options, dataObj, {});
   },
 
   down: async (queryInterface, Sequelize) => {
     options.tableName = 'Bookings';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      startDate: { [Op.in]: ['2020-01-01'] }
+      id: { [Op.in]: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] }
     }, {});
   }
 };
