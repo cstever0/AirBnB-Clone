@@ -1,6 +1,7 @@
 // src/components/ReviewsDisplay/index.js
 import OpenModalButton from "../OpenModalButton";
 import DeleteReviewModal from "../DeleteReviewModal/DeleteReviewModal";
+import ReviewFormModal from "../ReviewFormModal";
 
 const ReviewDetails = ({ review, user }) => {
     const date = new Date(review.createdAt);
@@ -16,16 +17,26 @@ const ReviewDetails = ({ review, user }) => {
     return (
         <div className="review-list">
             <div className="review-details">
-                <h2>{review.User.firstName}</h2>
+                <h2>{user.firstName}</h2>
                 <h3>{month}, {year}</h3>
                 <p>{review.review}</p>
             </div>
-            <div className="delete-review-button">
-                {user !== null && review.User.id === user.id && (
-                    <OpenModalButton
-                        buttonText="Delete"
-                        modalComponent={<DeleteReviewModal review={review} />}
-                    />
+            <div className="review-button-container">
+                {user !== null && review.userId === user.id && (
+                    <>
+                        <div className="edit-review-button">
+                            <OpenModalButton
+                                buttonText="Edit"
+                                modalComponent={<ReviewFormModal oldReview={review} />}
+                            />
+                        </div>
+                        <div className="delete-review-button">
+                            <OpenModalButton
+                                buttonText="Delete"
+                                modalComponent={<DeleteReviewModal review={review} />}
+                            />
+                        </div>
+                    </>
                 )}
             </div>
         </div>

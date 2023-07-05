@@ -1,35 +1,57 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { createOneReview } from "../../store/reviews";
+import { createOneReview, editOneReview } from "../../store/reviews";
 import StarsRatingInput from "./StarsRatingInput";
 
-export default function ReviewFormModal({ spot }) {
+export default function ReviewFormModal({ spot, oldReview }) {
     const dispatch = useDispatch();
     const history = useHistory();
+    const { closeModal } = useModal();
     const [review, setReview] = useState("");
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState({});
     const user = useSelector((state) => state.session.user);
-    const { closeModal } = useModal();
+
+    useEffect(() => {
+        if (oldReview) {
+            setReview(oldReview.review);
+            setStars(oldReview.stars);
+        };
+    }, [dispatch, oldReview]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors({});
 
-        const rev = {
-            review,
-            stars
+        const rev = () => {
+            if (oldReview) {
+                return {
+                    ...oldReview,
+                    review,
+                    stars
+                };
+            } else {
+                return {
+                    review,
+                    stars
+                };
+            };
         };
 
-        const newReview = await dispatch(createOneReview(rev, spot.id, user))
-            .then(closeModal)
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            });
+        try {
+            if (oldReview) await dispatch(editOneReview(rev()))
+            else await dispatch(createOneReview(spot.id, user, rev()))
+            // history.push(`/spots/${spot.id}`);
+            closeModal();
+        } catch (e) {
+            const errors = await e.json();
+            return setErrors(errors.errors);
+        };
 
-        if (newReview) history.push(`/spots/${spot.id}`);
+        closeModal();
     };
 
     return (
@@ -53,8 +75,8 @@ export default function ReviewFormModal({ spot }) {
                 /> */}
                 <StarsRatingInput
                     stars={stars}
-                    onChange={setStars}
                     value={stars}
+                    onChange={setStars}
                 />
                 <button
                     className="review-submit"

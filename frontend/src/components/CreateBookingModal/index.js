@@ -16,14 +16,12 @@ export default function CreateBookingModal({ spot, user, booking }) {
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [errors, setErrors] = useState({});
-    console.log("booking", booking);
-    console.log("userId", user.id);
 
     useEffect(() => {
         if (booking) {
             setStartDate(booking.startDate);
             setEndDate(booking.endDate);
-        }
+        };
     }, [dispatch, booking]);
 
     useEffect(() => {
@@ -53,8 +51,7 @@ export default function CreateBookingModal({ spot, user, booking }) {
         try {
             if (booking) await dispatch(editOneBooking(newBooking()));
             else await dispatch(createOneBooking(spot.id, newBooking()));
-            // history.push("/bookings/current")
-            closeModal();
+            history.push("/bookings/manage")
         } catch (e) {
             const errors = await e.json();
             return setErrors(errors.errors);

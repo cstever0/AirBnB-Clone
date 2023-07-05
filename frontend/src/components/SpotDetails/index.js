@@ -27,6 +27,7 @@ const SpotDetails = () => {
     }, [dispatch, spotId]);
 
     if (!Object.values(spot).length) return null;
+    if (!reviews) return null;
     const spotImages = spot.SpotImages;
     const previewImage = spot.SpotImages[0];
     const spotOwner = spot.Owner;
