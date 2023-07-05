@@ -540,7 +540,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
             where: {
                 spotId: spotId
             },
-            attributes: ['spotId', 'startDate', 'endDate']
+            attributes: ['spotId', 'startDate', 'endDate', 'id']
         });
 
         res.status(200).json({ Bookings })
@@ -591,8 +591,8 @@ router.post('/:spotId/bookings', requireAuth, validateBooking, async (req, res) 
     const { id } = req.user;
     const { startDate, endDate } = req.body;
 
-    let startDateCheck = new Date(startDate).getTime();
-    let endDateCheck = new Date(endDate).getTime();
+    let startDateCheck = new Date(startDate).toISOString().split("T")[0];
+    let endDateCheck = new Date(endDate).toISOString().split("T")[0];
 
     if (endDateCheck <= startDateCheck) {
         return res.status(400).json({
