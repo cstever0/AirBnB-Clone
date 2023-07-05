@@ -1,15 +1,15 @@
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { deleteOneReview } from "../../store/reviews";
+import { deleteOneBooking } from "../../store/bookings";
 import "./DeleteReviewModal.css";
 
-export default function DeleteReviewModal({ review }) {
+export default function DeleteBookingModal({ id }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
     const deleteClick = (e) => {
         // e.preventDefault();
-        dispatch(deleteOneReview(review.id));
+        dispatch(deleteOneBooking(id));
         closeModal();
     };
 
@@ -24,15 +24,15 @@ export default function DeleteReviewModal({ review }) {
             <div className="confirm-delete-review">
                 <h1>Confirm Delete</h1>
                 <p>
-                    Are you sure you want to delete this review?
+                    Are you sure you want to delete this booking?
                 </p>
             </div>
             <div className="delete-review-buttons">
                 <button onClick={deleteClick}>
-                    Yes (Delete Review)
+                    Yes (Delete Booking)
                 </button>
                 <button onClick={keepClick}>
-                    No (Keep Review)
+                    No (Keep Booking)
                 </button>
             </div>
         </div>
