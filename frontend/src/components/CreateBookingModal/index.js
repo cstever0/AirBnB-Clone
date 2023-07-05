@@ -13,12 +13,9 @@ export default function CreateBookingModal({ spot, user, booking }) {
     const bookings = useSelector((state) => state.bookings.spot);
     const allBookings = Object.values(bookings);
     const existingBookings = allBookings?.filter((booking) => new Date(booking.endDate) >= new Date()).sort((a, b) => new Date(a.startDate) - new Date(b.endDate));
-    const today = new Date();
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [errors, setErrors] = useState({});
-    console.log("startDate", startDate);
-    console.log("endDate", endDate);
 
     useEffect(() => {
         if (booking) {
