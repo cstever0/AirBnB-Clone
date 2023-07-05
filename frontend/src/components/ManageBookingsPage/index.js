@@ -29,8 +29,8 @@ export default function ManageBookingsPage() {
                 <h1>Manage Bookings</h1>
             </div>
             <div className="manage-bookings-cards-container">
-                {allBookings.length > 0 ? (
-                    allBookings.map((booking) => (
+                {sortedBookings.length > 0 ? (
+                    sortedBookings.map((booking) => (
                         <BookingCard key={booking.id} user={user} booking={booking} spot={allSpots.find((spot) => spot.id === booking.spotId)} />
                     )))
                     :
