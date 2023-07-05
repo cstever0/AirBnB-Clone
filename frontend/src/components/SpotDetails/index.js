@@ -56,7 +56,7 @@ const SpotDetails = () => {
                     </div>
                     <div className="reservation-section">
                         <div className="reservation-details">
-                            <h2>${spot.price} night</h2>
+                            <h2>${spot.price}/night</h2>
                             <div className="spot-rating">
                                 {spot.avgStarRating !== 'No Reviews Yet' ? <i className="fa fa-star">{spot.avgStarRating.toFixed(1)}</i> : <i className="fa fa-star">New</i>}
                                 <div className="spot-num-reviews">

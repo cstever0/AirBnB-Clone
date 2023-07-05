@@ -21,7 +21,7 @@ export default function SpotCard({spot}) {
                         {spot.avgRating !== 'No reviews yet' ? <i className="fa fa-star">{spot.avgRating}</i> : 'No reviews yet'}
                     </div>
                 </div>
-                <div className="all-spot-price">${spot.price} Night</div>
+                <div className="all-spot-price">${spot.price}/night</div>
             </NavLink>
             <Tooltip id="spot-name" />
         </div >
