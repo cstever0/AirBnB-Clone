@@ -65,6 +65,9 @@ function ProfileButton({ user }) {
                             <div id="manage-spots-link">
                                 <NavLink onClick={closeMenu} to="/spots/manage">Manage Spots</NavLink>
                             </div>
+                            <div id="manage-bookings-link">
+                                <NavLink onClick={closeMenu} to="/bookings/manage">Manage Bookings</NavLink>
+                            </div>
                             <div id="logout-button-container">
                                 <div id="logout-button">
                                     <button onClick={logout}>Log Out</button>
