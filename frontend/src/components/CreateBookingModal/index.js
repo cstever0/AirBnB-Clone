@@ -19,8 +19,8 @@ export default function CreateBookingModal({ spot, user, booking }) {
 
     useEffect(() => {
         if (booking) {
-            setStartDate(new Date(booking.startDate));
-            setEndDate(new Date(booking.endDate));
+            setStartDate(booking.startDate);
+            setEndDate(booking.endDate);
         }
     }, [dispatch, booking]);
 

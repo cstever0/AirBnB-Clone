@@ -40,5 +40,5 @@ export default function ManageBookingsPage() {
                 }
             </div>
         </div>
-    )
-}
+    );
+};

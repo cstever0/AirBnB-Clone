@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { deleteOneBooking } from "../../store/bookings";
-import "./DeleteReviewModal.css";
 
 export default function DeleteBookingModal({ id }) {
     const dispatch = useDispatch();

@@ -5,6 +5,7 @@ import DeleteBookingModal from "../DeleteBookingModal";
 import "./BookingCard.css";
 
 export default function BookingCard({ spot, user, booking }) {
+    if (!spot) return null;
 
     return (
         <div className="booking-card-container">
