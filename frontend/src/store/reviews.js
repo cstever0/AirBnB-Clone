@@ -1,4 +1,5 @@
 // frontend/src/store/reviews.js
+import normalizer from "../utilities/normalizer";
 import { arrayToObj } from "../utilities/arrToObj";
 import { csrfFetch } from "./csrf";
 

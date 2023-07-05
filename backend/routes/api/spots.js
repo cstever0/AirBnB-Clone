@@ -570,23 +570,23 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     };
 });
 
-// const validateBooking = [
-//     check('startDate')
-//         .exists({ checkFalsy: true })
-//         .withMessage("Must enter a valid startDate"),
-//     check('startDate')
-//         .custom((value, {req}) => new Date(value).getTime() >= new Date(req.body.endDate).getTime())
-//         .withMessage("startDate cannot be on or after endDate"),
-//     check('endDate')
-//         .exists({ checkFalsy: true })
-//         .withMessage("Must enter a valid endDate"),
-//     check('endDate')
-//         .isAfter('startDate')
-//         .withMessage("endDate cannot be on or before startDate"),
-//     handleValidationErrors
-// ];
+const validateBooking = [
+    check('startDate')
+        .exists({ checkFalsy: true })
+        .withMessage("Must enter a valid startDate"),
+    // check('startDate')
+    //     .custom((value, {req}) => new Date(value).getTime() >= new Date(req.body.endDate).getTime())
+    //     .withMessage("startDate cannot be on or after endDate"),
+    check('endDate')
+        .exists({ checkFalsy: true })
+        .withMessage("Must enter a valid endDate"),
+    // check('endDate')
+    //     .isAfter('startDate')
+    //     .withMessage("endDate cannot be on or before startDate"),
+    handleValidationErrors
+];
 
-router.post('/:spotId/bookings', requireAuth, async (req, res) => {
+router.post('/:spotId/bookings', requireAuth, validateBooking, async (req, res) => {
     const { spotId } = req.params;
     const { id } = req.user;
     const { startDate, endDate } = req.body;
