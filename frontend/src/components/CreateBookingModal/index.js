@@ -16,6 +16,8 @@ export default function CreateBookingModal({ spot, user, booking }) {
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [errors, setErrors] = useState({});
+    console.log("booking", booking);
+    console.log("userId", user.id);
 
     useEffect(() => {
         if (booking) {
@@ -96,7 +98,7 @@ export default function CreateBookingModal({ spot, user, booking }) {
                         Start Date
                         <input
                             type="date"
-                            min={new Date().toISOString().split("T")[0]}
+                            min={booking ? booking.startDate : new Date().toISOString().split("T")[0]}
                             value={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
                         />

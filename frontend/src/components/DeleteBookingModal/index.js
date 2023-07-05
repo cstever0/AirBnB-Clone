@@ -1,15 +1,22 @@
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { useModal } from "../../context/Modal";
 import { deleteOneBooking } from "../../store/bookings";
 
 export default function DeleteBookingModal({ id }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
+    const [errors, setErrors] = useState({});
 
-    const deleteClick = (e) => {
-        // e.preventDefault();
-        dispatch(deleteOneBooking(id));
-        closeModal();
+    const deleteClick = async (e) => {
+        setErrors({})
+        try {
+            await dispatch(deleteOneBooking(id));
+            closeModal();
+        } catch (e) {
+            const error = await e.json();
+            return setErrors(error)
+        }
     };
 
     const keepClick = () => {
@@ -25,6 +32,11 @@ export default function DeleteBookingModal({ id }) {
                 <p>
                     Are you sure you want to delete this booking?
                 </p>
+            </div>
+            <div className="errors">
+                {errors.message &&
+                    <p>{errors.message}</p>
+                }
             </div>
             <div className="delete-review-buttons">
                 <button onClick={deleteClick}>
