@@ -27,3 +27,5 @@ const normalizer = (data) => {
             return data;
     };
 };
+
+export default normalizer;
