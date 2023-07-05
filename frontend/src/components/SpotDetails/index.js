@@ -6,8 +6,9 @@ import { getOneSpot } from "../../store/spots";
 import { getSpotReviews } from "../../store/reviews";
 import OpenModalButton from "../OpenModalButton";
 import ReviewDetails from "../ReviewsDetails";
-import './SpotDetails.css';
 import ReviewFormModal from "../ReviewFormModal";
+import CreateBookingModal from "../CreateBookingModal";
+import './SpotDetails.css';
 
 const SpotDetails = () => {
     const dispatch = useDispatch();
@@ -73,7 +74,10 @@ const SpotDetails = () => {
                             </div>
                         </div>
                         <div className="reservation-button">
-                            <button onClick={() => window.alert("Feature Coming Soon...")}>Reserve</button>
+                            <OpenModalButton
+                                buttonText="Reserve"
+                                modalComponent={<CreateBookingModal spot={spot} user={user} />}
+                            />
                         </div>
                     </div>
                 </div>

@@ -9,12 +9,16 @@ import "./CreateBookingModal.css";
 export default function CreateBookingModal({ spot, user, booking }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { closeModal, setModalContent } = useModal();
-    const bookings = useSelector((state) => state.bookings.spotBookings);
-    const existingBookings = bookings.filter((booking) => new Date(booking.endDate) >= new Date()).sort((a, b) => new Date(a.startDate) = new Date(b.endDate));
+    const { closeModal } = useModal();
+    const bookings = useSelector((state) => state.bookings.spot);
+    const allBookings = Object.values(bookings);
+    const existingBookings = allBookings?.filter((booking) => new Date(booking.endDate) >= new Date()).sort((a, b) => new Date(a.startDate) - new Date(b.endDate));
+    const today = new Date();
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [errors, setErrors] = useState({});
+    console.log("startDate", startDate);
+    console.log("endDate", endDate);
 
     useEffect(() => {
         if (booking) {
@@ -51,7 +55,8 @@ export default function CreateBookingModal({ spot, user, booking }) {
             if (booking) await dispatch(editOneBooking(newBooking()));
             else await dispatch(createOneBooking(spot.id, newBooking()));
             // history.push("/bookings/current")
-        } catch {
+            closeModal();
+        } catch (e) {
             const errors = await e.json();
             return setErrors(errors.errors);
         };
@@ -66,7 +71,7 @@ export default function CreateBookingModal({ spot, user, booking }) {
             </div>
             <div className="existing-bookings-list">
                 <p className="existing-bookings-title">Unavailable Dates</p>
-                {existingBookings.length > 0 ? (
+                {existingBookings?.length > 0 ? (
                     existingBookings.map((booking) => (
                         <p key={booking.id} className="existing-booking-details">{booking.startDate} - {booking.endDate}</p>
                     )))
@@ -94,29 +99,31 @@ export default function CreateBookingModal({ spot, user, booking }) {
                         Start Date
                         <input
                             type="date"
-                            min={new Date().toISOString.split("T")[0]}
-                            value={startDate.toISOString().split("T")[0]}
-                            onChange={(e) => setStartDate(new Date(e.target.value))}
+                            min={new Date().toISOString().split("T")[0]}
+                            value={startDate}
+                            onChange={(e) => setStartDate(e.target.value)}
                         />
                     </label>
                     <label>
                         End Date
                         <input
                             type="date"
-                            min={new Date().toISOString.split("T")[0]}
-                            value={endDate.toISOString().split("T")[0]}
-                            onChange={(e) => setEndDate(new Date(e.target.value))}
+                            min={new Date().toISOString().split("T")[0]}
+                            value={endDate}
+                            onChange={(e) => setEndDate(e.target.value)}
                         />
                     </label>
+                    <div className="create-booking-modal-submission-container">
+                        <div className="create-booking-modal-cancel-button">
+                            <button onClick={closeModal}>Cancel</button>
+                        </div>
+                        <div className="create-booking-modal-submit-button">
+                            <button type="submit">
+                                {booking ? "Save" : "Reserve"}
+                            </button>
+                        </div>
+                    </div>
                 </form>
-            </div>
-            <div className="create-booking-modal-buttons-container">
-                <button onClick={closeModal()}>Cancel</button>
-                <button
-                    type="submit"
-                >
-                    {booking ? "Save": "Reserve"}
-                </button>
             </div>
         </div>
     )

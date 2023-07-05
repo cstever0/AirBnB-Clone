@@ -79,6 +79,7 @@ export const createOneBooking = (id, booking) => async (dispatch) => {
 
     if (response.ok) {
         const booking = await response.json();
+        console.log("booking create", booking);
         dispatch(createBooking(booking));
         return booking;
     };
