@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { createOneReview, editOneReview } from "../../store/reviews";
 import StarsRatingInput from "./StarsRatingInput";
 
 export default function ReviewFormModal({ spot, oldReview }) {
     const dispatch = useDispatch();
-    const history = useHistory();
     const { closeModal } = useModal();
     const [review, setReview] = useState("");
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState({});
-    const user = useSelector((state) => state.session.user);
+    console.log("errors", errors);
 
     useEffect(() => {
         if (oldReview) {
@@ -26,7 +24,7 @@ export default function ReviewFormModal({ spot, oldReview }) {
         e.preventDefault();
         setErrors({});
 
-        const rev = () => {
+        const newReview = () => {
             if (oldReview) {
                 return {
                     ...oldReview,
@@ -42,9 +40,8 @@ export default function ReviewFormModal({ spot, oldReview }) {
         };
 
         try {
-            if (oldReview) await dispatch(editOneReview(rev()))
-            else await dispatch(createOneReview(spot.id, user, rev()))
-            // history.push(`/spots/${spot.id}`);
+            if (oldReview) await dispatch(editOneReview(newReview()));
+            else await dispatch(createOneReview(newReview(), spot.id));
             closeModal();
         } catch (e) {
             const errors = await e.json();
