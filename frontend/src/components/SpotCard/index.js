@@ -18,7 +18,7 @@ export default function SpotCard({spot}) {
                         {spot.city}, {spot.state}
                     </div>
                     <div className="all-spot-rating">
-                        {Number.isInteger(spot.avgRating) ? <i className="fa fa-star">{spot.avgRating.toFixed(1)}</i> : 'No reviews yet'}
+                        {Number.isInteger(spot.avgRating) ? <><i className="fa fa-star"></i><span>{spot.avgRating.toFixed(1)}</span></> : 'No reviews yet'}
                     </div>
                 </div>
                 <div className="all-spot-price">${spot.price}/night</div>
