@@ -18,7 +18,7 @@ const ReviewDetails = ({ review, user }) => {
     return (
         <div className="review-list-container">
             <div className="review-details">
-                <h2>{user.firstName}</h2>
+                <h2>{review.User.firstName}</h2>
                 <h3>{month}, {year}</h3>
                 <p>{review.review}</p>
             </div>

@@ -17,6 +17,7 @@ const SpotDetails = () => {
     const user = useSelector((state) => state.session.user);
     const spotReviews = useSelector((state) => state.reviews.spot);
     const reviews = Object.values(spotReviews).sort((a, b) => b.id - a.id);
+    console.log(spotReviews);
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
