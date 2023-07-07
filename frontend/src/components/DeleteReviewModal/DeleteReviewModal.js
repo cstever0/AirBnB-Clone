@@ -20,20 +20,24 @@ export default function DeleteReviewModal({ review }) {
 
 
     return (
-        <div className="delete-review-wrapper">
-            <div className="confirm-delete-review">
+        <div className="delete-modal-container">
+            <div className="delete-modal-header">
                 <h1>Confirm Delete</h1>
                 <p>
                     Are you sure you want to delete this review?
                 </p>
             </div>
-            <div className="delete-review-buttons">
-                <button onClick={deleteClick}>
-                    Yes (Delete Review)
-                </button>
-                <button onClick={keepClick}>
-                    No (Keep Review)
-                </button>
+            <div className="delete-modal-buttons-container">
+                <div className="cancel-delete-button">
+                    <button onClick={() => closeModal()}>
+                        No (Keep Review)
+                    </button>
+                </div>
+                <div className="confirm-delete-button">
+                    <button onClick={deleteClick}>
+                        Yes (Delete Review)
+                    </button>
+                </div>
             </div>
         </div>
     );

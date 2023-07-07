@@ -19,32 +19,25 @@ export default function DeleteBookingModal({ id }) {
         }
     };
 
-    const keepClick = () => {
-        // e.preventDefault();
-        closeModal();
-    };
-
-
     return (
-        <div className="delete-review-wrapper">
-            <div className="confirm-delete-review">
+        <div className="delete-modal-container">
+            <div className="delete-modal-header">
                 <h1>Confirm Delete</h1>
                 <p>
                     Are you sure you want to delete this booking?
                 </p>
             </div>
-            <div className="errors">
-                {errors.message &&
-                    <p>{errors.message}</p>
-                }
-            </div>
-            <div className="delete-review-buttons">
-                <button onClick={deleteClick}>
-                    Yes (Delete Booking)
-                </button>
-                <button onClick={keepClick}>
-                    No (Keep Booking)
-                </button>
+            <div className="delete-modal-buttons-container">
+                <div className="cancel-delete-button">
+                    <button onClick={() => closeModal()}>
+                        No (Keep Booking)
+                    </button>
+                </div>
+                <div className="confirm-delete-button">
+                    <button onClick={deleteClick}>
+                        Yes (Delete Booking)
+                    </button>
+                </div>
             </div>
         </div>
     );
