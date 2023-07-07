@@ -24,8 +24,12 @@ const ManageSpotPage = ({ query }) => {
         <div className="all-user-spots">
             <div className="manage-spots">
                 <h1>Manage Your Spots</h1>
-                <div className="create-spot-button">
-                        <NavLink to="/spots/new">Create a New Spot</NavLink>
+                <div className="create-spot-button-container">
+                    <NavLink to="/spots/new">
+                        <div className="create-spot-button">
+                            Create a New Spot
+                        </div>
+                    </NavLink>
                 </div>
                 <div className="manage-spot-cards">
                     {searchedUserSpots.length > 0 && searchedUserSpots.map((spot) =>
@@ -33,18 +37,19 @@ const ManageSpotPage = ({ query }) => {
                             <div className="details-card">
                                 <SpotCard key={spot.id} spot={spot} user={user} />
                             </div>
-                            <div className="update-delete">
-                                <OpenModalButton
-                                    buttonText="Update"
-                                    modalComponent={<UpdateFormModal spot={spot} />}
-                                />
-                                {/* <button>
-                                    Update
-                                </button> */}
-                                <OpenModalButton
-                                    buttonText="Delete"
-                                    modalComponent={<DeleteSpotModal spot={spot} />}
-                                />
+                            <div className="update-delete-button-container">
+                                <div className="update-spot-button">
+                                    <OpenModalButton
+                                        buttonText="Update"
+                                        modalComponent={<UpdateFormModal spot={spot} />}
+                                    />
+                                </div>
+                                <div className="delete-spot-button">
+                                    <OpenModalButton
+                                        buttonText="Delete"
+                                        modalComponent={<DeleteSpotModal spot={spot} />}
+                                    />
+                                </div>
                             </div>
                         </div>
                     )}
