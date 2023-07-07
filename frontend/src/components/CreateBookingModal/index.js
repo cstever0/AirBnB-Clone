@@ -65,17 +65,19 @@ export default function CreateBookingModal({ spot, user, booking }) {
             <div className="create-booking-modal-title">
                 {booking ? <h1>Update Booking</h1> : <h1>{spot.name} Booking</h1>}
             </div>
-            <div className="existing-bookings-list">
+            <div className="existing-bookings-container">
                 <p className="existing-bookings-title">Unavailable Dates</p>
-                {existingBookings?.length > 0 ? (
-                    existingBookings.map((booking) => (
-                        <p key={booking.id} className="existing-booking-details">{booking.startDate} - {booking.endDate}</p>
-                    )))
-                    :
-                    (
-                        <p>Currently no bookings!</p>
-                    )
-                }
+                <div className="existing-bookings-list">
+                    {existingBookings?.length > 0 ? (
+                        existingBookings.map((booking) => (
+                            <p key={booking.id} className="existing-booking-details">{booking.startDate} - {booking.endDate}</p>
+                        )))
+                        :
+                        (
+                            <p>Currently no bookings!</p>
+                        )
+                    }
+                </div>
             </div>
             <div className="create-booking-errors-container">
                 {errors &&
@@ -91,24 +93,31 @@ export default function CreateBookingModal({ spot, user, booking }) {
                     className="create-booking-form"
                     onSubmit={handleSubmit}
                 >
-                    <label>
-                        Start Date
-                        <input
-                            type="date"
-                            min={booking ? booking.startDate : new Date().toISOString().split("T")[0]}
-                            value={startDate}
-                            onChange={(e) => setStartDate(e.target.value)}
-                        />
-                    </label>
-                    <label>
-                        End Date
-                        <input
-                            type="date"
-                            min={new Date().toISOString().split("T")[0]}
-                            value={endDate}
-                            onChange={(e) => setEndDate(e.target.value)}
-                        />
-                    </label>
+                    <div className="booking-form-date-container">
+                        <label>
+                            Start Date
+                            <div className="booking-form-start-date">
+                                <input
+                                    type="date"
+                                    min={booking ? booking.startDate : new Date().toISOString().split("T")[0]}
+                                    value={startDate}
+                                    onChange={(e) => setStartDate(e.target.value)}
+                                />
+                            </div>
+                        </label>
+                        <label>
+                            End Date
+                            <div className="booking-form-end-date">
+                                <input
+                                    type="date"
+                                    min={new Date().toISOString().split("T")[0]}
+                                    value={endDate}
+                                    onChange={(e) => setEndDate(e.target.value)}
+                                />
+                            </div>
+                        </label>
+
+                    </div>
                     <div className="create-booking-modal-submission-container">
                         <div className="create-booking-modal-cancel-button">
                             <button onClick={closeModal}>Cancel</button>
