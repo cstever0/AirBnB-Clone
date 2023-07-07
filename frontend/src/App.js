@@ -22,7 +22,7 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <Navigation isLoaded={isLoaded} setQuery={setQuery} />
       {isLoaded && (
         <Switch>
           <Route exact path="/spots/new">

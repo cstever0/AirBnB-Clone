@@ -14,7 +14,7 @@ const ManageSpotPage = ({ query }) => {
     const spots = useSelector((state) => state.spots.allSpots);
     const user = useSelector((state) => state.session.user);
     const allSpots = Object.values(spots);
-    const searchedSpots = allSpots.filter((spot) => spot.city.toLowerCase().includes(query.toLowerCase()));
+    const searchedUserSpots = allSpots.filter((spot) => spot.city.toLowerCase().includes(query.toLowerCase()));
 
     useEffect(() => {
         dispatch(getUserSpots())
@@ -28,7 +28,7 @@ const ManageSpotPage = ({ query }) => {
                         <NavLink to="/spots/new">Create a New Spot</NavLink>
                 </div>
                 <div className="manage-spot-cards">
-                    {searchedSpots.length > 0 && searchedSpots.map((spot) =>
+                    {searchedUserSpots.length > 0 && searchedUserSpots.map((spot) =>
                         <div className="spot-card">
                             <div className="details-card">
                                 <SpotCard key={spot.id} spot={spot} user={user} />
