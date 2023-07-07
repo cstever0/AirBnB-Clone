@@ -70,7 +70,7 @@ export default function CreateBookingModal({ spot, user, booking }) {
                 <div className="existing-bookings-list">
                     {existingBookings?.length > 0 ? (
                         existingBookings.map((booking) => (
-                            <p key={booking.id} className="existing-booking-details">{booking.startDate} - {booking.endDate}</p>
+                            <p key={booking.id} className="existing-booking-details">{booking.startDate.slice(5)} to {booking.endDate.slice(5)}</p>
                         )))
                         :
                         (

@@ -25,11 +25,13 @@ const ManageSpotPage = ({ query }) => {
             <div className="manage-spots">
                 <h1>Manage Your Spots</h1>
                 <div className="create-spot-button-container">
-                    <NavLink to="/spots/new">
-                        <div className="create-spot-button">
-                            Create a New Spot
-                        </div>
-                    </NavLink>
+                    <div className="create-spot-button-width">
+                        <NavLink to="/spots/new">
+                            <div className="create-spot-button">
+                                Create a New Spot
+                            </div>
+                        </NavLink>
+                    </div>
                 </div>
                 <div className="manage-spot-cards">
                     {searchedUserSpots.length > 0 && searchedUserSpots.map((spot) =>

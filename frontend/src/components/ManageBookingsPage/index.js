@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import BookingCard from "../BookingCard";
-import "./ManageBookingsPage.css";
 import { getUserBookings } from "../../store/bookings";
 import { getAllSpots } from "../../store/spots";
+import "./ManageBookingsPage.css";
 
 export default function ManageBookingsPage() {
     const dispatch = useDispatch();
@@ -25,8 +25,10 @@ export default function ManageBookingsPage() {
 
     return (
         <div className="manage-bookings-page-container">
-            <div className="manage-bookings-page-title">
-                <h1>Manage Bookings</h1>
+            <div className="manage-bookings-page-header">
+                <div className="manage-bookings-page-title">
+                    <h1>Manage Bookings</h1>
+                </div>
             </div>
             <div className="manage-bookings-cards-container">
                 {sortedBookings.length > 0 ? (

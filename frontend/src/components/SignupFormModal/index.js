@@ -40,7 +40,7 @@ function SignupFormModal() {
                 <label>
                     Email
                     <input
-                        type="text"
+                        type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -93,7 +93,7 @@ function SignupFormModal() {
                 </label>
                 <button
                     type="submit"
-                    disabled={!email.length || username.length < 4 || !firstName.length || !lastName.length || password.length < 6 || confirmPassword.length < 6 || password !== confirmPassword ? true : false}
+                    // disabled={!email.length || username.length < 4 || !firstName.length || !lastName.length || password.length < 6 || confirmPassword.length < 6 || password !== confirmPassword ? true : false}
                 >
                     Sign Up
                 </button>
