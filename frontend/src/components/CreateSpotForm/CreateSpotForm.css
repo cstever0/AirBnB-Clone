@@ -1,11 +1,10 @@
-/* TODO add css to CreateSpotForm */
-.errors {
-    color: red;
+.entire-create-spot-form-wrapper {
+    margin: auto;
+    max-width: 50%;
 }
 
-.entire-form-wrapper {
-    margin: auto;
-    max-width: 30%;
+.create-spot-form-header {
+    text-align: center;
 }
 
 .spot-form {
@@ -72,15 +71,43 @@
     margin: 1vh 0px;
 }
 
-#create-button-container {
+.create-spot-form-submission-container {
     display: flex;
     justify-content: center;
-    margin-top: 2%;
+    margin: 2%;
 }
 
-#create-spot-button {
-    padding: 5px 20px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .8);
-    background-color: red;
+.create-spot-form-cancel-link a {
+    text-decoration: none;
+}
+
+.create-spot-form-cancel-button {
+    width: 20vw;
+    padding: 1px;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-size: large;
+    border: 1px solid red;
+    color: red;
+    background-color: white;
+    text-align: center;
+}
+
+.create-spot-form-cancel-button:hover {
     color: white;
+    background-color: red;
+}
+
+.create-spot-form-submit-button button {
+    width: 20vw;
+    border-radius: 10px;
+    font-size: large;
+    border: 1px solid green;
+    color: green;
+    background-color: white;
+}
+
+.create-spot-form-submit-button button:hover {
+    color: white;
+    background-color: green;
 }
