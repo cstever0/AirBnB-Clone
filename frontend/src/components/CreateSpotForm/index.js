@@ -51,6 +51,7 @@ export default function CreateSpotForm() {
 
         setImageErrors(customErrors);
 
+
         const spotImages = [
             { url: previewImage, preview: true },
         ];

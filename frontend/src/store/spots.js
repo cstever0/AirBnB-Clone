@@ -61,6 +61,9 @@ export const getAllSpots = () => async (dispatch) => {
         dispatch(loadAllSpots(spotsObj));
         return response;
     };
+
+    const errors = await response.json();
+    return errors;
 };
 
 export const getUserSpots = () => async (dispatch) => {
@@ -71,8 +74,11 @@ export const getUserSpots = () => async (dispatch) => {
         const spotsObj = arrayToObj(spots.Spots);
         dispatch(loadUserSpots(spotsObj));
         return spots;
-    }
-}
+    };
+
+    const errors = await response.json();
+    return errors;
+};
 
 export const getOneSpot = (id) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${id}`)
@@ -82,6 +88,9 @@ export const getOneSpot = (id) => async (dispatch) => {
         dispatch(loadOneSpot(spot));
         return response;
     };
+
+    const errors = await response.json();
+    return errors;
 };
 
 export const createOneSpot = (spot, spotImages) => async (dispatch) => {
@@ -108,6 +117,9 @@ export const createOneSpot = (spot, spotImages) => async (dispatch) => {
         dispatch(createNewSpot(spot));
         return spot;
     };
+
+    const errors = await response.json();
+    return errors;
 };
 
 export const updateOneSpot = (spot) => async (dispatch) => {
@@ -134,6 +146,9 @@ export const updateOneSpot = (spot) => async (dispatch) => {
         dispatch(updateSpot(spot));
         return spot;
     };
+
+    const errors = await response.json();
+    return errors;
 };
 
 export const deleteOneSpot = (id) => async (dispatch) => {
@@ -144,6 +159,9 @@ export const deleteOneSpot = (id) => async (dispatch) => {
     if (response.ok) {
         return dispatch(deleteSpot(id))
     };
+
+    const errors = await response.json();
+    return errors;
 };
 
 const initialState = {
