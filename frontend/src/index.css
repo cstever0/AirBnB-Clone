@@ -5,3 +5,7 @@
 button {
     cursor: pointer;
 }
+
+html body {
+    margin: 0;
+}

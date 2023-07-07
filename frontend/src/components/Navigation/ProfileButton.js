@@ -78,17 +78,21 @@ function ProfileButton({ user, setQuery }) {
                             </div>
                         </div>
                     ) : (
-                        <div className="login-signUp-menu">
-                            <OpenModalMenuItem
-                                itemText="Log In"
-                                onItemClick={closeMenu}
-                                modalComponent={<LoginFormModal />}
-                            />
-                            <OpenModalMenuItem
-                                itemText="Sign Up"
-                                onItemClick={closeMenu}
-                                modalComponent={<SignupFormModal />}
-                            />
+                        <div className="login-sign-up-menu">
+                            <div className="login-button">
+                                <OpenModalMenuItem
+                                    itemText="Log In"
+                                    onItemClick={closeMenu}
+                                    modalComponent={<LoginFormModal />}
+                                />
+                            </div>
+                            <div className="sign-up-button">
+                                <OpenModalMenuItem
+                                    itemText="Sign Up"
+                                    onItemClick={closeMenu}
+                                    modalComponent={<SignupFormModal />}
+                                />
+                            </div>
                         </div>
                     )}
                 </div>

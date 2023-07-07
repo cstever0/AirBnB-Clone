@@ -12,11 +12,13 @@ function Navigation({ isLoaded, setQuery }) {
 
     return (
         <ul className="nav-bar">
-            <div id="return-home">
+            <div className="return-home">
                 {isLoaded && (
                     <div className="nav-right">
                         <div id="fave-icon">
                             <img src='https://res.cloudinary.com/dxcayvj3l/image/upload/v1678876686/ff7_comet_ojhedw.jpg' alt='comet' />
+                        </div>
+                        <div id="home-link">
                             <NavLink onClick={() => setQuery("")} to="/">FantasyBnB</NavLink>
                         </div>
                     </div>
@@ -25,7 +27,7 @@ function Navigation({ isLoaded, setQuery }) {
             <div className="profile-nav">
                 {isLoaded && sessionUser && (
                     <div className="create-spot-link">
-                        <NavLink to="/spots/new">Create a New Spot</NavLink>
+                        <NavLink to="/spots/new">Add your home</NavLink>
                     </div>
                 )}
                 {isLoaded && (
