@@ -19,19 +19,6 @@ function Navigation({ isLoaded, query, setQuery }) {
                             <img src='https://res.cloudinary.com/dxcayvj3l/image/upload/v1678876686/ff7_comet_ojhedw.jpg' alt='comet' />
                             <NavLink to="/">FantasyBnB</NavLink>
                         </div>
-                        <div className="search-bar-container">
-                            <div className="search-input">
-                                <input
-                                    type="search"
-                                    value={query}
-                                    placeholder="Search by city..."
-                                    onChange={(e) => setQuery(e.target.value)}
-                                />
-                            </div>
-                            {/* <div className="search-icon">
-                            <button onClick={handleClick}><i className="fa-solid fa-x"></i></button>
-                        </div> */}
-                        </div>
                     </div>
                 )}
             </div>

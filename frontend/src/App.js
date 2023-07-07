@@ -9,6 +9,7 @@ import SpotDetails from "./components/SpotDetails";
 import CreateSpotForm from "./components/CreateSpotForm";
 import ManageSpotPage from "./components/ManageSpotPage";
 import ManageBookingsPage from "./components/ManageBookingsPage";
+import SearchFilter from "./components/SearchFilter";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,14 +22,15 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} query={query} setQuery={setQuery} />
+      <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
           <Route exact path="/spots/new">
             <CreateSpotForm />
           </Route>
           <Route exact path="/spots/manage">
-            <ManageSpotPage />
+            <SearchFilter query={query} setQuery={setQuery} />
+            <ManageSpotPage query={query} />
           </Route>
           <Route path="/spots/:spotId">
             <SpotDetails />
@@ -37,6 +39,7 @@ function App() {
             <ManageBookingsPage />
           </Route>
           <Route exact path="/" >
+            <SearchFilter query={query} setQuery={setQuery} />
             <SpotShow query={query} />
           </Route>
         </Switch>
