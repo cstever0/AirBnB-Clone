@@ -38,17 +38,32 @@
     font-weight: bold;
     margin-top: 10px;
     background-color: white;
+    border: 1px solid green;
+    color: green;
 }
 
-/* .login-submit:hover {
-    background-color: #3e8e41;
-} */
+.login-submit:hover {
+    background-color: green;
+    color: white;
+}
 
 #modal-content {
     border-radius: 5px;
 }
 
-.demo-login{
-    text-align: center;
+.demo-login {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
     margin-top: 10px;
+    background-color: white;
+    border: 1px solid blue;
+    color: blue;
+}
+
+.demo-login:hover {
+    background-color: blue;
+    color: white;
 }
