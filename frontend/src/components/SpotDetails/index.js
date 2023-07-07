@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { getOneSpot } from "../../store/spots";
 import { getSpotReviews } from "../../store/reviews";
 import OpenModalButton from "../OpenModalButton";
-import ReviewDetails from "../ReviewsDetails";
+import ReviewDetails from "../ReviewDetails";
 import ReviewFormModal from "../ReviewFormModal";
 import CreateBookingModal from "../CreateBookingModal";
 import './SpotDetails.css';
@@ -41,7 +41,7 @@ const SpotDetails = () => {
                     <h2>{spot.city}, {spot.state}, {spot.country}</h2>
                 </div>
                 <div className="all-images">
-                    <div id="preview-image">
+                    <div className="preview-image">
                         <img src={`${previewImage.url}`} alt="" />
                     </div>
                     <div className="spot-images">
@@ -59,7 +59,7 @@ const SpotDetails = () => {
                         <div className="reservation-details">
                             <h2>${spot.price}/night</h2>
                             <div className="spot-rating">
-                                {spot.avgStarRating !== 'No Reviews Yet' ? <i className="fa fa-star">{spot.avgStarRating.toFixed(1)}</i> : <i className="fa fa-star">New</i>}
+                                {spot.avgStarRating !== 'No Reviews Yet' ? <><i className="fa fa-star"></i><span>{spot.avgStarRating.toFixed(1)}</span></> : <><i className="fa fa-star"></i><span>New</span></>}
                                 <div className="spot-num-reviews">
                                     {spot.numReviews !== "No Reviews Yet" &&
                                         (spot.numReviews === 1 ?
@@ -88,7 +88,7 @@ const SpotDetails = () => {
             <div className="review-details">
                 <div className="review-rating">
                     <div className="star-dot-reviews-list">
-                        {spot.avgStarRating !== 'No Reviews Yet' ? <i className="fa fa-star">{spot.avgStarRating.toFixed(1)}</i> : <i className="fa fa-star">New</i>}
+                        {spot.avgStarRating !== 'No Reviews Yet' ? <><i className="fa fa-star"></i><span>{spot.avgStarRating.toFixed(1)}</span></> : <><i className="fa fa-star"></i><span>New</span></>}
                         <div className="reviews-num-reviews">
                             {spot.numReviews !== "No Reviews Yet" &&
                                 (spot.numReviews === 1 ?

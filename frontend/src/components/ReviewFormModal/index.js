@@ -10,7 +10,7 @@ export default function ReviewFormModal({ spot, oldReview }) {
     const [review, setReview] = useState("");
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState({});
-    console.log("errors", errors);
+    // console.log("errors", errors);
 
     useEffect(() => {
         if (oldReview) {
@@ -55,6 +55,11 @@ export default function ReviewFormModal({ spot, oldReview }) {
         <div className="review-form-container">
             <form className="review-form" onSubmit={handleSubmit}>
                 <h1>How was your stay?</h1>
+                <div className="errors">
+                    {errors.review && (
+                       <p>{errors.review}</p>
+                    )}
+                </div>
                 <textarea
                     value={review}
                     onChange={(e) => setReview(e.target.value)}
@@ -70,6 +75,11 @@ export default function ReviewFormModal({ spot, oldReview }) {
                     max={5}
                     min={1}
                 /> */}
+                <div className="errors">
+                    {errors.stars && (
+                        <p>{errors.stars}</p>
+                    )}
+                </div>
                 <StarsRatingInput
                     stars={stars}
                     value={stars}
@@ -78,7 +88,7 @@ export default function ReviewFormModal({ spot, oldReview }) {
                 <button
                     className="review-submit"
                     type="submit"
-                    disabled={stars < 1 || review.length < 10 ? true : false}
+                // disabled={stars < 1 || review.length < 10 ? true : false}
                 >
                     Submit Your Review
                 </button>

@@ -2,6 +2,7 @@
 import OpenModalButton from "../OpenModalButton";
 import DeleteReviewModal from "../DeleteReviewModal/DeleteReviewModal";
 import ReviewFormModal from "../ReviewFormModal";
+import "./ReviewDetails.css";
 
 const ReviewDetails = ({ review, user }) => {
     const date = new Date(review.createdAt);
@@ -15,7 +16,7 @@ const ReviewDetails = ({ review, user }) => {
     const year = date.getFullYear();
 
     return (
-        <div className="review-list">
+        <div className="review-list-container">
             <div className="review-details">
                 <h2>{user.firstName}</h2>
                 <h3>{month}, {year}</h3>
