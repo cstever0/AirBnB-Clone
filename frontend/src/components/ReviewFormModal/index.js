@@ -4,7 +4,7 @@ import { useModal } from "../../context/Modal";
 import { createOneReview, editOneReview } from "../../store/reviews";
 import StarsRatingInput from "./StarsRatingInput";
 
-export default function ReviewFormModal({ spot, oldReview }) {
+export default function ReviewFormModal({ spot, oldReview, user }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const [review, setReview] = useState("");
@@ -41,7 +41,7 @@ export default function ReviewFormModal({ spot, oldReview }) {
 
         try {
             if (oldReview) await dispatch(editOneReview(newReview()));
-            else await dispatch(createOneReview(newReview(), spot.id));
+            else await dispatch(createOneReview(newReview(), spot.id, user));
             closeModal();
         } catch (e) {
             const errors = await e.json();

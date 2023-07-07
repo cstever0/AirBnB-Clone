@@ -2,6 +2,7 @@
 import normalizer from "../utilities/normalizer";
 import { arrayToObj } from "../utilities/arrToObj";
 import { csrfFetch } from "./csrf";
+import { getOneSpot } from "./spots";
 
 const SPOT_REVIEWS = "api/spots/reviews";
 const CREATE_REVIEW = "api/reviews/new";

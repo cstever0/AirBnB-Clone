@@ -2,22 +2,17 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { deleteOneReview } from "../../store/reviews";
 import "./DeleteReviewModal.css";
+import { getOneSpot } from "../../store/spots";
 
 export default function DeleteReviewModal({ review }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
-    const deleteClick = (e) => {
+    const deleteClick = async (e) => {
         // e.preventDefault();
         dispatch(deleteOneReview(review.id));
         closeModal();
     };
-
-    const keepClick = () => {
-        // e.preventDefault();
-        closeModal();
-    };
-
 
     return (
         <div className="delete-modal-container">

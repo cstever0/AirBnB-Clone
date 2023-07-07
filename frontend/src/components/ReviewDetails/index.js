@@ -15,6 +15,8 @@ const ReviewDetails = ({ review, user }) => {
     const month = monthNames[monthIdx];
     const year = date.getFullYear();
 
+    // if (!review.User) return null;
+
     return (
         <div className="review-list-container">
             <div className="review-details">
@@ -28,7 +30,7 @@ const ReviewDetails = ({ review, user }) => {
                         <div className="edit-review-button">
                             <OpenModalButton
                                 buttonText="Edit"
-                                modalComponent={<ReviewFormModal oldReview={review} />}
+                                modalComponent={<ReviewFormModal oldReview={review} user={user} />}
                             />
                         </div>
                         <div className="delete-review-button">

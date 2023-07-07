@@ -17,7 +17,7 @@ const SpotDetails = () => {
     const user = useSelector((state) => state.session.user);
     const spotReviews = useSelector((state) => state.reviews.spot);
     const reviews = Object.values(spotReviews).sort((a, b) => b.id - a.id);
-    console.log(spotReviews);
+    console.log("spotReviews", reviews);
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
@@ -29,8 +29,8 @@ const SpotDetails = () => {
 
     if (!Object.values(spot).length) return null;
     if (!reviews) return null;
-    const spotImages = spot.SpotImages;
-    const previewImage = spot.SpotImages[0];
+    const spotImages = Object.values(spot.SpotImages);
+    const previewImage = spotImages[0];
     const spotOwner = spot.Owner;
 
 

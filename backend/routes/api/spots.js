@@ -510,7 +510,8 @@ router.post('/:spotId/reviews', requireAuth, validateReview, async (req, res) =>
     let newReview = await Review.findOne({
         where: {
             review: review
-        }
+        },
+        include: [User]
     });
 
     res.status(201).json(newReview);
