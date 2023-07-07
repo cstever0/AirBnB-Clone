@@ -75,10 +75,12 @@ const SpotDetails = () => {
                             </div>
                         </div>
                         <div className="reservation-button">
-                            <OpenModalButton
-                                buttonText="Reserve"
-                                modalComponent={<CreateBookingModal spot={spot} user={user} />}
-                            />
+                            {user.id !== spot.ownerId &&
+                                <OpenModalButton
+                                    buttonText="Reserve"
+                                    modalComponent={<CreateBookingModal spot={spot} user={user} />}
+                                />
+                            }
                         </div>
                     </div>
                 </div>
