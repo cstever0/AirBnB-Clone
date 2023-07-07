@@ -9,3 +9,11 @@ button {
 html body {
     margin: 0;
 }
+
+.errors {
+    color: red;
+}
+
+.modal-body {
+    overflow-y: auto;
+}

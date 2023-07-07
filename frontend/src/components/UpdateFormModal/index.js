@@ -79,11 +79,13 @@ export default function UpdateFormModal({ spot }) {
     };
 
     return (
-        <div className="entire-update-form-wrapper">
-            <h1>Update your Spot</h1>
-            <h2>Where's your place located?</h2>
-            <p>Guests will only get your exact address once they booked a
-                reservation</p>
+        <div className="entire-update-form-container">
+            <div className="update-form-header">
+                <h1>Update your Spot</h1>
+                <h2>Where's your place located?</h2>
+                <p>Guests will only get your exact address once they have booked a
+                    reservation</p>
+            </div>
             <form className="update-spot-form" onSubmit={handleSubmit}>
                 <label>
                     Country
@@ -260,10 +262,13 @@ export default function UpdateFormModal({ spot }) {
                         <span className="errors">{imageErrors.spotImage4}</span>
                     )}
                 </div> */}
-                <div id="update-button-container">
-                    <button id="update-spot-button" type="submit">
-                        Update Spot
-                    </button>
+                <div className="update-spot-modal-submission-buttons-container">
+                    <div className="modal-cancel-update-spot-button">
+                        <button onClick={() => closeModal()}>Cancel</button>
+                    </div>
+                    <div className="modal-update-spot-button">
+                        <button type="submit">Update Spot</button>
+                    </div>
                 </div>
             </form>
         </div>
