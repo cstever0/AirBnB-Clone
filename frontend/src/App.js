@@ -13,6 +13,7 @@ import ManageBookingsPage from "./components/ManageBookingsPage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [query, setQuery] = useState("")
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <Navigation isLoaded={isLoaded} query={query} setQuery={setQuery} />
       {isLoaded && (
         <Switch>
           <Route exact path="/spots/new">
@@ -36,7 +37,7 @@ function App() {
             <ManageBookingsPage />
           </Route>
           <Route exact path="/" >
-            <SpotShow />
+            <SpotShow query={query} />
           </Route>
         </Switch>
       )}
