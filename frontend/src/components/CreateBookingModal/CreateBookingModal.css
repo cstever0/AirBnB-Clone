@@ -37,16 +37,17 @@
 
 .create-booking-modal-submission-container {
     display: flex;
-    justify-content: center;
     padding: 5px;
 }
 
 .create-booking-modal-cancel-button {
     margin-right: 10px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
 }
 
 .create-booking-modal-cancel-button button {
-    width: 5vw;
     border-radius: 10px;
     border: 1px solid red;
     color: red;
@@ -59,8 +60,13 @@
     background-color: red;
 }
 
+.create-booking-modal-submit-button {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
 .create-booking-modal-submit-button button {
-    width: 5vw;
     border-radius: 10px;
     border: 1px solid green;
     color: green;

@@ -8,6 +8,7 @@ import OpenModalButton from "../OpenModalButton";
 import ReviewDetails from "../ReviewDetails";
 import ReviewFormModal from "../ReviewFormModal";
 import CreateBookingModal from "../CreateBookingModal";
+import LoginFormModal from "../LoginFormModal";
 import './SpotDetails.css';
 
 const SpotDetails = () => {
@@ -76,10 +77,10 @@ const SpotDetails = () => {
                             </div>
                         </div>
                         <div className="reservation-button">
-                            {user.id !== spot.ownerId &&
+                            {user?.id !== spot.ownerId &&
                                 <OpenModalButton
                                     buttonText="Reserve"
-                                    modalComponent={<CreateBookingModal spot={spot} user={user} />}
+                                    modalComponent={user ? <CreateBookingModal spot={spot} user={user} /> : <LoginFormModal /> }
                                 />
                             }
                         </div>
