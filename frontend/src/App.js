@@ -8,10 +8,14 @@ import SpotShow from "./components/SpotShow";
 import SpotDetails from "./components/SpotDetails";
 import CreateSpotForm from "./components/CreateSpotForm";
 import ManageSpotPage from "./components/ManageSpotPage";
+import ManageBookingsPage from "./components/ManageBookingsPage";
+import SearchFilter from "./components/SearchFilter";
+import AboutMeFooter from "./components/AboutMeFooter";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [query, setQuery] = useState("")
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -19,23 +23,29 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <Navigation isLoaded={isLoaded} setQuery={setQuery} />
       {isLoaded && (
         <Switch>
           <Route exact path="/spots/new">
             <CreateSpotForm />
           </Route>
           <Route exact path="/spots/manage">
-            <ManageSpotPage />
+            <SearchFilter query={query} setQuery={setQuery} />
+            <ManageSpotPage query={query} />
           </Route>
           <Route path="/spots/:spotId">
             <SpotDetails />
           </Route>
+          <Route path="/bookings/manage">
+            <ManageBookingsPage />
+          </Route>
           <Route exact path="/" >
-            <SpotShow />
+            <SearchFilter query={query} setQuery={setQuery} />
+            <SpotShow query={query} />
           </Route>
         </Switch>
       )}
+      <AboutMeFooter />
     </>
   );
 };

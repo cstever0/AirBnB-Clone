@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createOneSpot } from "../../store/spots";
 import "./CreateSpotForm.css";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function CreateSpotForm() {
     const dispatch = useDispatch();
@@ -51,6 +52,7 @@ export default function CreateSpotForm() {
 
         setImageErrors(customErrors);
 
+
         const spotImages = [
             { url: previewImage, preview: true },
         ];
@@ -70,11 +72,13 @@ export default function CreateSpotForm() {
     };
 
     return (
-        <div className="entire-form-wrapper">
-            <h1>Create a new Spot</h1>
-            <h2>Where's your place located?</h2>
-            <p>Guests will only get your exact address once they booked a
-                reservation</p>
+        <div className="entire-create-spot-form-wrapper">
+            <div className="create-spot-form-header">
+                <h1>Create a new Spot</h1>
+                <h2>Where's your place located?</h2>
+                <p>Guests will only get your exact address once they booked a
+                    reservation</p>
+            </div>
             <form className="spot-form" onSubmit={handleSubmit}>
                 <label>
                     Country
@@ -254,10 +258,17 @@ export default function CreateSpotForm() {
                         )}
                     </div>
                 </div>
-                <div id="create-button-container">
-                    <button id="create-spot-button" type="submit">
-                        Create Spot
-                    </button>
+                <div className="create-spot-form-submission-container">
+                    <div className="create-spot-form-cancel-link">
+                        <NavLink to="/">
+                            <div className="create-spot-form-cancel-button">
+                                Cancel
+                            </div>
+                        </NavLink>
+                    </div>
+                    <div className="create-spot-form-submit-button">
+                        <button type="submit">Create Spot</button>
+                    </div>
                 </div>
             </form>
         </div>

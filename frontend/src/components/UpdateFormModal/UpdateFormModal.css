@@ -1,10 +1,9 @@
-/* TODO add css to update spot */
-.errors {
-    color: red;
+.entire-update-form-container {
+    padding: 10px;
 }
 
-.modal-body {
-    overflow-y: auto;
+.update-form-header {
+    text-align: center;
 }
 
 .update-spot-form {
@@ -58,15 +57,35 @@
     margin-bottom: 2%;
 }
 
-#update-button-container {
+.update-spot-modal-submission-buttons-container {
     display: flex;
     justify-content: center;
-    margin-top: 2%;
+    margin-top: 5px;
 }
 
-#update-spot-button {
-    padding: 5px 20px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .8);
-    background-color: red;
+.modal-cancel-update-spot-button button {
+    width: 10vw;
+    margin-right: 5px;
+    border-radius: 10px;
+    border: 1px solid red;
+    color: red;
+    background-color: white;
+}
+
+.modal-cancel-update-spot-button button:hover {
     color: white;
+    background-color: red;
+}
+
+.modal-update-spot-button button {
+    width: 10vw;
+    border-radius: 10px;
+    border: 1px solid green;
+    color: green;
+    background-color: white;
+}
+
+.modal-update-spot-button button:hover {
+    color: white;
+    background-color: green;
 }

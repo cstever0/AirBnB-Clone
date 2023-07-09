@@ -31,16 +31,16 @@ function SignupFormModal() {
     };
 
     return (
-        <div className="signup-form-container">
+        <div className="sign-up-form-container">
             <h1>Sign Up</h1>
-            <form className="signup-form" onSubmit={handleSubmit}>
+            <form className="sign-up-form" onSubmit={handleSubmit}>
                 <ul>
                     {Object.values(errors).map((error, idx) => <li className="errors" key={idx}>{error}</li>)}
                 </ul>
                 <label>
                     Email
                     <input
-                        type="text"
+                        type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -93,7 +93,7 @@ function SignupFormModal() {
                 </label>
                 <button
                     type="submit"
-                    disabled={!email.length || username.length < 4 || !firstName.length || !lastName.length || password.length < 6 || confirmPassword.length < 6 || password !== confirmPassword ? true : false}
+                    // disabled={!email.length || username.length < 4 || !firstName.length || !lastName.length || password.length < 6 || confirmPassword.length < 6 || password !== confirmPassword ? true : false}
                 >
                     Sign Up
                 </button>

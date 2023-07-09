@@ -1,0 +1,42 @@
+/* TODO add css to reviews details */
+.review-list-container {
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.329);
+    word-wrap: break-word;
+    width: 50vw;
+    margin: 10px;
+}
+
+.review-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-review-button button {
+    border-radius: 10px;
+    margin-right: 5px;
+    border: 1px solid blue;
+    background-color: white;
+    color: blue;
+    width: 8vw;
+}
+
+.edit-review-button button:hover {
+    background-color: blue;
+    color: white;
+}
+
+.delete-review-button button {
+    border-radius: 10px;
+    margin-right: 5px;
+    border: 1px solid red;
+    background-color: white;
+    color: red;
+    width: 8vw;
+}
+
+.delete-review-button button:hover {
+    background-color: red;
+    color: white;
+}

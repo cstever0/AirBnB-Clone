@@ -1,23 +1,33 @@
 /* TODO implement css for signup */
-.signup-form-container {
+.sign-up-form-container {
     padding: 20px;
 }
 
-.signup-form-container h1{
+.sign-up-form-container h1{
     text-align: center;
 }
 
-.signup-form {
+.sign-up-form {
     display: flex;
     flex-direction: column;
     margin: 20px;
 }
 
-.signup-form label {
+.sign-up-form label {
     display: flex;
     flex-direction: column;
 }
 
-.signup-form button {
+.sign-up-form button {
     margin-top: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid green;
+    color: green;
+    background-color: white;
+}
+
+.sign-up-form button:hover {
+    color: white;
+    background-color: green;
 }

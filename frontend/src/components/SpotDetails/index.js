@@ -5,9 +5,11 @@ import { useParams } from "react-router-dom";
 import { getOneSpot } from "../../store/spots";
 import { getSpotReviews } from "../../store/reviews";
 import OpenModalButton from "../OpenModalButton";
-import ReviewDetails from "../ReviewsDetails";
-import './SpotDetails.css';
+import ReviewDetails from "../ReviewDetails";
 import ReviewFormModal from "../ReviewFormModal";
+import CreateBookingModal from "../CreateBookingModal";
+import LoginFormModal from "../LoginFormModal";
+import './SpotDetails.css';
 
 const SpotDetails = () => {
     const dispatch = useDispatch();
@@ -16,6 +18,7 @@ const SpotDetails = () => {
     const user = useSelector((state) => state.session.user);
     const spotReviews = useSelector((state) => state.reviews.spot);
     const reviews = Object.values(spotReviews).sort((a, b) => b.id - a.id);
+    // console.log("spotReviews", reviews);
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
@@ -26,8 +29,9 @@ const SpotDetails = () => {
     }, [dispatch, spotId]);
 
     if (!Object.values(spot).length) return null;
-    const spotImages = spot.SpotImages;
-    const previewImage = spot.SpotImages[0];
+    if (!reviews) return null;
+    const spotImages = Object.values(spot.SpotImages);
+    const previewImage = spotImages[0];
     const spotOwner = spot.Owner;
 
 
@@ -39,7 +43,7 @@ const SpotDetails = () => {
                     <h2>{spot.city}, {spot.state}, {spot.country}</h2>
                 </div>
                 <div className="all-images">
-                    <div id="preview-image">
+                    <div className="preview-image">
                         <img src={`${previewImage.url}`} alt="" />
                     </div>
                     <div className="spot-images">
@@ -55,9 +59,9 @@ const SpotDetails = () => {
                     </div>
                     <div className="reservation-section">
                         <div className="reservation-details">
-                            <h2>${spot.price} night</h2>
+                            <h2>${spot.price}/night</h2>
                             <div className="spot-rating">
-                                {spot.avgStarRating !== 'No Reviews Yet' ? <i className="fa fa-star">{spot.avgStarRating.toFixed(1)}</i> : <i className="fa fa-star">New</i>}
+                                {spot.avgStarRating !== 'No Reviews Yet' ? <><i className="fa fa-star"></i><span>{spot.avgStarRating.toFixed(1)}</span></> : <><i className="fa fa-star"></i><span>New</span></>}
                                 <div className="spot-num-reviews">
                                     {spot.numReviews !== "No Reviews Yet" &&
                                         (spot.numReviews === 1 ?
@@ -73,7 +77,12 @@ const SpotDetails = () => {
                             </div>
                         </div>
                         <div className="reservation-button">
-                            <button onClick={() => window.alert("Feature Coming Soon...")}>Reserve</button>
+                            {user?.id !== spot.ownerId &&
+                                <OpenModalButton
+                                    buttonText="Reserve"
+                                    modalComponent={user ? <CreateBookingModal spot={spot} user={user} /> : <LoginFormModal /> }
+                                />
+                            }
                         </div>
                     </div>
                 </div>
@@ -81,7 +90,7 @@ const SpotDetails = () => {
             <div className="review-details">
                 <div className="review-rating">
                     <div className="star-dot-reviews-list">
-                        {spot.avgStarRating !== 'No Reviews Yet' ? <i className="fa fa-star">{spot.avgStarRating.toFixed(1)}</i> : <i className="fa fa-star">New</i>}
+                        {spot.avgStarRating !== 'No Reviews Yet' ? <><i className="fa fa-star"></i><span>{spot.avgStarRating.toFixed(1)}</span></> : <><i className="fa fa-star"></i><span>New</span></>}
                         <div className="reviews-num-reviews">
                             {spot.numReviews !== "No Reviews Yet" &&
                                 (spot.numReviews === 1 ?

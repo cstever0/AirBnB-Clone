@@ -1,17 +1,22 @@
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { useModal } from "../../context/Modal";
-import { deleteOneReview } from "../../store/reviews";
-import "./DeleteReviewModal.css";
-import { getOneSpot } from "../../store/spots";
+import { deleteOneBooking } from "../../store/bookings";
 
-export default function DeleteReviewModal({ review }) {
+export default function DeleteBookingModal({ id }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
+    const [errors, setErrors] = useState({});
 
     const deleteClick = async (e) => {
-        // e.preventDefault();
-        dispatch(deleteOneReview(review.id));
-        closeModal();
+        setErrors({})
+        try {
+            await dispatch(deleteOneBooking(id));
+            closeModal();
+        } catch (e) {
+            const error = await e.json();
+            return setErrors(error)
+        }
     };
 
     return (
@@ -19,18 +24,18 @@ export default function DeleteReviewModal({ review }) {
             <div className="delete-modal-header">
                 <h1>Confirm Delete</h1>
                 <p>
-                    Are you sure you want to delete this review?
+                    Are you sure you want to delete this booking?
                 </p>
             </div>
             <div className="delete-modal-buttons-container">
                 <div className="cancel-delete-button">
                     <button onClick={() => closeModal()}>
-                        No (Keep Review)
+                        No (Keep Booking)
                     </button>
                 </div>
                 <div className="confirm-delete-button">
                     <button onClick={deleteClick}>
-                        Yes (Delete Review)
+                        Yes (Delete Booking)
                     </button>
                 </div>
             </div>

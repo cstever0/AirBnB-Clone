@@ -150,7 +150,8 @@ router.put('/:reviewId', requireAuth, validateReview, async (req, res) => {
     let reviewToEdit = await Review.findOne({
         where: {
             id: reviewId
-        }
+        },
+        include: [User]
     });
 
     if (!reviewToEdit) {

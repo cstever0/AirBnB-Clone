@@ -1,19 +1,43 @@
-/* TODO add css to manage spots? */
 .all-user-spots {
     display: flex;
-    flex-wrap: wrap;
     margin: 2%;
+}
+
+.create-spot-button-container a {
+    text-decoration: none;
+    color: green;
+}
+
+.create-spot-button-container a:hover {
+    color: white;
+}
+
+.create-spot-button-width {
+    width: 17vw;
+}
+
+.create-spot-button {
+    margin: 5px;
+    padding: 5px 20px;
+    box-shadow: 0px 0px 2px 2px rgba(0, 128, 0, 0.39);
+    border-radius: 10px;
+    text-align: center;
+    background-color: white;
+}
+
+.create-spot-button:hover {
+    background-color: green;
 }
 
 .manage-spot-cards {
     display: flex;
     margin-top: 2%;
+    flex-wrap: wrap;
 }
 
 .spot-card {
     margin-right: 2%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
 }
 
 .all-user-spots img {
@@ -22,23 +46,36 @@
     padding: 20px;
 }
 
-/* .each-spot {
+.update-delete-button-container {
     display: flex;
-} */
-
-.update-delete {
-    display: flex;
+    justify-content: center;
 }
 
-.update-delete button {
+.update-delete-button-container button {
     margin: 5px;
     padding: 5px 20px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .8);
 }
 
-.create-spot-button {
-    margin: 5px;
-    padding: 5px 20px;
-    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, .8);
-    width: 17%;
+.update-spot-button button {
+    border-radius: 10px;
+    border: 1px solid blue;
+    color: blue;
+    background-color: white;
+}
+
+.update-spot-button button:hover {
+    color: white;
+    background-color: blue;
+}
+
+.delete-spot-button button {
+    border-radius: 10px;
+    border: 1px solid red;
+    color: red;
+    background-color: white;
+}
+
+.delete-spot-button button:hover {
+    color: white;
+    background-color: red;
 }

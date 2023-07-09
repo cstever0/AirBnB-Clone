@@ -1,0 +1,15 @@
+.manage-bookings-page-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.manage-bookings-page-header {
+    text-align: center;
+}
+
+.manage-bookings-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

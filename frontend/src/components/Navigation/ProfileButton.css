@@ -13,14 +13,38 @@
 }
 
 /* vvvv not logged in vvvv */
-.login-signUp-menu {
+.login-sign-up-menu {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 5px;
 }
 
-.login-signUp-menu button {
-    border: none;
-    padding: 5px;
+.login-sign-up-menu button {
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.login-button button {
+    color: blue;
+    background-color: white;
+    border: 1px solid blue;
+}
+
+.login-button button:hover {
+    color: white;
+    background-color: blue;
+}
+
+.sign-up-button button {
+    color: green;
+    background-color: white;
+    border: 1px solid green;
+}
+
+.sign-up-button button:hover {
+    color: white;
+    background-color: green;
 }
 
 /* ^^^^^ not logged in ^^^^^ */
@@ -31,6 +55,17 @@
     margin: 5px;
 }
 
+.user-info a {
+    text-decoration: none;
+    color: blue;
+}
+
+.user-info a:hover {
+    text-decoration: none;
+    background-color: rgba(128, 128, 128, 0.199);
+    border-radius: 10px;
+}
+
 #user-email {
     margin: 2px;
     border-bottom: solid 2px rgba(0, 0, 0, .8);
@@ -38,6 +73,10 @@
 
 #manage-spots-link {
     margin: 2px;
+}
+
+#manage-bookings-link {
+    margin-bottom: 2px;
 }
 
 #logout-button-container {
@@ -51,9 +90,15 @@
 }
 
 #logout-button button {
-    border-radius: 30px;
-    border: none;
-    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, .8);
+    border-radius: 10px;
+    border: 1px solid red;
+    background-color: white;
+    color: red;
+}
+
+#logout-button button:hover {
+    background-color: red;
+    color: white;
 }
 
 /* vvvv order matters vvvv */
@@ -64,7 +109,9 @@
     top: 70px;
     right: 10px;
     background-color: white;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hidden {

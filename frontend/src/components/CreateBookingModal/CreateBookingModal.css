@@ -1,0 +1,80 @@
+.create-booking-modal-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.create-booking-modal-title {
+    text-align: center;
+}
+
+.existing-bookings-title {
+    font-weight: bold;
+}
+
+.existing-bookings-list {
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.336);
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.create-booking-errors-container {
+    text-align: center;
+}
+
+.booking-form-date-container {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: large;
+}
+
+.booking-form-start-date {
+    margin-right: 10px;
+}
+
+.create-booking-modal-submission-container {
+    display: flex;
+    padding: 5px;
+}
+
+.create-booking-modal-cancel-button {
+    margin-right: 10px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.create-booking-modal-cancel-button button {
+    border-radius: 10px;
+    border: 1px solid red;
+    color: red;
+    background-color: white;
+    font-size: large;
+}
+
+.create-booking-modal-cancel-button button:hover {
+    color: white;
+    background-color: red;
+}
+
+.create-booking-modal-submit-button {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.create-booking-modal-submit-button button {
+    border-radius: 10px;
+    border: 1px solid green;
+    color: green;
+    background-color: white;
+    font-size: large;
+}
+
+.create-booking-modal-submit-button button:hover {
+    color: white;
+    background-color: green;
+}

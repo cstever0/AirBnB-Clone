@@ -8,7 +8,7 @@ import SignupFormModal from '../SignupFormModal';
 import { NavLink, useHistory } from "react-router-dom";
 import "./ProfileButton.css";
 
-function ProfileButton({ user }) {
+function ProfileButton({ user, setQuery }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const [showMenu, setShowMenu] = useState(false);
@@ -48,7 +48,7 @@ function ProfileButton({ user }) {
         <>
             <div id="profile-button">
                 <button onClick={openMenu}>
-                    <i className="fas fa-bars" />
+                    {/* <i className="fas fa-bars" /> */}
                     <i className="fas fa-user-circle" />
                 </button>
             </div>
@@ -63,7 +63,13 @@ function ProfileButton({ user }) {
                                 {user.email}
                             </div>
                             <div id="manage-spots-link">
-                                <NavLink onClick={closeMenu} to="/spots/manage">Manage Spots</NavLink>
+                                <NavLink onClick={() => {
+                                    setQuery("")
+                                    closeMenu()
+                                }} to="/spots/manage">Manage Spots</NavLink>
+                            </div>
+                            <div id="manage-bookings-link">
+                                <NavLink onClick={closeMenu} to="/bookings/manage">Manage Bookings</NavLink>
                             </div>
                             <div id="logout-button-container">
                                 <div id="logout-button">
@@ -72,17 +78,21 @@ function ProfileButton({ user }) {
                             </div>
                         </div>
                     ) : (
-                        <div className="login-signUp-menu">
-                            <OpenModalMenuItem
-                                itemText="Log In"
-                                onItemClick={closeMenu}
-                                modalComponent={<LoginFormModal />}
-                            />
-                            <OpenModalMenuItem
-                                itemText="Sign Up"
-                                onItemClick={closeMenu}
-                                modalComponent={<SignupFormModal />}
-                            />
+                        <div className="login-sign-up-menu">
+                            <div className="login-button">
+                                <OpenModalMenuItem
+                                    itemText="Log In"
+                                    onItemClick={closeMenu}
+                                    modalComponent={<LoginFormModal />}
+                                />
+                            </div>
+                            <div className="sign-up-button">
+                                <OpenModalMenuItem
+                                    itemText="Sign Up"
+                                    onItemClick={closeMenu}
+                                    modalComponent={<SignupFormModal />}
+                                />
+                            </div>
                         </div>
                     )}
                 </div>

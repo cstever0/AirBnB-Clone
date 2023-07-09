@@ -5,10 +5,13 @@ import { getAllSpots } from "../../store/spots";
 import SpotCard from "../SpotCard";
 import './SpotShow.css';
 
-const SpotShow = () => {
+const SpotShow = ({ query }) => {
     const dispatch = useDispatch();
     const spot = useSelector((state) => state.spots.allSpots);
     const allSpots = Object.values(spot);
+    const searchedSpots = allSpots.filter((spot) => spot.city.toLowerCase().includes(query.toLowerCase()));
+    // console.log("allSpots", allSpots)
+    // console.log("searchedSpots", searchedSpots);
 
     useEffect(() => {
         dispatch(getAllSpots());
@@ -18,7 +21,7 @@ const SpotShow = () => {
 
     return (
         <div className="all-spots">
-            {allSpots.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
+            {searchedSpots.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
         </div>
     );
 

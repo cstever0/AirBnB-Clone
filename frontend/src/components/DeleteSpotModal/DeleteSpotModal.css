@@ -1,20 +1,49 @@
 /* TODO add css to delete spot */
-
-.delete-review-wrapper {
-    margin: 10px;
+.delete-modal-container {
+    padding: 10px;
 }
 
-.confirm-delete-spot {
+.delete-modal-header {
     text-align: center;
 }
 
-.delete-spot-buttons {
+.delete-modal-buttons-container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
 }
 
-.delete-spot-buttons button {
-    margin: 5px;
-    padding: 5px 20px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .8);
+.delete-modal-buttons-container button {
+    font-size: large;
+    padding: 5px;
+}
+
+.cancel-delete-button {
+    margin-right: 5px;
+}
+
+.cancel-delete-button button {
+    border-radius: 10px;
+    width: 8vw;
+    border: 1px solid blue;
+    color: blue;
+    background-color: white;
+}
+
+.cancel-delete-button button:hover {
+    color: white;
+    background-color: blue;
+}
+
+.confirm-delete-button button {
+    border-radius: 10px;
+    width: 8vw;
+    border: 1px solid red;
+    color: red;
+    background-color: white;
+}
+
+.confirm-delete-button button:hover {
+    color: white;
+    background-color: red;
 }

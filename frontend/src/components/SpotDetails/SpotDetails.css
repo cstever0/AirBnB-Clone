@@ -1,35 +1,17 @@
 /* TODO add css to spot display */
 .entire-spot-container {
-    margin: auto 2vw;
-    max-width: 1000px;
-}
-
-.spot-rating {
     display: flex;
-}
-
-.spot-num-reviews {
-    margin-left: 10px;
-}
-
-.reviews-num-reviews {
-    margin-left: 10px;
+    flex-direction: column;
+    margin: auto 2vw;
 }
 
 .all-images {
     display: flex;
 }
 
-
-#preview-image img {
-    width: 98%;
-    height: 98%;
-    padding: 5px;
-}
-
-.spot-images img {
-    width: 15vw;
-    height: 22vh;
+.preview-image img {
+    width: 50vw;
+    height: 50vh;
     padding: 5px;
 }
 
@@ -38,14 +20,17 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
+.spot-images img {
+    width: 15vw;
+    height: 22vh;
+    padding: 5px;
+}
 
 .spot-reservation {
     display: flex;
     justify-content: space-between;
-    /* border-bottom: solid 1px rgba(0, 0, 0, .2); */
     margin-bottom: 10px;
 }
-
 
 .reservation-section {
     padding: 1vw 2vw;
@@ -53,7 +38,6 @@
     border-radius: 20px;
     margin-top: 10px;
     margin-bottom: auto;
-    /* box-sizing: border-box; */
 }
 
 .reservation-details {
@@ -67,11 +51,39 @@
 }
 
 .spot-rating {
+    display: flex;
     margin-top: 3vh;
+}
+
+.spot-rating i {
+    margin-right: 3px;
+}
+
+.reservation-button button {
+    border: 1px solid green;
+    background-color: white;
+    color: green;
+    border-radius: 10px;
+    padding: 5px;
+    width: 45%;
+    font-size: large;
+}
+
+.reservation-button button:hover {
+    background-color: green;
+    color: white;
 }
 
 .review-rating {
     border-top: solid 1px rgba(0, 0, 0, .2);
+}
+
+.spot-num-reviews {
+    margin-left: 10px;
+}
+
+.reviews-num-reviews {
+    margin-left: 10px;
 }
 
 .star-dot-reviews-list {
@@ -79,6 +91,23 @@
     margin-top: 20px;
 }
 
+.star-dot-reviews-list i {
+    margin-right: 5px;
+}
+
 #post-review-button {
     margin-top: 10px;
+}
+
+#post-review-button button {
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid blue;
+    background-color: white;
+    color: blue;
+}
+
+#post-review-button button:hover {
+    background-color: blue;
+    color: white;
 }
