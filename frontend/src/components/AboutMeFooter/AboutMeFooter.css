@@ -1,0 +1,27 @@
+.about-me-footer-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-top: solid 2px rgba(0, 0, 0, 0.329);
+    margin-top: 20px;
+}
+
+.about-me-link {
+    width: 20%;
+    display: inherit;
+    justify-content: center;
+}
+
+.about-me-link:hover {
+    border-radius: 10px;
+    background-color: rgba(128, 128, 128, 0.158);
+}
+
+.about-me-link a {
+    text-decoration: none;
+    color: blue;
+}
+
+.label {
+    margin-left: 5px;
+}

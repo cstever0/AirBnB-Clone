@@ -10,6 +10,7 @@ import CreateSpotForm from "./components/CreateSpotForm";
 import ManageSpotPage from "./components/ManageSpotPage";
 import ManageBookingsPage from "./components/ManageBookingsPage";
 import SearchFilter from "./components/SearchFilter";
+import AboutMeFooter from "./components/AboutMeFooter";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <AboutMeFooter />
     </>
   );
 };
