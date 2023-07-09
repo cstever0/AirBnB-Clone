@@ -109,8 +109,8 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     for (let bookingCheck of bookings) {
         let startDateNum = new Date(startDate).getTime();
         let endDateNum = new Date(endDate).getTime();
-        console.log("bookingCheck", bookingCheck.dataValues.id);
-        console.log("bookingId", bookingId);
+        // console.log("bookingCheck", bookingCheck.dataValues.id);
+        // console.log("bookingId", bookingId);
 
         let bookingStartDate = new Date(bookingCheck.startDate).getTime();
         let bookingEndDate = new Date(bookingCheck.endDate).getTime();

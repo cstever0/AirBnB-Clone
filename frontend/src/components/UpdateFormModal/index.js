@@ -75,7 +75,7 @@ export default function UpdateFormModal({ spot }) {
             history.push(`/spots/${newSpot.id}`);
         };
 
-        console.log("newSpot update output", newSpot)
+        // console.log("newSpot update output", newSpot)
     };
 
     return (
